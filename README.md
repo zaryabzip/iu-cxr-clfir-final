@@ -12,12 +12,16 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 │   ├── iu_pipeline_e2e_clfir_final.ipynb
 │   └── iu_pipeline_e2e_clfir_final.py
 └── results/
+    ├── baseline/
+    │   └── README.md
     ├── clfir_final/
     │   ├── summary.json
     │   └── per_study_summary.csv
     ├── more_imp1/
     │   ├── summary.json
     │   └── per_study_summary.csv
+    ├── proposed_improvement_1/
+    │   └── README.md
     └── comparisons/
         ├── judge_criteria_comparison_dashboard.png
         ├── automatic_metrics_comparison_dashboard.png
@@ -83,6 +87,24 @@ Important run settings:
 - Jupytext format: paired `.ipynb` and `.py`
 
 The paired Python file is included so the notebook can be reviewed as executable source without relying only on notebook JSON.
+
+## Baseline Results
+
+The baseline result folder is reserved for the comparison run that represents the original or non-improved reference pipeline. Its result files will be added under `results/baseline/`.
+
+Expected files:
+
+- `results/baseline/summary.json`
+- `results/baseline/per_study_summary.csv`
+
+## Proposed Improvement 1 Results
+
+The Proposed Improvement 1 folder is reserved for the first improvement experiment and its independent evaluation results. Its result files will be added under `results/proposed_improvement_1/`.
+
+Expected files:
+
+- `results/proposed_improvement_1/summary.json`
+- `results/proposed_improvement_1/per_study_summary.csv`
 
 ## Experimental Comparison
 
