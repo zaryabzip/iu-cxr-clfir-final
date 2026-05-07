@@ -42,6 +42,8 @@ At a high level, it uses:
 
 The submitted notebook is designed to resume from disk artifacts when run in the original local environment. External datasets, model snapshots, retrieval banks, and generated stage artifacts are excluded from this repository due to size and portability.
 
+![IU chest X-ray report generation pipeline](assets/iu_cxr_pipeline_diagram.png)
+
 ## CLFIR Adapter Training and Use
 
 The CLFIR adapter used by the retrieval stage is a fine-tuned image-text retrieval projection module. It is not a report generator by itself. Its role is to map BioViL-T image embeddings into a retrieval space that is better aligned with radiology report text.
