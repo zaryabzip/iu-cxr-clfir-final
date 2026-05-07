@@ -20,25 +20,25 @@
 # resumes from disk instead of restarting completed work.
 #
 # The active configuration writes to `current_clfir_final`. In the default local
-# setup, Stage 5 and Stage 7 use Ollama-backed LLM calls (`qwen3.5:9b` composer
+# setup, Stage 5 and Stage 6 use Ollama-backed LLM calls (`qwen3.5:9b` composer
 # and `gemma3:12b` judge unless overridden by environment variables). If local
 # Ollama is disabled, the same stage wrappers can use Gemini models when a
 # working API key is available.
 #
 # Pipeline stages:
-# 1. Stage 1 imports or generates a CheXOne image-first report and converts it
-#    into a deterministic 14-label proxy.
-# 2. Stage 2a embeds the query image with BioViL-T and searches the CLFIR
-#    adapter-2 visual bank.
-# 3. Stage 2c applies deterministic reranking to the retrieved visual hits.
-# 4. Stage 3 aggregates CheXbert labels from the retrieved reports into
-#    text-side evidence.
-# 5. Stage 4 fuses the image-side and retrieval-text label vectors into
-#    confirmed, image-only, text-only, conflict, or absent states.
-# 6. Stage 5 composes the final report from the fused evidence, direct draft,
-#    and retrieved context.
-# 7. Stage 7 judges both the pipeline report and the CheXOne direct baseline,
-#    then the evaluation block writes per-study and aggregate metrics.
+# - Stage 1 imports or generates a CheXOne image-first report and converts it
+#   into a deterministic 14-label proxy.
+# - Stage 2a embeds the query image with BioViL-T and searches the CLFIR
+#   adapter-2 visual bank.
+# - Stage 2c applies deterministic reranking to the retrieved visual hits.
+# - Stage 3 aggregates CheXbert labels from the retrieved reports into
+#   text-side evidence.
+# - Stage 4 fuses the image-side and retrieval-text label vectors into
+#   confirmed, image-only, text-only, conflict, or absent states.
+# - Stage 5 composes the final report from the fused evidence, direct draft,
+#   and retrieved context.
+# - Stage 6 judges both the pipeline report and the CheXOne direct baseline,
+#   then the evaluation block writes per-study and aggregate metrics.
 #
 # Design rules:
 # - artifacts are durable and versioned by directory;
@@ -284,7 +284,7 @@ def ensure_gemini_api_key_interactive() -> str | None:
         ENABLE_LLM_JUDGE = True
         STOP_BEFORE_GEMINI_STAGES = False
         LLM_PARALLEL_WORKERS = 1
-        print("Gemini API key set to 'none'; using local Ollama for Stage 5 and Stage 7.")
+        print("Gemini API key set to 'none'; using local Ollama for Stage 5 and Stage 6.")
         return None
     if existing:
         USE_LOCAL_OLLAMA_LLM = False
@@ -293,7 +293,7 @@ def ensure_gemini_api_key_interactive() -> str | None:
         JUDGE_MODEL_NAME = "gemini-2.5-pro"
         ENABLE_LLM_JUDGE = True
         STOP_BEFORE_GEMINI_STAGES = False
-        print("Using Gemini for Stage 5 and Stage 7.")
+        print("Using Gemini for Stage 5 and Stage 6.")
         return existing
     print("Gemini API key not found in environment.")
     try:
@@ -310,7 +310,7 @@ def ensure_gemini_api_key_interactive() -> str | None:
         ENABLE_LLM_JUDGE = True
         STOP_BEFORE_GEMINI_STAGES = False
         LLM_PARALLEL_WORKERS = 1
-        print("Using local Ollama for Stage 5 and Stage 7.")
+        print("Using local Ollama for Stage 5 and Stage 6.")
         return None
     if entered:
         os.environ["GEMINI_API_KEY"] = entered
@@ -320,7 +320,7 @@ def ensure_gemini_api_key_interactive() -> str | None:
         JUDGE_MODEL_NAME = "gemini-2.5-pro"
         ENABLE_LLM_JUDGE = True
         STOP_BEFORE_GEMINI_STAGES = False
-        print("Using Gemini for Stage 5 and Stage 7.")
+        print("Using Gemini for Stage 5 and Stage 6.")
         return entered
     print("No Gemini API key provided. Gemini-dependent stages will skip or fail preflight if enabled.")
     return None
@@ -1745,6 +1745,16 @@ print_stage_summary("CheXOne direct", [chexone_direct_output_path(study.uid) for
 # - project the 128d BioViL-T vector through CLFIR adapter-2
 # - retrieve visually/textually aligned studies from the CLFIR FAISS bank
 #
+# CLFIR adapter details:
+# - the adapter was fine-tuned as an image-text retrieval projection module;
+# - image inputs are 128d BioViL-T projected global image embeddings;
+# - the text side uses `pritamdeka/S-PubMedBert-MS-MARCO`;
+# - both modalities are aligned into a normalized 512d retrieval space;
+# - training used max 320 text tokens, mixup lambda 0.92-0.99, AdamW with
+#   initial learning rate 3e-5 and weight decay 0.01;
+# - the selected checkpoint is epoch 18, with image-to-text recall@10 0.3247
+#   and text-to-image recall@10 0.3243 on the adapter validation metric.
+#
 # Input:
 # - the Stage 1 study image
 # - the external CLFIR adapter-2 visual bank
@@ -2528,7 +2538,7 @@ def write_pre_gemini_metrics() -> dict[str, Any]:
 def maybe_stop_before_gemini_stages() -> None:
     if STOP_BEFORE_GEMINI_STAGES:
         write_pre_gemini_metrics()
-        print("Stopping before Gemini Stage 5 and Stage 7 as requested by configuration.")
+        print("Stopping before Gemini Stage 5 and Stage 6 as requested by configuration.")
         raise SystemExit(0)
 
 
@@ -3005,7 +3015,7 @@ if pending_stage5:
 
 
 # %% [markdown]
-# ## Stage 7 code: LLM judge
+# ## Stage 6 code: LLM judge
 #
 # Purpose:
 # - compare generated reports against the IU reference report;
@@ -3215,7 +3225,7 @@ def _run_stage7_chexone_for_study(study: IUStudy) -> dict[str, Any]:
 
 
 # %% [markdown]
-# ## Stage 7 run
+# ## Stage 6 run
 
 # %%
 def _write_stage7_skip(output_path: Path, uid: str, status: str) -> None:
@@ -3238,9 +3248,9 @@ pending_stage7_chexone = [
     or str(read_json(JUDGING_CHEXONE_DIR / f"{study.uid}.json").get("prompt_version", "")).strip() != STAGE7_PROMPT_VERSION
 ]
 
-print(f"Stage 7 pipeline pending studies: {len(pending_stage7_pipeline)}")
-print(f"Stage 7 CheXOne-direct pending studies: {len(pending_stage7_chexone)}")
-print(f"Stage 7 parallel workers: {LLM_PARALLEL_WORKERS}")
+print(f"Stage 6 pipeline pending studies: {len(pending_stage7_pipeline)}")
+print(f"Stage 6 CheXOne-direct pending studies: {len(pending_stage7_chexone)}")
+print(f"Stage 6 parallel workers: {LLM_PARALLEL_WORKERS}")
 
 if not ENABLE_LLM_JUDGE:
     for study in pending_stage7_pipeline:
@@ -3255,7 +3265,7 @@ else:
     if pending_stage7_pipeline:
         with ThreadPoolExecutor(max_workers=LLM_PARALLEL_WORKERS) as executor:
             futures = {executor.submit(_run_stage7_pipeline_for_study, study): study.uid for study in pending_stage7_pipeline}
-            for future in tqdm(as_completed(futures), total=len(futures), desc="Stage 7 pipeline", unit="study"):
+            for future in tqdm(as_completed(futures), total=len(futures), desc="Stage 6 pipeline", unit="study"):
                 result = future.result()
                 if result["status"] == "failed_permanent":
                     stage7_pipeline_failures.append(result)
@@ -3263,7 +3273,7 @@ else:
     if stage7_pipeline_failures:
         first_failure = stage7_pipeline_failures[0]
         raise RuntimeError(
-            f"Stage 7 pipeline judge failed permanently for uid={first_failure['uid']}. "
+            f"Stage 6 pipeline judge failed permanently for uid={first_failure['uid']}. "
             f"Last error: {first_failure.get('error')}"
         )
 
@@ -3271,7 +3281,7 @@ else:
     if pending_stage7_chexone:
         with ThreadPoolExecutor(max_workers=LLM_PARALLEL_WORKERS) as executor:
             futures = {executor.submit(_run_stage7_chexone_for_study, study): study.uid for study in pending_stage7_chexone}
-            for future in tqdm(as_completed(futures), total=len(futures), desc="Stage 7 CheXOne", unit="study"):
+            for future in tqdm(as_completed(futures), total=len(futures), desc="Stage 6 CheXOne", unit="study"):
                 result = future.result()
                 if result["status"] == "failed_permanent":
                     stage7_chexone_failures.append(result)
@@ -3279,7 +3289,7 @@ else:
     if stage7_chexone_failures:
         first_failure = stage7_chexone_failures[0]
         raise RuntimeError(
-            f"Stage 7 CheXOne direct judge failed permanently for uid={first_failure['uid']}. "
+            f"Stage 6 CheXOne direct judge failed permanently for uid={first_failure['uid']}. "
             f"Last error: {first_failure.get('error')}"
         )
 

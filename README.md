@@ -42,6 +42,29 @@ At a high level, it uses:
 
 The submitted notebook is designed to resume from disk artifacts when run in the original local environment. External datasets, model snapshots, retrieval banks, and generated stage artifacts are excluded from this repository due to size and portability.
 
+## CLFIR Adapter Training and Use
+
+The CLFIR adapter used by the retrieval stage is a fine-tuned image-text retrieval projection module. It is not a report generator by itself. Its role is to map BioViL-T image embeddings into a retrieval space that is better aligned with radiology report text.
+
+Training setup:
+
+- Image encoder input: BioViL-T projected global image embedding, `128d`.
+- Text encoder: `pritamdeka/S-PubMedBert-MS-MARCO`.
+- Shared retrieval projection size: `512d`.
+- Max text length: `320` tokens.
+- Mixup lambda range: `0.92` to `0.99`.
+- Optimizer from checkpoint state: AdamW, initial learning rate `3e-5`, weight decay `0.01`, betas `(0.9, 0.999)`.
+- Selected checkpoint: epoch `18`.
+- Validation retrieval metrics at the selected checkpoint:
+  - image-to-text recall@1: `0.0758`
+  - image-to-text recall@5: `0.2302`
+  - image-to-text recall@10: `0.3247`
+  - text-to-image recall@1: `0.0790`
+  - text-to-image recall@5: `0.2230`
+  - text-to-image recall@10: `0.3243`
+
+At inference time, the query IU chest X-ray is embedded with BioViL-T, projected through the trained CLFIR image projection layer, L2-normalized, and searched against the CLFIR FAISS visual bank. The retrieved studies provide soft evidence for later fusion; they are not copied directly into the final report.
+
 ## Submitted Pipeline
 
 The primary submitted pipeline is:
@@ -129,4 +152,3 @@ This repository does not include:
 - LLM prompt caches.
 
 The compact result files under `results/` are included so the reported metrics and comparison plots can be inspected without requiring the original full artifact bundle.
-
