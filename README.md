@@ -13,7 +13,7 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 │   └── iu_pipeline_e2e_clfir_final.py
 └── results/
     ├── baseline/
-    │   └── README.md
+    │   └── .gitkeep
     ├── clfir_final/
     │   ├── summary.json
     │   └── per_study_summary.csv
@@ -21,7 +21,7 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── summary.json
     │   └── per_study_summary.csv
     ├── proposed_improvement_1/
-    │   └── README.md
+    │   └── .gitkeep
     └── comparisons/
         ├── judge_criteria_comparison_dashboard.png
         ├── automatic_metrics_comparison_dashboard.png
@@ -90,21 +90,29 @@ The paired Python file is included so the notebook can be reviewed as executable
 
 ## Baseline Results
 
-The baseline result folder is reserved for the comparison run that represents the original or non-improved reference pipeline. Its result files will be added under `results/baseline/`.
+The baseline result folder is reserved for the original reference system used to judge whether the CLFIR pipeline improves report generation. This should contain the baseline model's independent evaluation results, not copied CLFIR outputs.
+
+When the files are added, `results/baseline/` should contain the same compact result schema used by the other runs:
 
 Expected files:
 
 - `results/baseline/summary.json`
 - `results/baseline/per_study_summary.csv`
 
+The baseline section should report the same categories as the submitted pipeline: completed reports, completed judge scores, LLM judge overall, automatic text metrics, and any clinical judge sub-scores included in the provided result files.
+
 ## Proposed Improvement 1 Results
 
-The Proposed Improvement 1 folder is reserved for the first improvement experiment and its independent evaluation results. Its result files will be added under `results/proposed_improvement_1/`.
+The Proposed Improvement 1 folder is reserved for the first proposed extension beyond the submitted `clfir_final` pipeline. This should contain its own independent run outputs so it can be compared against both the baseline and the submitted CLFIR final pipeline.
+
+When the files are added, `results/proposed_improvement_1/` should contain the same compact result schema:
 
 Expected files:
 
 - `results/proposed_improvement_1/summary.json`
 - `results/proposed_improvement_1/per_study_summary.csv`
+
+This section should summarize what changed relative to `clfir_final`, then report the same evaluation categories: completed reports, completed judge scores, LLM judge overall, automatic text metrics, and clinical judge sub-scores when available.
 
 ## Experimental Comparison
 
