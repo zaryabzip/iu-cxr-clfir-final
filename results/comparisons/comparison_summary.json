@@ -1,0 +1,119 @@
+{
+  "Clinical": {
+    "kind": "judge",
+    "clfir_final_mean": 7.6433,
+    "adapter2_more_imp_mean": 7.7233,
+    "mean_delta_more_imp_minus_final": 0.08,
+    "adapter2_wins": 40,
+    "ties": 227,
+    "clfir_final_wins": 33
+  },
+  "Groundedness": {
+    "kind": "judge",
+    "clfir_final_mean": 8.15,
+    "adapter2_more_imp_mean": 8.2433,
+    "mean_delta_more_imp_minus_final": 0.0933,
+    "adapter2_wins": 45,
+    "ties": 212,
+    "clfir_final_wins": 43
+  },
+  "Completeness": {
+    "kind": "judge",
+    "clfir_final_mean": 6.87,
+    "adapter2_more_imp_mean": 6.8533,
+    "mean_delta_more_imp_minus_final": -0.0167,
+    "adapter2_wins": 51,
+    "ties": 192,
+    "clfir_final_wins": 57
+  },
+  "Style": {
+    "kind": "judge",
+    "clfir_final_mean": 8.6333,
+    "adapter2_more_imp_mean": 8.68,
+    "mean_delta_more_imp_minus_final": 0.0467,
+    "adapter2_wins": 39,
+    "ties": 233,
+    "clfir_final_wins": 28
+  },
+  "Overall": {
+    "kind": "judge",
+    "clfir_final_mean": 7.7133,
+    "adapter2_more_imp_mean": 7.7633,
+    "mean_delta_more_imp_minus_final": 0.05,
+    "adapter2_wins": 50,
+    "ties": 207,
+    "clfir_final_wins": 43
+  },
+  "BLEU": {
+    "kind": "auto",
+    "clfir_final_mean": 0.1232,
+    "adapter2_more_imp_mean": 0.1148,
+    "mean_delta_more_imp_minus_final": -0.0084,
+    "adapter2_wins": 127,
+    "ties": 6,
+    "clfir_final_wins": 167
+  },
+  "ROUGE-1": {
+    "kind": "auto",
+    "clfir_final_mean": 0.4165,
+    "adapter2_more_imp_mean": 0.4118,
+    "mean_delta_more_imp_minus_final": -0.0047,
+    "adapter2_wins": 144,
+    "ties": 10,
+    "clfir_final_wins": 146
+  },
+  "ROUGE-2": {
+    "kind": "auto",
+    "clfir_final_mean": 0.1735,
+    "adapter2_more_imp_mean": 0.1726,
+    "mean_delta_more_imp_minus_final": -0.0009,
+    "adapter2_wins": 145,
+    "ties": 17,
+    "clfir_final_wins": 138
+  },
+  "ROUGE-L": {
+    "kind": "auto",
+    "clfir_final_mean": 0.3111,
+    "adapter2_more_imp_mean": 0.313,
+    "mean_delta_more_imp_minus_final": 0.0019,
+    "adapter2_wins": 142,
+    "ties": 12,
+    "clfir_final_wins": 146
+  },
+  "METEOR": {
+    "kind": "auto",
+    "clfir_final_mean": 0.3532,
+    "adapter2_more_imp_mean": 0.3307,
+    "mean_delta_more_imp_minus_final": -0.0225,
+    "adapter2_wins": 117,
+    "ties": 6,
+    "clfir_final_wins": 177
+  },
+  "BERTScore F1": {
+    "kind": "auto",
+    "clfir_final_mean": 0.857,
+    "adapter2_more_imp_mean": 0.8538,
+    "mean_delta_more_imp_minus_final": -0.0033,
+    "adapter2_wins": 120,
+    "ties": 5,
+    "clfir_final_wins": 175
+  },
+  "sacreBLEU": {
+    "kind": "corpus_auto",
+    "clfir_final": 13.1452,
+    "adapter2_more_imp": 11.5712,
+    "delta_more_imp_minus_final": -1.5739
+  },
+  "chrF": {
+    "kind": "corpus_auto",
+    "clfir_final": 41.8087,
+    "adapter2_more_imp": 38.8665,
+    "delta_more_imp_minus_final": -2.9422
+  },
+  "chrF++": {
+    "kind": "corpus_auto",
+    "clfir_final": 38.6632,
+    "adapter2_more_imp": 35.8621,
+    "delta_more_imp_minus_final": -2.8011
+  }
+}
