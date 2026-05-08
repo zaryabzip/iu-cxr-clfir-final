@@ -1,0 +1,1802 @@
+[
+  {
+    "uid": "2950",
+    "study_key": "2950_IM-1348",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2950_IM-1348-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. The lungs are clear.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2951",
+    "study_key": "2951_IM-1349",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2951_IM-1349-1001.dcm.png",
+    "reference_report": "Findings: The heart and lungs have XXXX XXXX in the interval. Both lungs are clear and expanded. No pleural air collections. Heart and mediastinum normal. A vague lucency is present in left rib 7 anteriorly.\nImpression: No active disease. No evidence for cardiopulmonary injuries. Possibility of left rib 7 anterior nondisplaced fracture as described.",
+    "reference_impression": "No active disease. No evidence for cardiopulmonary injuries. Possibility of left rib 7 anterior nondisplaced fracture as described.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2952",
+    "study_key": "2952_IM-1350",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2952_IM-1350-2001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette and pulmonary vasculature are within normal limits in size. The lungs are mildly hypoinflated but grossly clear of focal airspace disease, pneumothorax, or pleural effusion. There are no acute bony findings.\nImpression: No acute cardiopulmonary findings. .",
+    "reference_impression": "No acute cardiopulmonary findings. .",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2953",
+    "study_key": "2953_IM-1351",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2953_IM-1351-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no pleural effusion or pneumothorax. The heart and mediastinum are normal. The skeletal structures are normal.\nImpression: No acute pulmonary disease.",
+    "reference_impression": "No acute pulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows a mass in the right breast.",
+    "generated_impression": "Findings: The chest X-ray shows a mass in the right breast."
+  },
+  {
+    "uid": "2954",
+    "study_key": "2954_IM-1352",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2954_IM-1352-2001.dcm.png",
+    "reference_report": "Findings: There is obscuration of the bilateral lung bases with lower lung volumes compared to prior examination. Stable atelectatic/fibrotic changes of the visualized lung, and stable left-sided calcified granuloma. No acute osseous abnormalities identified. Cardiomediastinal silhouette unremarkable.\nImpression: Obscuration of the bilateral lung bases, XXXX combination of atelectasis, infiltrate, effusions.",
+    "reference_impression": "Obscuration of the bilateral lung bases, XXXX combination of atelectasis, infiltrate, effusions.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2955",
+    "study_key": "2955_IM-1352",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2955_IM-1352-4004.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size moderately enlarged for technique, aortic ectasia/tortuosity. Right hemidiaphragm eventration. No focal alveolar consolidation, no definite pleural effusion seen. Vascular redistribution without typical findings of pulmonary edema. No pneumothorax.",
+    "reference_impression": "Heart size moderately enlarged for technique, aortic ectasia/tortuosity. Right hemidiaphragm eventration. No focal alveolar consolidation, no definite pleural effusion seen. Vascular redistribution without typical findings of pulmonary edema. No pneumothorax.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2956",
+    "study_key": "2956_IM-1353",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2956_IM-1353-2001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contour are normal. Pulmonary vascularity is normal. Lungs are clear. No pleural effusions or pneumothoraces.\nImpression: Normal chest.",
+    "reference_impression": "Normal chest.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2957",
+    "study_key": "2957_IM-1354",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2957_IM-1354-1003.dcm.png",
+    "reference_report": "Findings: The heart is mildly enlarged. Pulmonary vascularity is increased. There is again mild elevation of the right hemidiaphragm. Air space disease and/or atelectasis is noted in right lung base. There is also XXXX streaky opacity in the left base. The costophrenic XXXX are blunted.\nImpression: 1. Cardiomegaly and pulmonary vascular congestion. 2. Eventration of right hemidiaphragm with basilar atelectasis.",
+    "reference_impression": "1. Cardiomegaly and pulmonary vascular congestion. 2. Eventration of right hemidiaphragm with basilar atelectasis.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2958",
+    "study_key": "2958_IM-1354",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2958_IM-1354-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Left lung clear. Heart size normal. No change right upper lobe volume loss and fibrosis. No change right upper lobe cavitation.",
+    "reference_impression": "Left lung clear. Heart size normal. No change right upper lobe volume loss and fibrosis. No change right upper lobe cavitation.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2959",
+    "study_key": "2959_IM-1354",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2959_IM-1354-1001.dcm.png",
+    "reference_report": "Findings: Both lungs are clear and expanded. Heart and mediastinum normal.\nImpression: No active disease.",
+    "reference_impression": "No active disease.",
+    "generated_report": "Findings: The chest X-ray shows a large mass in the right breast.",
+    "generated_impression": "Findings: The chest X-ray shows a large mass in the right breast."
+  },
+  {
+    "uid": "295",
+    "study_key": "295_IM-1348",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/295_IM-1348-1001.dcm.png",
+    "reference_report": "Findings: Limited lateral projection. The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion. Cardiomediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality. Healed distal left clavicular fracture noted.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2960",
+    "study_key": "2960_IM-1354",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2960_IM-1354-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiac contours. Clear lung XXXX bilaterally. No pneumothorax or pleural effusion.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2961",
+    "study_key": "2961_IM-1355",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2961_IM-1355-1001.dcm.png",
+    "reference_report": "Findings: There is patchy opacity in the left base concerning for atelectasis versus pneumonitis. There is a curvilinear lucency that appears to be in the right hemidiaphragm and a small amount of free intraperitoneal air may be present. There is a small left pleural effusion. The heart is not significantly enlarged. There are atherosclerotic changes of the aorta. Arthritic changes of the skeletal structures are noted.\nImpression: 1. Question small amount of free intraperitoneal air on the right. This is XXXX to be postprocedural due to the recent abdominal surgery. 2. Left basilar airspace opacity atelectasis versus pneumonitis.",
+    "reference_impression": "1. Question small amount of free intraperitoneal air on the right. This is XXXX to be postprocedural due to the recent abdominal surgery. 2. Left basilar airspace opacity atelectasis versus pneumonitis.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2962",
+    "study_key": "2962_IM-1355",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2962_IM-1355-1001.dcm.png",
+    "reference_report": "Findings: Stable mild thoracic levoscoliosis. Stable cardiomegaly. Multiple scattered round calcific densities XXXX represent old granulomatous disease. No pneumothorax or pleural effusion. No focal consolidation. Moderate degenerative changes of the thoracic spine.\nImpression: Stable cardiomegaly with no focal airspace disease.",
+    "reference_impression": "Stable cardiomegaly with no focal airspace disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2963",
+    "study_key": "2963_IM-1356",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2963_IM-1356-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is within normal limits for size and contour. The lungs are normally inflated without evidence of focal airspace disease, pleural effusion, or pneumothorax. No acute bone abnormality.\nImpression: No acute cardiopulmonary process.",
+    "reference_impression": "No acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2964",
+    "study_key": "2964_IM-1357",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2964_IM-1357-2001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no focal airspace consolidation. No pleural effusion or pneumothorax. Heart size and mediastinal contour are normal.\nImpression: No evidence of active disease.",
+    "reference_impression": "No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2965",
+    "study_key": "2965_IM-1358",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2965_IM-1358-1001.dcm.png",
+    "reference_report": "Findings: Heart size within normal limits. No focal airspace disease. No pleural effusion. No pneumothorax.\nImpression: No acute cardiopulmonary findings. Specifically, no radiographic evidence of tuberculosis.",
+    "reference_impression": "No acute cardiopulmonary findings. Specifically, no radiographic evidence of tuberculosis.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2966",
+    "study_key": "2966_IM-1359",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2966_IM-1359-1001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen. Scoliosis and degenerative changes are present in the spine.\nImpression: 1. No evidence of active disease.",
+    "reference_impression": "1. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2967",
+    "study_key": "2967_IM-1360",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2967_IM-1360-1001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen.\nImpression: 1. No evidence of active disease.",
+    "reference_impression": "1. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2968",
+    "study_key": "2968_IM-1360",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2968_IM-1360-1001.dcm.png",
+    "reference_report": "Findings: Right paratracheal stripe is denser and XXXX than normal. The XXXX are normal. Heart size normal. Lungs clear and expanded with no infiltrates.\nImpression: Right paratracheal mass, possibly lymphadenopathy. If there are no previous chest x-XXXX from elsewhere are XXXX scan with contrast XXXX be of further XXXX. Dr. XXXX XXXX I discussed these findings in the XXXX Department approximately XXXX hours XXXX, XXXX.",
+    "reference_impression": "Right paratracheal mass, possibly lymphadenopathy. If there are no previous chest x-XXXX from elsewhere are XXXX scan with contrast XXXX be of further XXXX. Dr. XXXX XXXX I discussed these findings in the XXXX Department approximately XXXX hours XXXX, XXXX.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2969",
+    "study_key": "2969_IM-1360",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2969_IM-1360-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contours are stable. Atherosclerotic calcifications of the aorta. Moderate severe hyperexpansion of the lungs and decreased peripheral vascular markings, consistent with emphysema. Stable biapical pleural-parenchymal scarring. Scattered granulomas. No abnormal airspace consolidation. No pneumothorax or pleural effusion.\nImpression: 1. Stable emphysematous changes. 2. Stable biapical pleural-parenchymal scarring.",
+    "reference_impression": "1. Stable emphysematous changes. 2. Stable biapical pleural-parenchymal scarring.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "296",
+    "study_key": "296_IM-1354",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/296_IM-1354-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size normal. Lungs clear. Hiatal hernia. No effusion the or pneumothorax. No pneumonia",
+    "reference_impression": "Heart size normal. Lungs clear. Hiatal hernia. No effusion the or pneumothorax. No pneumonia",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2970",
+    "study_key": "2970_IM-1362",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2970_IM-1362-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contours are stable. Stable calcification of the thoracic aorta. Pulmonary vasculature is within normal limits. There is no focal air space opacity. No pleural effusion or pneumothorax is seen. No acute bony abnormality is demonstrated.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2971",
+    "study_key": "2971_IM-1362",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2971_IM-1362-2001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette and pulmonary vasculature are within normal limits in size. The lungs are clear of focal airspace disease, pneumothorax, or pleural effusion. There are no acute bony findings.\nImpression: No acute cardiopulmonary findings. .",
+    "reference_impression": "No acute cardiopulmonary findings. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2972",
+    "study_key": "2972_IM-1363",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2972_IM-1363-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. The lungs are hypoinflated. Costophrenic XXXX are blunted, XXXX corresponding to small bilateral pleural effusions. There is no focal consolidation or pneumothorax.\nImpression: Low lung volumes with blunted costophrenic XXXX, XXXX XXXX bilateral pleural effusions.",
+    "reference_impression": "Low lung volumes with blunted costophrenic XXXX, XXXX XXXX bilateral pleural effusions.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2974",
+    "study_key": "2974_IM-1364",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2974_IM-1364-1001.dcm.png",
+    "reference_report": "Findings: Postsurgical changes are noted in the mediastinum. There is tortuosity and/or ectasia of the thoracic and upper abdominal aorta. No consolidative airspace opacities. Blunting of the lateral and posterior left costophrenic sulcus may represent residual postsurgical effusion or pleural-parenchymal scarring. No demonstrable pneumothorax. Cardiomediastinal silhouette within normal limits. Multilevel anterior osteophytes of the thoracic spine.\nImpression: 1. Small left basilar parenchymal scarring and/or effusion. 2. Postsurgical changes of the mediastinum. 3. Otherwise unremarkable chest radiograph.",
+    "reference_impression": "1. Small left basilar parenchymal scarring and/or effusion. 2. Postsurgical changes of the mediastinum. 3. Otherwise unremarkable chest radiograph.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2975",
+    "study_key": "2975_IM-1364",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2975_IM-1364-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Moderate enlargement of the heart XXXX. This shows significant interval increase in size from the remote XXXX comparison. XXXX cardiomegaly or pericardial fluid could have this appearance. Minimal patchy infiltrate/atelectasis in medial right base and lingular scarring or subsegmental atelectasis. No pleural effusion or pneumothorax.",
+    "reference_impression": "Moderate enlargement of the heart XXXX. This shows significant interval increase in size from the remote XXXX comparison. XXXX cardiomegaly or pericardial fluid could have this appearance. Minimal patchy infiltrate/atelectasis in medial right base and lingular scarring or subsegmental atelectasis. No pleural effusion or pneumothorax.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "2976",
+    "study_key": "2976_IM-1365",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2976_IM-1365-2002.dcm.png",
+    "reference_report": "Findings: Heart size and vascularity normal. Lungs are hyperexpanded but clear. Mediastinal contour normal. No pleural effusions or pneumothoraces.\nImpression: Hyperexpanded lungs, suggesting chronic obstructive pulmonary disease. No acute pulmonary process.",
+    "reference_impression": "Hyperexpanded lungs, suggesting chronic obstructive pulmonary disease. No acute pulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2977",
+    "study_key": "2977_IM-1366",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2977_IM-1366-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size normal. Slightly tortuous aorta, unchanged. Lungs are clear. No nodules or masses. No pneumonia.",
+    "reference_impression": "Heart size normal. Slightly tortuous aorta, unchanged. Lungs are clear. No nodules or masses. No pneumonia.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2978",
+    "study_key": "2978_IM-1367",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2978_IM-1367-4001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette and pulmonary vasculature are within normal limits in size and contour. There is a XXXX-A-XXXX terminating at the caval atrial junction, without evidence of pneumothorax. There is no focal airspace disease. There are small calcified nodules in the superior segment of the right lower lobe, XXXX old granulomatous infection. There are no acute bony findings.\nImpression: No acute findings. .",
+    "reference_impression": "No acute findings. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "2979",
+    "study_key": "2979_IM-1368",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2979_IM-1368-1001-0001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no pleural effusion or pneumothorax. The heart is not significantly enlarged. There are calcified mediastinal lymph XXXX. There are atherosclerotic changes of the aorta. Arthritic changes of the skeletal structures are noted.\nImpression: No acute pulmonary disease.",
+    "reference_impression": "No acute pulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "297",
+    "study_key": "297_IM-1361",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/297_IM-1361-4004.dcm.png",
+    "reference_report": "Findings: Cardiac silhouette is within normal limits in size. The lungs are hypoinflated with mild bronchovascular crowding. There is mild, XXXX opacity projected over the left lung base. This is partly due to overlying soft tissues, however, there is partial obscuration of the lateral left hemidiaphragm. The lungs are otherwise grossly clear. There is no pneumothorax or pleural effusion. There are no acute bony findings. There are degenerative endplate changes throughout the thoracic spine.\nImpression: Low lung volumes with mild, XXXX left basilar opacity, atelectasis versus infiltrate. .",
+    "reference_impression": "Low lung volumes with mild, XXXX left basilar opacity, atelectasis versus infiltrate. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "2980",
+    "study_key": "2980_IM-1370",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2980_IM-1370-1002001.dcm.png",
+    "reference_report": "Findings: Negative for cardiac enlargement. Negative for vascular congestion. Negative for focal confluent airspace disease. Negative for pneumothorax. A few scattered calcified granulomas are identified.\nImpression: No acute cardiothoracic abnormality.",
+    "reference_impression": "No acute cardiothoracic abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2981",
+    "study_key": "2981_IM-1371",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2981_IM-1371-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size and mediastinal contours. No focal airspace consolidation. No pneumothorax or pleural effusion. Mild dextro curvature of the lower thoracic spine, this may be positional. Visualized bony structures are otherwise unremarkable.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2982",
+    "study_key": "2982_IM-1371",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2982_IM-1371-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. XXXX scarring is noted in the lingula. The lungs are clear.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2983",
+    "study_key": "2983_IM-1371",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2983_IM-1371-2001.dcm.png",
+    "reference_report": "Findings: Cardiomediastinal silhouette is within normal limits. No focal consolidation. There is right lower lobe scarring. No pneumothorax or large pleural effusion. Granulomas present. No acute bony abnormalities.\nImpression: 1. No acute cardiopulmonary abnormalities. 2. No acute bony abnormalities. .",
+    "reference_impression": "1. No acute cardiopulmonary abnormalities. 2. No acute bony abnormalities. .",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2984",
+    "study_key": "2984_IM-1372",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2984_IM-1372-1001.dcm.png",
+    "reference_report": "Findings: Frontal and lateral views of the chest show an unchanged cardiomediastinal silhouette. There is a AP XXXX duct is calcified lymph node. The aorta is unfolded. Cardiac silhouette remains moderately enlarged. Low lung volumes due to exaggerated kyphosis. No focal airspace consolidation or pleural effusion. XXXX spine spondylosis.\nImpression: Cardiomegaly. No acute pulmonary disease process.",
+    "reference_impression": "Cardiomegaly. No acute pulmonary disease process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "2985",
+    "study_key": "2985_IM-1373",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2985_IM-1373-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion.. Cardio mediastinal silhouette is unremarkable. Visualized osseous structures of the thorax demonstrate stable, mild multilevel thoracolumbar degenerative disc disease without acute abnormality. Upper abdominal midline surgical sutures are likewise stable.\nImpression: No acute cardiopulmonary abnormality..",
+    "reference_impression": "No acute cardiopulmonary abnormality..",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2986",
+    "study_key": "2986_IM-1374",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2986_IM-1374-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size and contour. There is no mediastinal widening. The lungs are clear bilaterally. No large pleural effusion or pneumothorax. Mild dextro curvature of the thoracic spine, possibly positional.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2988",
+    "study_key": "2988_IM-1375",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2988_IM-1375-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is normal size and configuration. Pulmonary vasculature within normal limits. The lungs are well-aerated. There is no pneumothorax, pleural effusion, or focal consolidation.\nImpression: No acute cardiopulmonary disease. .",
+    "reference_impression": "No acute cardiopulmonary disease. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2989",
+    "study_key": "2989_IM-1376",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2989_IM-1376-1001.dcm.png",
+    "reference_report": "Findings: Mediastinal contours are within normal limits. Heart size is within normal limits. No focal consolidation, pneumothorax or pleural effusion. Cervical fusion XXXX. Degenerative changes of the spine and the acromioclavicular joints.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "298",
+    "study_key": "298_IM-1369",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/298_IM-1369-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no pleural effusion or pneumothorax. The heart and mediastinum are normal. The skeletal structures are normal.\nImpression: No acute pulmonary disease.",
+    "reference_impression": "No acute pulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2991",
+    "study_key": "2991_IM-1378",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2991_IM-1378-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size is normal and the lungs are clear. No nodules or masses. No effusions. No pneumonia",
+    "reference_impression": "Heart size is normal and the lungs are clear. No nodules or masses. No effusions. No pneumonia",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2992",
+    "study_key": "2992_IM-1379",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2992_IM-1379-2002.dcm.png",
+    "reference_report": "Findings: The lungs are clear. Heart size is normal. No pneumothorax. Calcified granuloma within the right lung base.\nImpression: Clear lungs. No acute cardiopulmonary abnormality. .",
+    "reference_impression": "Clear lungs. No acute cardiopulmonary abnormality. .",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2993",
+    "study_key": "2993_IM-1380",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2993_IM-1380-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear without focal consolidation, effusion, or pneumothorax. Normal heart size. Bony thorax and soft tissues grossly unremarkable.\nImpression: Negative for acute cardiopulmonary abnormality.",
+    "reference_impression": "Negative for acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "2994",
+    "study_key": "2994_IM-1380",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2994_IM-1380-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no pleural effusion or pneumothorax. The heart and mediastinum are normal. The skeletal structures are normal.\nImpression: No acute pulmonary disease.",
+    "reference_impression": "No acute pulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "2995",
+    "study_key": "2995_IM-1381",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2995_IM-1381-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: No comparison chest x-XXXX. Well-expanded and clear lungs. Mediastinal contour within normal limits. No acute cardiopulmonary abnormality identified.",
+    "reference_impression": "No comparison chest x-XXXX. Well-expanded and clear lungs. Mediastinal contour within normal limits. No acute cardiopulmonary abnormality identified.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2996",
+    "study_key": "2996_IM-1381",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2996_IM-1381-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size is normal and the lungs are clear. No effusions.",
+    "reference_impression": "Heart size is normal and the lungs are clear. No effusions.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2997",
+    "study_key": "2997_IM-1381",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2997_IM-1381-2001.dcm.png",
+    "reference_report": "Findings: Lungs are clear without focal consolidation, effusion, or pneumothorax. Normal heart size. Bony thorax and soft tissues unremarkable.\nImpression: Negative for acute cardiopulmonary abnormality.",
+    "reference_impression": "Negative for acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "2998",
+    "study_key": "2998_IM-1382",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2998_IM-1382-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion.. Cardio mediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality. No displaced rib fractures identified.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "2999",
+    "study_key": "2999_IM-1383",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2999_IM-1383-0001-0001.dcm.png",
+    "reference_report": "Findings: The cardiac silhouette is at the upper limits of normal for size. Patchy opacities are demonstrated in the left lung base. No focal pulmonary consolidation. No pneumothorax. Minimal degenerative changes of the thoracic spine.\nImpression: 1. Patchy left basilar subsegmental atelectasis, infiltrates and/or small left pleural effusion. .",
+    "reference_impression": "1. Patchy left basilar subsegmental atelectasis, infiltrates and/or small left pleural effusion. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "299",
+    "study_key": "299_IM-1377",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/299_IM-1377-1001.dcm.png",
+    "reference_report": "Findings: Cardiac and mediastinal contours are within normal limits. The lungs are clear. Bony structures are intact. Small hiatal hernia.\nImpression: No acute findings. Small hiatal hernia.",
+    "reference_impression": "No acute findings. Small hiatal hernia.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "29",
+    "study_key": "29_IM-1302",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/29_IM-1302-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Borderline heart size. Elevated left diaphragm. Clear right lung. Tracheostomy tube tip above the carina. Extensive airspace disease in the left base. No large effusion or pneumothorax.",
+    "reference_impression": "Borderline heart size. Elevated left diaphragm. Clear right lung. Tracheostomy tube tip above the carina. Extensive airspace disease in the left base. No large effusion or pneumothorax.",
+    "generated_report": "Findings: The chest X-ray shows a large right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a large right-sided pleural effusion."
+  },
+  {
+    "uid": "2",
+    "study_key": "2_IM-0652",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/2_IM-0652-1001.dcm.png",
+    "reference_report": "Findings: Borderline cardiomegaly. Midline sternotomy XXXX. Enlarged pulmonary arteries. Clear lungs. Inferior XXXX XXXX XXXX.\nImpression: No acute pulmonary findings.",
+    "reference_impression": "No acute pulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3000",
+    "study_key": "3000_IM-1386",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3000_IM-1386-0001-0001.dcm.png",
+    "reference_report": "Findings: There are multiple bilateral pulmonary nodules. For example, there is a 12 mm left lower lobe nodule, XXXX seen on the frontal view. There is no pleural effusion or pneumothorax. Heart size is within normal limits. The left hilar contour is prominent. There are diffuse degenerative changes of the spine.\nImpression: 1. Multiple bilateral pulmonary nodules, concerning for metastatic disease. 2. Prominent left hilum. After correlation with the XXXX scan performed today, findings XXXX reflect enlargement of the left pulmonary artery.",
+    "reference_impression": "1. Multiple bilateral pulmonary nodules, concerning for metastatic disease. 2. Prominent left hilum. After correlation with the XXXX scan performed today, findings XXXX reflect enlargement of the left pulmonary artery.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3001",
+    "study_key": "3001_IM-1387",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3001_IM-1387-3001.dcm.png",
+    "reference_report": "Findings: Frontal and lateral views of the chest show an unchanged cardiomediastinal silhouette. Normal mediastinal contour, pulmonary XXXX and vasculature, central airways and aeration of the lungs. The inferior posterior sulcus is excluded.\nImpression: No acute or active cardiac or pulmonary disease process. Cannot exclude small pleural effusions.",
+    "reference_impression": "No acute or active cardiac or pulmonary disease process. Cannot exclude small pleural effusions.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3002",
+    "study_key": "3002_IM-1388",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3002_IM-1388-1001.dcm.png",
+    "reference_report": "Findings: Cardiomediastinal silhouettes are within normal limits. Lungs are clear without focal consolidation, pneumothorax, or pleural effusion. Bony thorax is unremarkable.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3003",
+    "study_key": "3003_IM-1388",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3003_IM-1388-1001.dcm.png",
+    "reference_report": "Findings: No focal consolidation, pneumothorax, or pleural effusions. Stable calcified granulomas. Cardiomediastinal silhouette demonstrates mild tortuosity of the thoracic aorta and atherosclerotic calcifications of the aortic XXXX. No acute osseous abnormality identified.\nImpression: No acute cardiopulmonary abnormality..",
+    "reference_impression": "No acute cardiopulmonary abnormality..",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3004",
+    "study_key": "3004_IM-1388",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3004_IM-1388-1001.dcm.png",
+    "reference_report": "Findings: Frontal and lateral views of the chest show normal size and configuration of the cardiac silhouette. Normal mediastinal contour, pulmonary XXXX and vasculature, central airways and lung volumes. And scattered calcified granulomas. Left greater than right basilar opacity, probable atelectasis and/or scarring. No pleural effusion.\nImpression: Basilar atelectasis. Otherwise, no acute cardiac or pulmonary disease process.",
+    "reference_impression": "Basilar atelectasis. Otherwise, no acute cardiac or pulmonary disease process.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3005",
+    "study_key": "3005_IM-1388",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3005_IM-1388-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is stable. Aorta is tortuous. Calcified lymph XXXX are again identified. There is mild prominence of the right paratracheal soft tissues, stable in appearance from prior studies. There is no acute infiltrate or pleural effusion. Osteopenia and degenerative changes are identified. XXXX deformity of T9 appears worse than prior study.\nImpression: 1. Emphysema without acute infiltrate. 2. Progressive XXXX deformity of midthoracic vertebral body, XXXX T9.",
+    "reference_impression": "1. Emphysema without acute infiltrate. 2. Progressive XXXX deformity of midthoracic vertebral body, XXXX T9.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3006",
+    "study_key": "3006_IM-1388",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3006_IM-1388-1001.dcm.png",
+    "reference_report": "Findings: Cardiomegaly is present. The pulmonary vascularity appears within normal limits. Thoracic aorta is tortuous. Patient is status post XXXX sternotomy. Surgical clips are present in the left axilla. Lungs are free of focal airspace disease. No pneumothorax or pleural effusion is seen. There is eventration of the right hemidiaphragm. Degenerative changes are present in the spine.\nImpression: No evidence of active disease.",
+    "reference_impression": "No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3008",
+    "study_key": "3008_IM-1389",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3008_IM-1389-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size is normal and lungs are clear. No effusions, pneumonia, or pneumothorax.",
+    "reference_impression": "Heart size is normal and lungs are clear. No effusions, pneumonia, or pneumothorax.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3009",
+    "study_key": "3009_IM-1389",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3009_IM-1389-1001.dcm.png",
+    "reference_report": "Findings: No focal areas of consolidation. No pleural effusions. No pneumothorax. Degenerative changes thoracic spine. Heart size normal limits. Cholecystectomy clips.\nImpression: No acute cardiopulmonary abnormality. .",
+    "reference_impression": "No acute cardiopulmonary abnormality. .",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "300",
+    "study_key": "300_IM-1385",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/300_IM-1385-1001.dcm.png",
+    "reference_report": "Findings: Heart size within normal limits. Mild hyperinflation of the lungs. Mild pectus excavatum deformity. Stable left mid lung calcified granuloma. No focal airspace disease. No pneumothorax or effusions.\nImpression: Changes of chronic lung disease with no acute cardiopulmonary finding.",
+    "reference_impression": "Changes of chronic lung disease with no acute cardiopulmonary finding.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3010",
+    "study_key": "3010_IM-1389",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3010_IM-1389-1001.dcm.png",
+    "reference_report": "Findings: Heart and mediastinum are at the upper limits of normal size. There is no focal consolidation, pneumothorax, or large pleural effusion. There is no acute, displaced rib fracture. Bony structures are unremarkable.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3011",
+    "study_key": "3011_IM-1390",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3011_IM-1390-1001.dcm.png",
+    "reference_report": "Findings: Aortic atherosclerotic calcifications. Large hiatal hernia. No pleural effusion or pneumothorax. No focal opacity. Cardiomediastinal silhouette is stable in size and appearance.\nImpression: 1. No acute pulmonary process. 2. Large hiatal hernia. .",
+    "reference_impression": "1. No acute pulmonary process. 2. Large hiatal hernia. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3012",
+    "study_key": "3012_IM-1390",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3012_IM-1390-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is normal in size and contour. The lungs are clear without focal airspace opacity, pleural effusion, or pneumothorax. The osseous structures are intact.\nImpression: No acute cardiopulmonary process.",
+    "reference_impression": "No acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3013",
+    "study_key": "3013_IM-1391",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3013_IM-1391-0001-0001.dcm.png",
+    "reference_report": "Findings: The cardiac silhouette is mildly enlarged and appears mildly increased in size from the XXXX study. There is normal caliber pulmonary vasculature. The lungs are grossly clear of focal airspace disease, pneumothorax, or pleural effusion. There is no evidence of pulmonary edema.\nImpression: Probable mild cardiomegaly, without evidence of acute failure. No focal airspace disease. .",
+    "reference_impression": "Probable mild cardiomegaly, without evidence of acute failure. No focal airspace disease. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral pulmonary infiltrates, which are abnormal substances or cells that have accumulated in the lung tissue.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pulmonary infiltrates, which are abnormal substances or cells that have accumulated in the lung tissue."
+  },
+  {
+    "uid": "3014",
+    "study_key": "3014_IM-1392",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3014_IM-1392-1001.dcm.png",
+    "reference_report": "Findings: There is distortion of the right hilum which may be postsurgical versus neoplastic. Volume loss of the right hand side. There is no evidence of focal infiltrate. No pneumothorax. No pleural effusion. Normal heart size.\nImpression: Question prior right upper lobe resection, no acute abnormality.",
+    "reference_impression": "Question prior right upper lobe resection, no acute abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3015",
+    "study_key": "3015_IM-1392",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3015_IM-1392-1001.dcm.png",
+    "reference_report": "Findings: The heart size and mediastinal contours appear within normal limits. No focal airspace consolidation, pleural effusion or pneumothorax. No acute bony abnormalities.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3016",
+    "study_key": "3016_IM-1392",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3016_IM-1392-1001.dcm.png",
+    "reference_report": "Findings: Cardiac and mediastinal contours are within normal limits. Prior granulomatous disease. The lungs are clear. Thoracic spondylosis.\nImpression: No acute findings.",
+    "reference_impression": "No acute findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3017",
+    "study_key": "3017_IM-1393",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3017_IM-1393-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. There are XXXX opacities in both lung bases compatible with scarring or atelectasis. Calcified granuloma in the left upper lung is noted as well as right retrocardiac calcified nodule. No significant pleural effusion is seen.\nImpression: Mild XXXX XXXX opacities with scarring; no acute disease.",
+    "reference_impression": "Mild XXXX XXXX opacities with scarring; no acute disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3018",
+    "study_key": "3018_IM-1393",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3018_IM-1393-1001.dcm.png",
+    "reference_report": "Findings: Heart size within normal limits. No focal airspace disease. Stable 4 mm lateral left midlung calcified granuloma. No pneumothorax or pleural effusion.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3019",
+    "study_key": "3019_IM-1393",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3019_IM-1393-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is stable with aortic tortuosity. Lungs are clear with no pleural effusion or pneumothorax. No displaced rib fractures are noted. There are multilevel degenerative changes of the thoracic spine.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "301",
+    "study_key": "301_IM-1389",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/301_IM-1389-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiomediastinal contours. Clear lungs bilaterally. No pneumothorax or large effusion.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3020",
+    "study_key": "3020_IM-1395",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3020_IM-1395-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contours are normal in appearance. No consolidative airspace opacities. No radiographic evidence of pleural effusion or pneumothorax. Visualized osseous structures appear intact.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3021",
+    "study_key": "3021_IM-1396",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3021_IM-1396-4004.dcm.png",
+    "reference_report": "Findings: nan\nImpression: The heart size and cardiomediastinal silhouette are within normal limits. Pulmonary vasculature appears normal. There is no focal air space consolidation. No pleural effusion or pneumothorax.",
+    "reference_impression": "The heart size and cardiomediastinal silhouette are within normal limits. Pulmonary vasculature appears normal. There is no focal air space consolidation. No pleural effusion or pneumothorax.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3022",
+    "study_key": "3022_IM-1397",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3022_IM-1397-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Multiple cavitary bilateral pulmonary masses and nodules. These are XXXX and increased from prior radiograph of XXXX , but were seen XXXX chest XXXX, with largest in the left base measuring approximately 3.3 x 6.1 cm. No pleural effusion, no pneumothorax. Heart size is normal.",
+    "reference_impression": "Multiple cavitary bilateral pulmonary masses and nodules. These are XXXX and increased from prior radiograph of XXXX , but were seen XXXX chest XXXX, with largest in the left base measuring approximately 3.3 x 6.1 cm. No pleural effusion, no pneumothorax. Heart size is normal.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3023",
+    "study_key": "3023_IM-1398",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3023_IM-1398-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. Small calcified left upper lung granuloma is noted. The lungs are clear.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3024",
+    "study_key": "3024_IM-1399",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3024_IM-1399-1001.dcm.png",
+    "reference_report": "Findings: Cardiomediastinal silhouette is within normal limits in overall size and appearance. Central vascular markings are symmetric and within normal limits. The lungs are normally inflated with no focal airspace disease, pleural effusion, or pneumothorax. No acute bone abnormality.\nImpression: 1. No acute cardiopulmonary process.",
+    "reference_impression": "1. No acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3025",
+    "study_key": "3025_IM-1400",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3025_IM-1400-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion.. Cardio mediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality. No acute displaced rib fractures.\nImpression: No acute cardiopulmonary abnormality..",
+    "reference_impression": "No acute cardiopulmonary abnormality..",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3026",
+    "study_key": "3026_IM-1401",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3026_IM-1401-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: No active disease.",
+    "reference_impression": "No active disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3027",
+    "study_key": "3027_IM-1402",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3027_IM-1402-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size mediastinal contours. No focal airspace consolidation. No pneumothorax or pleural effusion. Stable, mild dextro curvature of the spine.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3028",
+    "study_key": "3028_IM-1403",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3028_IM-1403-1001.dcm.png",
+    "reference_report": "Findings: The XXXX examination consists of frontal and lateral radiographs of the chest. Atherosclerotic calcifications of the aortic XXXX are again seen. The cardiomediastinal contours are within normal limits. Pulmonary vascularity is within normal limits. No focal consolidation, pleural effusion, or pneumothorax identified. The visualized osseous structures and upper abdomen are unremarkable.\nImpression: No evidence of acute cardiopulmonary process.",
+    "reference_impression": "No evidence of acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3029",
+    "study_key": "3029_IM-1404",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3029_IM-1404-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiac contour. Clear lung XXXX bilaterally. No pleural effusion or pneumothorax. Degenerative seen throughout cervical spine.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "302",
+    "study_key": "302_IM-1394",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/302_IM-1394-1001.dcm.png",
+    "reference_report": "Findings: Heart size within normal limits, stable mediastinal and hilar contours. No focal alveolar consolidation, no definite pleural effusion seen. No typical findings of pulmonary edema. Mild spine curvature again noted.\nImpression: No acute findings",
+    "reference_impression": "No acute findings",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3030",
+    "study_key": "3030_IM-1405",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3030_IM-1405-3001.dcm.png",
+    "reference_report": "Findings: Normal cardiomediastinal silhouette. There is no focal consolidation. There are no XXXX of a large pleural effusion. There is no pneumothorax. There is no acute bony abnormality seen.\nImpression: There is no radiographic evidence of acute cardiopulmonary disease.",
+    "reference_impression": "There is no radiographic evidence of acute cardiopulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3031",
+    "study_key": "3031_IM-1406",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3031_IM-1406-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. The cardiomediastinal silhouette is within normal limits. No pneumothorax or pleural effusion.\nImpression: Negative chest.",
+    "reference_impression": "Negative chest.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3032",
+    "study_key": "3032_IM-1407",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3032_IM-1407-1001.dcm.png",
+    "reference_report": "Findings: The heart and lungs have XXXX XXXX in the interval. Both lungs are clear and expanded. Heart and mediastinum normal. Sternotomy sutures and coronary bypass clips remain intact.\nImpression: No active disease.",
+    "reference_impression": "No active disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3033",
+    "study_key": "3033_IM-1408",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3033_IM-1408-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion.. Cardio mediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality.\nImpression: No acute cardiopulmonary abnormality..",
+    "reference_impression": "No acute cardiopulmonary abnormality..",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3034",
+    "study_key": "3034_IM-1408",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3034_IM-1408-1001.dcm.png",
+    "reference_report": "Findings: Cardiac and mediastinal contours are within normal limits. The lungs are clear. Multilevel cervical XXXX arthritis.\nImpression: No acute findings.",
+    "reference_impression": "No acute findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3036",
+    "study_key": "3036_IM-1409",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3036_IM-1409-1001.dcm.png",
+    "reference_report": "Findings: Evaluation is limited by body habitus and AP technique. Enteric suction catheter courses below diaphragm and XXXX film. Stable heart size and mediastinal contours. Low lung volumes. No pneumothorax. Cardiac XXXX generator leads XXXX over the right atrium and right ventricle. Two XXXX bilateral pleural effusions.\nImpression: 1. Technically limited exam. 2. Low lung volumes with XXXX bilateral pleural effusions. .",
+    "reference_impression": "1. Technically limited exam. 2. Low lung volumes with XXXX bilateral pleural effusions. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lung tissue. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lung tissue. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3037",
+    "study_key": "3037_IM-1410",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3037_IM-1410-1001.dcm.png",
+    "reference_report": "Findings: Heart size normal. Lungs are clear. XXXX are normal. No pneumonia, effusions, edema, pneumothorax, adenopathy, nodules or masses.\nImpression: Normal chest",
+    "reference_impression": "Normal chest",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3038",
+    "study_key": "3038_IM-1411",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3038_IM-1411-1001.dcm.png",
+    "reference_report": "Findings: The heart and mediastinum are unremarkable. There is a calcified granuloma within the left upper lobe. The lungs are clear without infiltrate. There is no effusion or pneumothorax. There are acute mild anterior XXXX deformities identified at L1-L2. There is retropulsion of the posterior vertebral body of L1. A CT of the lumbar spine was already ordered at the time of this dictation.\nImpression: 1. No acute cardiopulmonary disease. 2. Acute anterior XXXX deformities at L1-L2. Please see CT of the lumbar spine for further details.",
+    "reference_impression": "1. No acute cardiopulmonary disease. 2. Acute anterior XXXX deformities at L1-L2. Please see CT of the lumbar spine for further details.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3039",
+    "study_key": "3039_IM-1412",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3039_IM-1412-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size. Clear lungs. No pneumothorax or large pleural effusion.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "303",
+    "study_key": "303_IM-1404",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/303_IM-1404-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is Stable. Rectal balloon is noted. Lungs are mildly hypoinflated. There is again eventration of the hemidiaphragms/ Bochdalek hernia, posteriorly as seen on the lateral projection. Bilateral pleural thickening is noted. There are streaky opacities in the lung bases unchanged, XXXX chronic atelectasis.\nImpression: Mild bilateral streaky opacities, XXXX atelectasis. No acute infiltrate.",
+    "reference_impression": "Mild bilateral streaky opacities, XXXX atelectasis. No acute infiltrate.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3040",
+    "study_key": "3040_IM-1414",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3040_IM-1414-12012.dcm.png",
+    "reference_report": "Findings: No focal lung consolidation. Heart size and pulmonary vascularity are within normal limits. No pneumothorax or pleural effusion. Minimal degenerative changes of the thoracic spine. There is anterior fusion XXXX at the cervicothoracic junction.\nImpression: No acute cardiopulmonary process.",
+    "reference_impression": "No acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3041",
+    "study_key": "3041_IM-1415",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3041_IM-1415-1001.dcm.png",
+    "reference_report": "Findings: Heart size normal. Lungs are clear. XXXX are normal. No pneumonia, effusions, edema, pneumothorax, adenopathy, nodules or masses.\nImpression: Normal chest",
+    "reference_impression": "Normal chest",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3042",
+    "study_key": "3042_IM-1416",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3042_IM-1416-5001.dcm.png",
+    "reference_report": "Findings: Stable appearance bipolar dual-XXXX cardiac pacemaker overlying the left hemithorax. No interval change in XXXX position. Cardiomediastinal silhouette appears within normal limits. Lungs are well-aerated. No areas of parenchymal consolidation or pleural effusion.\nImpression: No acute cardiopulmonary disease. Stable appearance of pacemaker.",
+    "reference_impression": "No acute cardiopulmonary disease. Stable appearance of pacemaker.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3043",
+    "study_key": "3043_IM-1417",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3043_IM-1417-2001.dcm.png",
+    "reference_report": "Findings: The heart and mediastinum are normal. The lungs are clear. There is mild blunting of the right costophrenic XXXX. There is no infiltrate, mass or pneumothorax. The right internal jugular catheter has been removed.\nImpression: Mild blunted right costophrenic XXXX which could be due to XXXX effusion or scarring.",
+    "reference_impression": "Mild blunted right costophrenic XXXX which could be due to XXXX effusion or scarring.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3044",
+    "study_key": "3044_IM-1418",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3044_IM-1418-2001.dcm.png",
+    "reference_report": "Findings: The XXXX examination consists of frontal and lateral radiographs of the chest. External monitor leads XXXX the thorax. The cardiomediastinal contours are within normal limits. Pulmonary vascularity is within normal limits. No focal consolidation, pleural effusion, or pneumothorax identified. The visualized osseous structures and upper abdomen are unremarkable.\nImpression: No evidence of acute cardiopulmonary process.",
+    "reference_impression": "No evidence of acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3045",
+    "study_key": "3045_IM-1418",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3045_IM-1418-1001.dcm.png",
+    "reference_report": "Findings: Heart size and vascularity normal. Mediastinal contour normal. Lungs are clear. No pleural effusions or pneumothoraces.\nImpression: Normal chest.",
+    "reference_impression": "Normal chest.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3046",
+    "study_key": "3046_IM-1418",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3046_IM-1418-1001.dcm.png",
+    "reference_report": "Findings: Redemonstration of azygos lobe. Redemonstrated left perihilar nodular opacity, similar in size from previous examination. Dense appearing, may be granulomatous. The trachea is midline. Negative for pneumothorax, pleural effusion or focal airspace consolidation. The heart size is normal. XXXX. Limited exam, for evaluation of fractures. However, no evidence for displaced rib fracture.\nImpression: 1. Left perihilar nodular opacity redemonstrated, appears dense, may be granulomatous, if desired one may consider CT for further characterization. 2. No acute cardiopulmonary abnormality. Redemonstrated azygos lobe. 3. No fracture visible. If clinical concern persists, consider dedicated rib series.",
+    "reference_impression": "1. Left perihilar nodular opacity redemonstrated, appears dense, may be granulomatous, if desired one may consider CT for further characterization. 2. No acute cardiopulmonary abnormality. Redemonstrated azygos lobe. 3. No fracture visible. If clinical concern persists, consider dedicated rib series.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3047",
+    "study_key": "3047_IM-1418",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3047_IM-1418-1001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen.\nImpression: No evidence of active disease.",
+    "reference_impression": "No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3048",
+    "study_key": "3048_IM-1419",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3048_IM-1419-3001.dcm.png",
+    "reference_report": "Findings: Normal cardiac contours. Clear lung XXXX bilaterally. No pneumothorax or pleural effusions.\nImpression: 1. No acute cardiopulmonary abnormalities.",
+    "reference_impression": "1. No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3049",
+    "study_key": "3049_IM-1420",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3049_IM-1420-1001.dcm.png",
+    "reference_report": "Findings: Heart size normal. Lungs are clear. XXXX are normal. No pneumonia, effusions, edema, pneumothorax, adenopathy, nodules or masses.\nImpression: Normal chest.",
+    "reference_impression": "Normal chest.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "304",
+    "study_key": "304_IM-1413",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/304_IM-1413-12012.dcm.png",
+    "reference_report": "Findings: The XXXX examination consists of frontal and lateral radiographs of the chest. A total of 3 images were obtained. The cardiomediastinal contours are within normal limits allowing for low lung volumes and patient rotation. There is XXXX XXXX atelectasis. No consolidation, pleural effusion or pneumothorax. Calcified right infrahilar lymph XXXX again seen. Partially visualized lower cervical spine fusion XXXX.\nImpression: Lung lines without evidence of acute cardiopulmonary process.",
+    "reference_impression": "Lung lines without evidence of acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3050",
+    "study_key": "3050_IM-1420",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3050_IM-1420-1001.dcm.png",
+    "reference_report": "Findings: Both lungs are clear and expanded. Heart and mediastinum normal.\nImpression: No active disease.",
+    "reference_impression": "No active disease.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3051",
+    "study_key": "3051_IM-1420",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3051_IM-1420-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear. There is no pneumothorax or pleural effusion. The heart and mediastinum are within normal limits. Bony structures are intact.\nImpression: No acute cardiopulmonary process.",
+    "reference_impression": "No acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs."
+  },
+  {
+    "uid": "3052",
+    "study_key": "3052_IM-1420",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3052_IM-1420-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size. Density surrounding superior mediastinum reflex combination of vascular, osseous common pleural structures. No focal airspace consolidation. Moderate degenerative disc disease with osteophyte formation bridging.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3053",
+    "study_key": "3053_IM-1421",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3053_IM-1421-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: No comparison chest x-XXXX. Well-expanded and clear lungs. Mediastinal contour within normal limits. No acute cardiopulmonary abnormality identified.",
+    "reference_impression": "No comparison chest x-XXXX. Well-expanded and clear lungs. Mediastinal contour within normal limits. No acute cardiopulmonary abnormality identified.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3054",
+    "study_key": "3054_IM-1422",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3054_IM-1422-2002.dcm.png",
+    "reference_report": "Findings: The patient is status post CABG. The heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen. Degenerative changes are present in the spine. Ureteral stents are noted on the right.\nImpression: 1. No evidence of active disease.",
+    "reference_impression": "1. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs."
+  },
+  {
+    "uid": "3056",
+    "study_key": "3056_IM-1423",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3056_IM-1423-2001.dcm.png",
+    "reference_report": "Findings: There is a XXXX moderate layering right pleural effusion with air fluid level noted. XXXX airspace opacity at the superior segment of the right lower lobe. No visualized pneumothorax. The right lateral heart XXXX is obscured. The left lung is clear without focal consolidation. No visualized pneumothorax. No acute bone abnormality.\nImpression: XXXX airspace disease within the superior segment of the right lower lobe with moderate layering right pleural effusion with air fluid level. Follow up to resolution or cross sectional imaging of the chest recommended to rule out malignancy.",
+    "reference_impression": "XXXX airspace disease within the superior segment of the right lower lobe with moderate layering right pleural effusion with air fluid level. Follow up to resolution or cross sectional imaging of the chest recommended to rule out malignancy.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3057",
+    "study_key": "3057_IM-1424",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3057_IM-1424-1001-0001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is normal size and configuration. Atherosclerotic calcification of the thoracic aorta. Pulmonary vasculature within normal limits. The lungs are well-aerated. There is no pneumothorax, pleural effusion, or focal consolidation.\nImpression: No acute cardiopulmonary disease. .",
+    "reference_impression": "No acute cardiopulmonary disease. .",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3058",
+    "study_key": "3058_IM-1425",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3058_IM-1425-12012.dcm.png",
+    "reference_report": "Findings: Left midlung opacity noted, not visualized on prior. Heart size within normal limits. No pleural effusions. No evidence of pneumothorax. Osseous structures intact.\nImpression: Left mid lung opacity noted, most compatible with atelectasis versus infiltrate. Recommend clinical correlation. .",
+    "reference_impression": "Left mid lung opacity noted, most compatible with atelectasis versus infiltrate. Recommend clinical correlation. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3059",
+    "study_key": "3059_IM-1425",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3059_IM-1425-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear bilaterally. There is no focal consolidation, pleural effusion, or pneumothoraces. Cardiomediastinal silhouette is within normal limits. XXXX are unremarkable.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "305",
+    "study_key": "305_IM-1420",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/305_IM-1420-2001.dcm.png",
+    "reference_report": "Findings: Heart size is mildly enlarged. The pulmonary XXXX and mediastinum are within normal limits. There is no pleural effusion or pneumothorax. There is no focal air space opacity to suggest a pneumonia.\nImpression: No acute cardiopulmonary disease.",
+    "reference_impression": "No acute cardiopulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3060",
+    "study_key": "3060_IM-1426",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3060_IM-1426-1003.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. The lungs are grossly clear.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3061",
+    "study_key": "3061_IM-1427",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3061_IM-1427-2001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal units. No pleural effusion or pneumothorax is seen. Bandlike opacities are present in the right base consistent with areas of atelectasis. Remainder of the lungs appear clear.\nImpression: Bandlike opacities in the right base. Appearance suggests atelectasis.",
+    "reference_impression": "Bandlike opacities in the right base. Appearance suggests atelectasis.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3062",
+    "study_key": "3062_IM-1428",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3062_IM-1428-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size and mediastinal contours. No focal airspace consolidation. Minimal blunting of the left costophrenic XXXX. No pneumothorax. Visualized bony structures are unremarkable in appearance.\nImpression: No acute pulmonary abnormalities.",
+    "reference_impression": "No acute pulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3063",
+    "study_key": "3063_IM-1428",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3063_IM-1428-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear bilaterally. Cardiac and mediastinal silhouettes are normal. Pulmonary vasculature is normal. No pneumothorax or pleural effusion. No acute bony abnormality.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3064",
+    "study_key": "3064_IM-1428",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3064_IM-1428-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette and pulmonary vasculature are within normal limits in size. There is patchy airspace disease in the right lower lobe. The lungs are otherwise grossly clear. There is no pneumothorax or pleural effusion.\nImpression: Patchy, right lower lobe airspace disease. This XXXX represents pneumonia. Recommend followup radiographs to ensure resolution.",
+    "reference_impression": "Patchy, right lower lobe airspace disease. This XXXX represents pneumonia. Recommend followup radiographs to ensure resolution.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3065",
+    "study_key": "3065_IM-1429",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3065_IM-1429-1001.dcm.png",
+    "reference_report": "Findings: Lungs are XXXX without focal airspace disease. No pleural effusions or pneumothoraces. heart size is normal status post XXXX sternotomy. Degenerative changes in the thoracic spine. incidental note is XXXX of previous left rotator XXXX repair.\nImpression: XXXX lungs without focal consolidation.",
+    "reference_impression": "XXXX lungs without focal consolidation.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3066",
+    "study_key": "3066_IM-1430",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3066_IM-1430-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. Mild emphysematous changes without focal consolidation. There is no pleural effusion. XXXX lingular scarring or atelectasis noted.\nImpression: Emphysema without acute disease.",
+    "reference_impression": "Emphysema without acute disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3067",
+    "study_key": "3067_IM-1430",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3067_IM-1430-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear bilaterally. Cardiac and mediastinal silhouettes are normal. Pulmonary vasculature is normal. No pneumothorax or pleural effusion. No acute bony abnormality.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3068",
+    "study_key": "3068_IM-1431",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3068_IM-1431-3001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Low lung volumes with bronchovascular crowding. Otherwise, no focal alveolar consolidation, no definite pleural effusion seen. No typical findings of pulmonary edema. Heart size borderline enlarged for technique, tracheostomy tube tip approximately 4.7 cm above the carina.",
+    "reference_impression": "Low lung volumes with bronchovascular crowding. Otherwise, no focal alveolar consolidation, no definite pleural effusion seen. No typical findings of pulmonary edema. Heart size borderline enlarged for technique, tracheostomy tube tip approximately 4.7 cm above the carina.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3069",
+    "study_key": "3069_IM-1432",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3069_IM-1432-1001.dcm.png",
+    "reference_report": "Findings: Right upper lobe airspace disease consistent with pneumonia given patient's history. The lungs are otherwise clear. No pleural effusions or pneumothoraces. Heart and mediastinum of normal size and contour.\nImpression: Right upper lobe pneumonia.",
+    "reference_impression": "Right upper lobe pneumonia.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "306",
+    "study_key": "306_IM-1426",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/306_IM-1426-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. Heart size is normal. No pneumothorax.\nImpression: Clear lungs. No acute cardiopulmonary abnormality. .",
+    "reference_impression": "Clear lungs. No acute cardiopulmonary abnormality. .",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3070",
+    "study_key": "3070_IM-1432",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3070_IM-1432-1001.dcm.png",
+    "reference_report": "Findings: Heart size is within normal limits. No focal airspace consolidations. No pneumothorax or pleural effusion.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3071",
+    "study_key": "3071_IM-1433",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3071_IM-1433-1001.dcm.png",
+    "reference_report": "Findings: Heart size is normal. The lungs are clear. There are no focal air space consolidations. No pleural effusions or pneumothoraces. The hilar and mediastinal contours are normal. Normal pulmonary vascularity.\nImpression: No acute abnormality.",
+    "reference_impression": "No acute abnormality.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3072",
+    "study_key": "3072_IM-1433",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3072_IM-1433-1001.dcm.png",
+    "reference_report": "Findings: Left-sided medication injection XXXX has its tip projecting at the cavoatrial junction. The trachea is midline. Extensive bilateral bronchiectasis, cystic changes, and scarring represents sequela from the patient's cystic fibrosis. No evidence of focal pulmonary infiltrate or pleural effusion. No large pneumothorax has developed in the interim. The overlying bony structures reveal no acute abnormalities. The heart size is normal.\nImpression: 1. Extensive pulmonary bronchiectasis and scarring from cystic fibrosis, not significantly XXXX from prior. 2. Left-sided medication injection XXXX has its tip projecting over the cavoatrial junction. .",
+    "reference_impression": "1. Extensive pulmonary bronchiectasis and scarring from cystic fibrosis, not significantly XXXX from prior. 2. Left-sided medication injection XXXX has its tip projecting over the cavoatrial junction. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral diffuse infiltrates, which are abnormal substances or collections of cells that have entered the lung tissue. These infiltrates can be seen in both lungs and may indicate an underlying condition, such as an infection, inflammation, or other lung disease.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral diffuse infiltrates, which are abnormal substances or collections of cells that have entered the lung tissue. These infiltrates can be seen in both lungs and may indicate an underlying condition, such as an infection, inflammation, or other lung disease."
+  },
+  {
+    "uid": "3073",
+    "study_key": "3073_IM-1434",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3073_IM-1434-1001.dcm.png",
+    "reference_report": "Findings: Heart size and cardiomediastinal contours are normal. Lungs are clear without focal airspace opacity, pleural effusion, or pneumothorax. No displaced rib fracture.\nImpression: Negative for acute cardiopulmonary findings.",
+    "reference_impression": "Negative for acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3074",
+    "study_key": "3074_IM-1435",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3074_IM-1435-1001.dcm.png",
+    "reference_report": "Findings: Sequelae of old granulomatous disease. Vague patchy opacity in the right midlung which may represent early pneumonia. No pleural effusions or pneumothoraces. Heart and mediastinum of normal size and contour. Degenerative changes in the spine.\nImpression: Vague patchy opacity in the right midlung which may represent an early pneumonia given patient's history.",
+    "reference_impression": "Vague patchy opacity in the right midlung which may represent an early pneumonia given patient's history.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3075",
+    "study_key": "3075_IM-1436",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3075_IM-1436-1001.dcm.png",
+    "reference_report": "Findings: The heart is mildly enlarged. Lung volumes are low. There is no focal consolidation, pneumothorax, or large pleural effusion. Bony structures are within normal limits. There is no free air under the diaphragm. There is a mild amount of XXXX seen in the transverse colon.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows a large mass in the right hemithorax.",
+    "generated_impression": "Findings: The chest X-ray shows a large mass in the right hemithorax."
+  },
+  {
+    "uid": "3076",
+    "study_key": "3076_IM-1437",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3076_IM-1437-4004.dcm.png",
+    "reference_report": "Findings: Frontal view kyphotic and rotated, low lung volumes with bronchovascular crowding. Otherwise, no definite airspace consolidation or pleural effusion. Accounting for technical factors heart size XXXX borderline enlarged.\nImpression: Low lung volumes, otherwise, no definite acute findings.",
+    "reference_impression": "Low lung volumes, otherwise, no definite acute findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3077",
+    "study_key": "3077_IM-1438",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3077_IM-1438-1001.dcm.png",
+    "reference_report": "Findings: Heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen. Low left paraspinal/retrocrural adenopathy is present. This appears unchanged.\nImpression: 1. Left paraspinal/retrocrural adenopathy.",
+    "reference_impression": "1. Left paraspinal/retrocrural adenopathy.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3078",
+    "study_key": "3078_IM-1438",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3078_IM-1438-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is normal size and configuration. Pulmonary vasculature within normal limits. There is a right lower lobe pneumonia. No pleural effusion. No pneumothorax.\nImpression: Right lower lobe pneumonia. Consider followup radiograph to document resolution. .",
+    "reference_impression": "Right lower lobe pneumonia. Consider followup radiograph to document resolution. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3079",
+    "study_key": "3079_IM-1438",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3079_IM-1438-1001.dcm.png",
+    "reference_report": "Findings: The XXXX examination consists of frontal and lateral radiographs of the chest. The cardiomediastinal contours are within normal limits. Pulmonary vascularity is within normal limits. No focal consolidation, pleural effusion, or pneumothorax identified. Multilevel degenerative changes are seen throughout the thoracic spine. XXXX anchors XXXX over the left humeral head. There is mild bilateral acromioclavicular joint osteoarthritis. Visualized upper abdomen is grossly unremarkable in appearance.\nImpression: No evidence of acute cardiopulmonary process.",
+    "reference_impression": "No evidence of acute cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "307",
+    "study_key": "307_IM-1432",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/307_IM-1432-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette and pulmonary vasculature are within normal limits. There is no pneumothorax or pleural effusion. There are no focal areas of consolidation.\nImpression: Negative chest radiographs.",
+    "reference_impression": "Negative chest radiographs.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3080",
+    "study_key": "3080_IM-1440",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3080_IM-1440-1001.dcm.png",
+    "reference_report": "Findings: The cavity and the left upper lobe has decreased in size. Bilateral apical bullae and parenchymal scars are unchanged. No XXXX infiltrates in the lower lobes. Heart size remains normal.\nImpression: Bullous disease and upper lobe scars. Decreasing right upper lobe cavity.",
+    "reference_impression": "Bullous disease and upper lobe scars. Decreasing right upper lobe cavity.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3081",
+    "study_key": "3081_IM-1440",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3081_IM-1440-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The aorta is tortuous and ectatic. The lungs are clear without focal airspace opacity, pleural effusion, or pneumothorax. The osseous structures are intact.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3082",
+    "study_key": "3082_IM-1441",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3082_IM-1441-1001.dcm.png",
+    "reference_report": "Findings: Cardiomegaly. Interstitial opacities consistent with edema in the lower lobes. No pneumothorax. No large pleural effusion.\nImpression: Interstitial pulmonary edema.",
+    "reference_impression": "Interstitial pulmonary edema.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3083",
+    "study_key": "3083_IM-1442",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3083_IM-1442-7001.dcm.png",
+    "reference_report": "Findings: The lungs and pleural spaces show no acute abnormality. Heart size and pulmonary vascularity within normal limits. .\nImpression: 1. No acute pulmonary abnormality.",
+    "reference_impression": "1. No acute pulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3084",
+    "study_key": "3084_IM-1443",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3084_IM-1443-1001.dcm.png",
+    "reference_report": "Findings: Heart size is normal. No pleural effusions. No pneumothorax. No focal air space opacities. Mild degenerative osteophytes are noted in the thoracic spine.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3085",
+    "study_key": "3085_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3085_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiomediastinal contours. Marrow pneumothorax, focal lung consolidation or pleural effusions.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs."
+  },
+  {
+    "uid": "3086",
+    "study_key": "3086_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3086_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: No airspace disease, effusion or noncalcified nodule. Calcified granuloma seen bilaterally. Normal heart size. Elevated right hemidiaphragm, with a nodular soft tissue contour, containing liver. Degenerative changes demonstrated within the visualized thoracic spine. There is neurostimulator, overlying the mid and lower thoracic spine.\nImpression: 1. No acute cardiopulmonary abnormality. 2. Elevation of the right XXXX diaphragm, containing liver.",
+    "reference_impression": "1. No acute cardiopulmonary abnormality. 2. Elevation of the right XXXX diaphragm, containing liver.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3087",
+    "study_key": "3087_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3087_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: The heart is enlarged. The mediastinal contours are stable. Large hiatal hernia is identified containing stomach and colon. Questionable small bowel loops are also visualized inthe large hernia. There is adjacent compressive atelectasis. The lungs are clear.\nImpression: No acute disease. Stable appearance of large hiatal hernia containing stomach and large bowel as well as possible small bowel loops.",
+    "reference_impression": "No acute disease. Stable appearance of large hiatal hernia containing stomach and large bowel as well as possible small bowel loops.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3088",
+    "study_key": "3088_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3088_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contours appear within normal limits. No focal pulmonary opacity, pleural effusion or pneumothorax. There is levoscoliosis of the thoracic spine.\nImpression: No acute cardiopulmonary abnormality. Levoscoliosis of the thoracic spine.",
+    "reference_impression": "No acute cardiopulmonary abnormality. Levoscoliosis of the thoracic spine.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3089",
+    "study_key": "3089_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3089_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: Normal heart size and mediastinal contours. No abnormal airspace opacities. No pleural effusion or pneumothorax. Visualized osseous structures are unremarkable in appearance.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "308",
+    "study_key": "308_IM-1439",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/308_IM-1439-1001.dcm.png",
+    "reference_report": "Findings: Stable appearing right-sided XXXX the opacities. There is persistent elevation of the right hemidiaphragm. The cardiac silhouette and mediastinal contours are within normal limits. There is no pneumothorax.\nImpression: Stable right-sided chronic lung scarring otherwise no acute cardiopulmonary disease.",
+    "reference_impression": "Stable right-sided chronic lung scarring otherwise no acute cardiopulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3090",
+    "study_key": "3090_IM-1445",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3090_IM-1445-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiac contour. Right sided pleural effusion. Clear left lung XXXX. No pneumothorax.\nImpression: 1. Right sided pleural effusion.",
+    "reference_impression": "1. Right sided pleural effusion.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3091",
+    "study_key": "3091_IM-1445",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3091_IM-1445-1001.dcm.png",
+    "reference_report": "Findings: The heart size is mildly enlarged. The patient is post aortic valve replacement. The XXXX sternotomy XXXX are intact. The pulmonary XXXX and mediastinum are within normal limits. There is no pleural effusion or pneumothorax. There is no focal air space opacity to suggest a pneumonia. There mild degenerative changes of the spine.\nImpression: No acute cardiopulmonary disease. Critical result notification documented through Primordial.",
+    "reference_impression": "No acute cardiopulmonary disease. Critical result notification documented through Primordial.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3092",
+    "study_key": "3092_IM-1445",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3092_IM-1445-1001.dcm.png",
+    "reference_report": "Findings: Heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen. Levoscoliosis of the thoracolumbar spine is present.\nImpression: No evidence of active disease.",
+    "reference_impression": "No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3093",
+    "study_key": "3093_IM-1446",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3093_IM-1446-1001.dcm.png",
+    "reference_report": "Findings: Lungs are hyperexpanded. Bullae are present in the upper lobes. No focal infiltrates. Heart size normal.\nImpression: Findings of COPD. No acute findings.",
+    "reference_impression": "Findings of COPD. No acute findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3094",
+    "study_key": "3094_IM-1447",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3094_IM-1447-2001.dcm.png",
+    "reference_report": "Findings: Heart size is normal. Lungs are clear. Low lung volumes. There is no pneumothorax or large pleural effusion.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3095",
+    "study_key": "3095_IM-1448",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3095_IM-1448-1001.dcm.png",
+    "reference_report": "Findings: Heart size is mildly enlarged. There are diffusely increased interstitial opacities bilaterally. No focal consolidation, pneumothorax, or pleural effusion. No acute bony abnormality.\nImpression: Findings concerning for interstitial edema or infection.",
+    "reference_impression": "Findings concerning for interstitial edema or infection.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3096",
+    "study_key": "3096_IM-1448",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3096_IM-1448-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. Prominent right paratracheal soft tissue density. Rounded mass in the right middle lobe measures approximately 4.6 cm x 3.7 cm. There is mild surrounding airspace disease and/or atelectasis. No pleural effusions noted. The visualized bony thorax appears grossly intact.\nImpression: Right mid lung mass with mild right paratracheal soft tissue may be secondary to associated lymphadenopathy. Further imaging with CT of the chest is recommended.",
+    "reference_impression": "Right mid lung mass with mild right paratracheal soft tissue may be secondary to associated lymphadenopathy. Further imaging with CT of the chest is recommended.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3097",
+    "study_key": "3097_IM-1449",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3097_IM-1449-1001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal limits. Vascular calcification is identified. Calcified granuloma is present in the right lower lobe. No XXXX nodules are seen. No pneumothorax or pleural effusion is seen. No focal airspace disease is identified.\nImpression: 1. No evidence of active disease.",
+    "reference_impression": "1. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3098",
+    "study_key": "3098_IM-1450",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3098_IM-1450-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contours appear within normal limits. Pulmonary vascularity is within normal limits. No focal consolidation, suspicious pulmonary opacity, pneumothorax or definite pleural effusion. Visualized osseous structures appear intact.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3099",
+    "study_key": "3099_IM-1450",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3099_IM-1450-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear without focal consolidation, effusion, or pneumothorax. Normal heart size. Bony thorax and soft tissues grossly unremarkable. Calcified left hilar XXXX.\nImpression: Negative for acute cardiopulmonary abnormality.",
+    "reference_impression": "Negative for acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "309",
+    "study_key": "309_IM-1444",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/309_IM-1444-1001.dcm.png",
+    "reference_report": "Findings: Normal and stable cardiomediastinal contours. No pneumothorax or pleural effusions. No focal lung consolidation.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "30",
+    "study_key": "30_IM-1385",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/30_IM-1385-1001.dcm.png",
+    "reference_report": "Findings: Lungs are clear without focal consolidation, effusion, or pneumothorax. Normal heart size. Negative for pneumoperitoneum. Bony thorax and soft tissue grossly unremarkable\nImpression: Negative acute cardiopulmonary abnormality.",
+    "reference_impression": "Negative acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3100",
+    "study_key": "3100_IM-1452",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3100_IM-1452-1001.dcm.png",
+    "reference_report": "Findings: Lungs are hyperexpanded but clear. No pleural effusions or pneumothoraces. Heart and mediastinum of normal size and contour. Degenerative changes in the spine.\nImpression: Hyperexpanded but clear lungs.",
+    "reference_impression": "Hyperexpanded but clear lungs.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3101",
+    "study_key": "3101_IM-1453",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3101_IM-1453-1001.dcm.png",
+    "reference_report": "Findings: The heart size and pulmonary vascularity appear within normal limits. The lungs are free of focal airspace disease. No pleural effusion or pneumothorax is seen. Degenerative changes are present in the spine. Stent is noted in the abdomen. The thoracic aorta is tortuous. Calcified granuloma are noted.\nImpression: 1. No evidence of active disease.",
+    "reference_impression": "1. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral pleural effusion, which means there is an accumulation of fluid in the pleural space surrounding both lungs."
+  },
+  {
+    "uid": "3102",
+    "study_key": "3102_IM-1454",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3102_IM-1454-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion. Cardiomediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3103",
+    "study_key": "3103_IM-1454",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3103_IM-1454-1001.dcm.png",
+    "reference_report": "Findings: Cardiomediastinal silhouette stable and unremarkable. Stable eventration of the right hemidiaphragm. There is redemonstration without significant interval change of mild subsegmental atelectasis of the left base. Pneumonia seen on CT examination dated XXXX, XXXX (not seen on prior chest x-XXXX) is not seen either on XXXX chest x-XXXX.\nImpression: No acute cardiopulmonary abnormality..",
+    "reference_impression": "No acute cardiopulmonary abnormality..",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3104",
+    "study_key": "3104_IM-1455",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3104_IM-1455-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: No pneumothorax or effusion. No pneumonia. Heart size normal. Lungs clear",
+    "reference_impression": "No pneumothorax or effusion. No pneumonia. Heart size normal. Lungs clear",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3105",
+    "study_key": "3105_IM-1456",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3105_IM-1456-1001.dcm.png",
+    "reference_report": "Findings: Heart and mediastinum within normal limits. Negative for focal pulmonary consolidation, pleural effusion, or pneumothorax.\nImpression: No acute abnormality.",
+    "reference_impression": "No acute abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3106",
+    "study_key": "3106_IM-1456",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3106_IM-1456-1001.dcm.png",
+    "reference_report": "Findings: Cardiac and mediastinal contours are within normal limits. The lungs are clear. Bony structures are intact.\nImpression: No acute findings.",
+    "reference_impression": "No acute findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3108",
+    "study_key": "3108_IM-1457",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3108_IM-1457-1001.dcm.png",
+    "reference_report": "Findings: There is XXXX airspace disease in the right lower lobe seen behind the right hemidiaphragm on PA view. This is also well seen on lateral view. Remainder of the lungs appear clear. The heart and pulmonary XXXX appear normal. Mediastinal contours are normal.\nImpression: The right lower lobe pneumonia",
+    "reference_impression": "The right lower lobe pneumonia",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3109",
+    "study_key": "3109_IM-1458",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3109_IM-1458-1001.dcm.png",
+    "reference_report": "Findings: There are no focal areas of consolidation. No suspicious pulmonary opacities. Heart size within normal limits. No pleural effusions. No pneumothorax.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "310",
+    "study_key": "310_IM-1451",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/310_IM-1451-0001-0001.dcm.png",
+    "reference_report": "Findings: Chest. The XXXX examination consists of frontal and lateral radiographs of the chest. The cardiomediastinal contours are within normal limits. No focal consolidation, pleural effusion, or pneumothorax identified. The visualized osseous structures and upper abdomen are unremarkable. Thoracic spine. The XXXX examination consists of frontal, lateral and swimmers lateral radiographs of the thoracic spine. There is no evidence of fracture or malalignment. The vertebral body XXXX and disc spaces are maintained. Sternum. The XXXX examination consists of 2 oblique and one lateral radiograph of the sternum. No displaced XXXX fracture demonstrated.\nImpression: 1. No radiographic evidence of acute thoracic XXXX.",
+    "reference_impression": "1. No radiographic evidence of acute thoracic XXXX.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3110",
+    "study_key": "3110_IM-1460",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3110_IM-1460-1001.dcm.png",
+    "reference_report": "Findings: Heart size, mediastinal and aortic contours are within normal limits. Normal pulmonary vasculature. The lungs are clear. No visible pneumothorax or large pleural effusion. Elevated right hemidiaphragm. Mild degenerative changes of the spine.\nImpression: 1. Elevated right hemidiaphragm. 2. No evidence of active disease.",
+    "reference_impression": "1. Elevated right hemidiaphragm. 2. No evidence of active disease.",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the size and shape of the heart appear to be within normal limits.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the size and shape of the heart appear to be within normal limits."
+  },
+  {
+    "uid": "3111",
+    "study_key": "3111_IM-1461",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3111_IM-1461-1001.dcm.png",
+    "reference_report": "Findings: Stable appearance of previous XXXX sternotomy. Stable cardiomegaly. Stable mild bilateral interstitial opacities in which may represent mild pulmonary edema. No evidence of large pleural effusion or pneumothorax.\nImpression: Stable cardiomegaly and mild bilateral interstitial opacities which represent mild pulmonary edema.",
+    "reference_impression": "Stable cardiomegaly and mild bilateral interstitial opacities which represent mild pulmonary edema.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3112",
+    "study_key": "3112_IM-1461",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3112_IM-1461-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size. The mediastinum is unremarkable. The lungs are clear.\nImpression: No acute disease.",
+    "reference_impression": "No acute disease.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3113",
+    "study_key": "3113_IM-1462",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3113_IM-1462-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear. There is no pleural effusion or pneumothorax. There is no evidence for mass lung apices. The heart is normal. There are atherosclerotic changes of the aorta. The skeletal structures are unremarkable.\nImpression: 1. No acute pulmonary disease. No evidence for apical mass.",
+    "reference_impression": "1. No acute pulmonary disease. No evidence for apical mass.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3114",
+    "study_key": "3114_IM-1462",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3114_IM-1462-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size is normal and lungs are clear.",
+    "reference_impression": "Heart size is normal and lungs are clear.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3115",
+    "study_key": "3115_IM-1463",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3115_IM-1463-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size and contour. The lungs are clear, without evidence of infiltrate. There is no pneumothorax or effusion.\nImpression: No acute cardiopulmonary disease.",
+    "reference_impression": "No acute cardiopulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the size and shape of the heart appear to be within normal limits.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the size and shape of the heart appear to be within normal limits."
+  },
+  {
+    "uid": "3116",
+    "study_key": "3116_IM-1464",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3116_IM-1464-1001.dcm.png",
+    "reference_report": "Findings: The cardiac silhouette is enlarged. There are bibasilar airspace opacities left greater than right with small right pleural effusion. No visualized pneumothorax.\nImpression: Bibasilar airspace disease left greater than right with small effusions.",
+    "reference_impression": "Bibasilar airspace disease left greater than right with small effusions.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in both lungs."
+  },
+  {
+    "uid": "3117",
+    "study_key": "3117_IM-1465",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3117_IM-1465-1001.dcm.png",
+    "reference_report": "Findings: Heart size is normal. The lungs and costophrenic XXXX are clear. The bony thorax is grossly intact.\nImpression: Normal chest.",
+    "reference_impression": "Normal chest.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3118",
+    "study_key": "3118_IM-1466",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3118_IM-1466-1001.dcm.png",
+    "reference_report": "Findings: No pneumothorax, pleural effusion, or focal airspace disease. Heart size normal. Cardiomediastinal silhouette stable. Nodular densities consistent with chronic granulomatous disease. Bony structures appear intact.\nImpression: Negative for acute cardiopulmonary disease.",
+    "reference_impression": "Negative for acute cardiopulmonary disease.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3119",
+    "study_key": "3119_IM-1466",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3119_IM-1466-1001.dcm.png",
+    "reference_report": "Findings: Heart size is normal. No focal airspace consolidations. No pneumothorax or pleural effusion. No acute osseous findings.\nImpression: No acute cardiopulmonary findings. .",
+    "reference_impression": "No acute cardiopulmonary findings. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3120",
+    "study_key": "3120_IM-1466",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3120_IM-1466-1001.dcm.png",
+    "reference_report": "Findings: The heart is normal in size and contour. There is no mediastinal widening. The lungs are clear bilaterally. No large pleural effusion or pneumothorax. Fractures of the posterior left 4th, 5th, and 6th ribs, age-indeterminate.\nImpression: 1. No acute cardiopulmonary abnormalities. Specifically, no pneumothorax. 2. Fractures of the posterior left 4th, 5th, and 6th ribs, age-indeterminate.",
+    "reference_impression": "1. No acute cardiopulmonary abnormalities. Specifically, no pneumothorax. 2. Fractures of the posterior left 4th, 5th, and 6th ribs, age-indeterminate.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3121",
+    "study_key": "3121_IM-1466",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3121_IM-1466-1001.dcm.png",
+    "reference_report": "Findings: Heart size and mediastinal contour within normal limits. Calcified granuloma right midlung. No focal airspace consolidation, pneumothorax, or large pleural effusion. Degenerative changes in the thoracic spine.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3122",
+    "study_key": "3122_IM-1467",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3122_IM-1467-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is normal size and configuration. Pulmonary vasculature within normal limits. The lungs are well-aerated. There is no pneumothorax, pleural effusion, or focal consolidation.\nImpression: No acute cardiopulmonary disease. .",
+    "reference_impression": "No acute cardiopulmonary disease. .",
+    "generated_report": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs.",
+    "generated_impression": "Findings: The chest X-ray shows a normal cardiac silhouette, which means that the heart appears to be of normal size and shape. Additionally, there is no evidence of pulmonary congestion, which indicates that there is no significant fluid accumulation in the lungs."
+  },
+  {
+    "uid": "3123",
+    "study_key": "3123_IM-1468",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3123_IM-1468-1001.dcm.png",
+    "reference_report": "Findings: The heart is enlarged. Changes of XXXX sternotomy and bypass graft are identified in the lungs are grossly clear. XXXX right pleural thickening versus XXXX pleural effusion is noted. There is no acute infiltrate. No pneumothorax is seen. Mild granulomatous sequela are noted.\nImpression: Mild stable cardiomegaly without acute disease. Possible XXXX right pleural effusion.",
+    "reference_impression": "Mild stable cardiomegaly without acute disease. Possible XXXX right pleural effusion.",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3124",
+    "study_key": "3124_IM-1468",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3124_IM-1468-1001.dcm.png",
+    "reference_report": "Findings: There is persistent, marked enlargement of the pulmonary arteries. Normal heart size. No focal airspace consolidation. No pleural effusion or pneumothorax. Visualized osseous structures are unremarkable in appearance.\nImpression: 1. Enlarged pulmonary arteries. This may be due to previous/chronic pulmonary embolism or XXXX pulmonary arterial hypertension. 2. No evidence of pneumonia or other acute cardiopulmonary abnormality.",
+    "reference_impression": "1. Enlarged pulmonary arteries. This may be due to previous/chronic pulmonary embolism or XXXX pulmonary arterial hypertension. 2. No evidence of pneumonia or other acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3125",
+    "study_key": "3125_IM-1469",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3125_IM-1469-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear, and without focal airspace opacity. The cardiomediastinal silhouette is normal in size and contour, and stable. There is no pneumothorax or large pleural effusion.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3126",
+    "study_key": "3126_IM-1470",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3126_IM-1470-1001.dcm.png",
+    "reference_report": "Findings: The cardiomediastinal silhouette is within normal limits for appearance. No focal areas of pulmonary consolidation. No pneumothorax. No pleural effusion. The thoracic spine appears intact. No acute, displaced rib fractures.\nImpression: 1. No acute intrathoracic abnormality.",
+    "reference_impression": "1. No acute intrathoracic abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3127",
+    "study_key": "3127_IM-1470",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3127_IM-1470-1001.dcm.png",
+    "reference_report": "Findings: The heart size is normal. There is prominent left epicardial fat. The mediastinal contour is within normal limits. The lungs are free of any focal infiltrates. There are no nodules or masses. No visible pneumothorax. No visible pleural fluid. The XXXX are grossly normal. There is no visible free intraperitoneal air under the diaphragm.\nImpression: 1. No acute radiographic cardiopulmonary process.",
+    "reference_impression": "1. No acute radiographic cardiopulmonary process.",
+    "generated_report": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral patchy infiltrates, which are areas of increased density in the lungs. These infiltrates can be caused by various factors, such as infections, inflammation, or other lung conditions."
+  },
+  {
+    "uid": "3128",
+    "study_key": "3128_IM-1471",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3128_IM-1471-1001.dcm.png",
+    "reference_report": "Findings: Calcified left hilar lymph XXXX XXXX from prior granulomatous disease. The cardiomediastinal silhouette is within normal limits for size. Pulmonary vasculature is within normal limits. No focal consolidations, effusions, or pneumothoraces. No acute bony abnormality.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows a large mass in the right hemithorax.",
+    "generated_impression": "Findings: The chest X-ray shows a large mass in the right hemithorax."
+  },
+  {
+    "uid": "3129",
+    "study_key": "3129_IM-1471",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3129_IM-1471-3001.dcm.png",
+    "reference_report": "Findings: Heart size within normal limits. Tortuous aorta. There is an accessory azygos fissure in the right upper lung. No focal air space consolidations are noted. No pneumothorax or pleural effusion. There is severe degenerative change at the thoracolumbar junction with mild anterior wedging at approximately T12.\nImpression: No acute cardiopulmonary findings.",
+    "reference_impression": "No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "312",
+    "study_key": "312_IM-1466",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/312_IM-1466-1001.dcm.png",
+    "reference_report": "Findings: Normal cardiomediastinal silhouette. Left-sided aortic XXXX. Pulmonary vasculatures are within normal limits. Central airways are XXXX. No focal consolidation, pleural effusion or pneumothorax. Bony structure are grossly unremarkable.\nImpression: No acute pulmonary findings. .",
+    "reference_impression": "No acute pulmonary findings. .",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3130",
+    "study_key": "3130_IM-1472",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3130_IM-1472-1001.dcm.png",
+    "reference_report": "Findings: 2 images. Heart size is enlarged, stable. Thoracic aortic atherosclerotic calcifications are present. There is XXXX dense consolidation within the retrocardiac left lower lobe. There is also patchy airspace opacity within the perihilar right lung. No pleural effusion or pneumothorax.\nImpression: Left lower lobe and right perihilar airspace disease. In the appropriate clinical setting, this is compatible with infection/pneumonia and followup radiography is recommended following treatment to document resolution. If clinical findings are discordant, a XXXX is recommended.",
+    "reference_impression": "Left lower lobe and right perihilar airspace disease. In the appropriate clinical setting, this is compatible with infection/pneumonia and followup radiography is recommended following treatment to document resolution. If clinical findings are discordant, a XXXX is recommended.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3131",
+    "study_key": "3131_IM-1473",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3131_IM-1473-1001.dcm.png",
+    "reference_report": "Findings: No focal consolidation. No visualized pneumothorax. No large pleural effusions. The heart size and cardiomediastinal silhouette are grossly unremarkable.\nImpression: 1. No acute cardiopulmonary findings.",
+    "reference_impression": "1. No acute cardiopulmonary findings.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  },
+  {
+    "uid": "3132",
+    "study_key": "3132_IM-1473",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3132_IM-1473-1001.dcm.png",
+    "reference_report": "Findings: The XXXX and soft tissue appear normal. The cardiac silhouette and mediastinum size are normal. The aortic XXXX is on the left. The trachea is well seen and appears normal. The lungs are clear.\nImpression: Unremarkable chest study. .",
+    "reference_impression": "Unremarkable chest study. .",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3133",
+    "study_key": "3133_IM-1474",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3133_IM-1474-1001.dcm.png",
+    "reference_report": "Findings: nan\nImpression: Heart size is normal and lungs are clear. No evidence of tuberculosis",
+    "reference_impression": "Heart size is normal and lungs are clear. No evidence of tuberculosis",
+    "generated_report": "Findings: The chest X-ray shows a mass in the right upper lobe of the lung.",
+    "generated_impression": "Findings: The chest X-ray shows a mass in the right upper lobe of the lung."
+  },
+  {
+    "uid": "3134",
+    "study_key": "3134_IM-1474",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3134_IM-1474-1001.dcm.png",
+    "reference_report": "Findings: Lungs appear clear. Heart and pulmonary XXXX appear normal. Pleural spaces are clear. Mediastinal contours are normal. No pneumothorax.\nImpression: No acute cardiopulmonary disease",
+    "reference_impression": "No acute cardiopulmonary disease",
+    "generated_report": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities.",
+    "generated_impression": "Findings: The chest X-ray shows no acute cardiopulmonary abnormalities."
+  },
+  {
+    "uid": "3135",
+    "study_key": "3135_IM-1474",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3135_IM-1474-1001.dcm.png",
+    "reference_report": "Findings: The lungs are clear bilaterally. Specifically, no evidence of focal consolidation, pneumothorax, or pleural effusion.. Cardiomediastinal silhouette is unremarkable. Visualized osseous structures of the thorax are without acute abnormality.\nImpression: No acute cardiopulmonary abnormality.",
+    "reference_impression": "No acute cardiopulmonary abnormality.",
+    "generated_report": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides.",
+    "generated_impression": "Findings: The chest X-ray shows bilateral hilar lymphadenopathy, which means there is enlargement of the lymph nodes in the region where the bronchi enter the lungs, on both sides."
+  },
+  {
+    "uid": "3136",
+    "study_key": "3136_IM-1475",
+    "image_path": "/kaggle/input/chest-xrays-indiana-university/images/images_normalized/3136_IM-1475-1001.dcm.png",
+    "reference_report": "Findings: Cardiac size, mediastinal contour, and pulmonary vascularity are within normal limits. No focal consolidation, suspicious pulmonary opacity, pleural effusion, or pneumothorax. The visualized osseous structures appear intact.\nImpression: No acute cardiopulmonary abnormalities.",
+    "reference_impression": "No acute cardiopulmonary abnormalities.",
+    "generated_report": "Findings: The chest X-ray shows a right-sided pleural effusion.",
+    "generated_impression": "Findings: The chest X-ray shows a right-sided pleural effusion."
+  }
+]

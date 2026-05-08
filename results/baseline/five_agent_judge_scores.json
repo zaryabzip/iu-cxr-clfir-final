@@ -1,0 +1,1402 @@
+{
+  "2950": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 4.0
+  },
+  "2951": {
+    "findings": 2.0,
+    "consistency": 5.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2952": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 1.0,
+    "conciseness": 1.0
+  },
+  "2953": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2954": {
+    "findings": 4.0,
+    "consistency": 3.0,
+    "diagnosis": 5.0,
+    "style": 4.0,
+    "conciseness": 2.0
+  },
+  "2955": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 1.0
+  },
+  "2956": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "2957": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "2958": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 5.0
+  },
+  "2959": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "295": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 2.0,
+    "style": 7.0,
+    "conciseness": 3.0
+  },
+  "2960": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 8.0
+  },
+  "2961": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "2962": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 2.0
+  },
+  "2963": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "2964": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 7.0
+  },
+  "2965": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "2966": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "2967": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 1.0
+  },
+  "2968": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 7.0
+  },
+  "2969": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 3.0
+  },
+  "296": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 3.0
+  },
+  "2970": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 1.0
+  },
+  "2971": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 9.0
+  },
+  "2972": {
+    "findings": 8.0,
+    "consistency": 7.0,
+    "diagnosis": 8.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "2974": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2975": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 9.0
+  },
+  "2976": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 2.0
+  },
+  "2977": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "2978": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 9.0
+  },
+  "2979": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 1.0
+  },
+  "297": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 1.0,
+    "conciseness": 2.0
+  },
+  "2980": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "2981": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "2982": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "2983": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2984": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 2.0,
+    "style": 8.0,
+    "conciseness": 6.0
+  },
+  "2985": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2986": {
+    "findings": 2.0,
+    "consistency": 6.0,
+    "diagnosis": 10.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "2988": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "2989": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 2.0
+  },
+  "298": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 8.0
+  },
+  "2991": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "2992": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 2.0
+  },
+  "2993": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "2994": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "2995": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 4.0
+  },
+  "2996": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 1.0
+  },
+  "2997": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "2998": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "2999": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "299": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "29": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 4.0
+  },
+  "2": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3000": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 7.0
+  },
+  "3001": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 3.0,
+    "style": 1.0,
+    "conciseness": 1.0
+  },
+  "3002": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 1.0
+  },
+  "3003": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3004": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "3005": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3006": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3008": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 3.0
+  },
+  "3009": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "300": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 4.0
+  },
+  "3010": {
+    "findings": 2.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 1.0
+  },
+  "3011": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 1.0
+  },
+  "3012": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3013": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 9.0
+  },
+  "3014": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "3015": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3016": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "3017": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3018": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3019": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "301": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3020": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 6.0
+  },
+  "3021": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3022": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3023": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 7.0
+  },
+  "3024": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3025": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3026": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 2.0,
+    "conciseness": 1.0
+  },
+  "3027": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3028": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 6.0,
+    "conciseness": 3.0
+  },
+  "3029": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "302": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "3030": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 2.0
+  },
+  "3031": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 2.0
+  },
+  "3032": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 1.0
+  },
+  "3033": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3034": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 1.0
+  },
+  "3036": {
+    "findings": 2.0,
+    "consistency": 8.0,
+    "diagnosis": 2.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3037": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 9.0
+  },
+  "3038": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 9.0
+  },
+  "3039": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "303": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 5.0
+  },
+  "3040": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3041": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 1.0
+  },
+  "3042": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 3.0
+  },
+  "3043": {
+    "findings": 2.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3044": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "3045": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "3046": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "3047": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 1.0
+  },
+  "3048": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 1.0
+  },
+  "3049": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 9.0
+  },
+  "304": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3050": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "3051": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "3052": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3053": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 1.0
+  },
+  "3054": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 9.0
+  },
+  "3056": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 3.0
+  },
+  "3057": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "3058": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 10.0
+  },
+  "3059": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 3.0
+  },
+  "305": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3060": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 1.0
+  },
+  "3061": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3062": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 2.0
+  },
+  "3063": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 6.0,
+    "conciseness": 3.0
+  },
+  "3064": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 10.0
+  },
+  "3065": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 2.0
+  },
+  "3066": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "3067": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 3.0
+  },
+  "3068": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3069": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "306": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3070": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "3071": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 4.0
+  },
+  "3072": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 4.0
+  },
+  "3073": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3074": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 9.0
+  },
+  "3075": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3076": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3077": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3078": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "3079": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 9.0
+  },
+  "307": {
+    "findings": 2.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 4.0
+  },
+  "3080": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 4.0
+  },
+  "3081": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 3.0
+  },
+  "3082": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 1.0
+  },
+  "3083": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3084": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 2.0
+  },
+  "3085": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 4.0
+  },
+  "3086": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 2.0
+  },
+  "3087": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 6.0
+  },
+  "3088": {
+    "findings": 3.0,
+    "consistency": 8.0,
+    "diagnosis": 5.0,
+    "style": 10.0,
+    "conciseness": 6.0
+  },
+  "3089": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 6.0,
+    "conciseness": 2.0
+  },
+  "308": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3090": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 3.0
+  },
+  "3091": {
+    "findings": 2.0,
+    "consistency": 2.0,
+    "diagnosis": 3.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3092": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 6.0
+  },
+  "3093": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 2.0
+  },
+  "3094": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 2.0
+  },
+  "3095": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 1.0
+  },
+  "3096": {
+    "findings": 1.0,
+    "consistency": 8.0,
+    "diagnosis": 1.0,
+    "style": 3.0,
+    "conciseness": 2.0
+  },
+  "3097": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3098": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 7.0
+  },
+  "3099": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "309": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 1.0,
+    "conciseness": 1.0
+  },
+  "30": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "3100": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 6.0
+  },
+  "3101": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 4.0
+  },
+  "3102": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 2.0
+  },
+  "3103": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 4.0
+  },
+  "3104": {
+    "findings": 1.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3105": {
+    "findings": 2.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3106": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 8.0
+  },
+  "3108": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 2.0
+  },
+  "3109": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "310": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 9.0
+  },
+  "3110": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 8.0
+  },
+  "3111": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 4.0,
+    "conciseness": 3.0
+  },
+  "3112": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 3.0
+  },
+  "3113": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3114": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 1.0
+  },
+  "3115": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 3.0
+  },
+  "3116": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3117": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 6.0,
+    "conciseness": 2.0
+  },
+  "3118": {
+    "findings": 2.0,
+    "consistency": 5.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 7.0
+  },
+  "3119": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 1.0
+  },
+  "3120": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 3.0
+  },
+  "3121": {
+    "findings": 1.0,
+    "consistency": 9.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 2.0
+  },
+  "3122": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 7.0
+  },
+  "3123": {
+    "findings": 3.0,
+    "consistency": 2.0,
+    "diagnosis": 2.0,
+    "style": 3.0,
+    "conciseness": 4.0
+  },
+  "3124": {
+    "findings": 2.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 4.0
+  },
+  "3125": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 5.0,
+    "conciseness": 1.0
+  },
+  "3126": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 2.0
+  },
+  "3127": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "3128": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 6.0
+  },
+  "3129": {
+    "findings": 2.0,
+    "consistency": 2.0,
+    "diagnosis": 10.0,
+    "style": 9.0,
+    "conciseness": 8.0
+  },
+  "312": {
+    "findings": 1.0,
+    "consistency": 2.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 1.0
+  },
+  "3130": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 8.0
+  },
+  "3131": {
+    "findings": 2.0,
+    "consistency": 3.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 5.0
+  },
+  "3132": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 7.0,
+    "conciseness": 1.0
+  },
+  "3133": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 10.0,
+    "conciseness": 9.0
+  },
+  "3134": {
+    "findings": 1.0,
+    "consistency": 1.0,
+    "diagnosis": 1.0,
+    "style": 6.0,
+    "conciseness": 2.0
+  },
+  "3135": {
+    "findings": 1.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 8.0,
+    "conciseness": 6.0
+  },
+  "3136": {
+    "findings": 2.0,
+    "consistency": 10.0,
+    "diagnosis": 1.0,
+    "style": 9.0,
+    "conciseness": 7.0
+  }
+}

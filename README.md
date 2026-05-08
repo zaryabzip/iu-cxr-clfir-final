@@ -14,11 +14,17 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 │   ├── iu_pipeline_baseline_yi_5_agent.ipynb
 │   ├── iu_pipeline_baseline_yi_5_agent.py
 │   ├── iu_pipeline_proposed_improvement_1.ipynb
-│   └── iu_pipeline_proposed_improvement_1.py
+│   ├── iu_pipeline_proposed_improvement_1.py
+│   ├── iu_pipeline_proposed_improvement_2.ipynb
+│   └── iu_pipeline_proposed_improvement_2.py
 └── results/
     ├── baseline/
     │   ├── summary.json
     │   ├── per_study_summary.csv
+    │   ├── baseline_results.json
+    │   ├── baseline_results590.json
+    │   ├── five_agent_results.json
+    │   ├── five_agent_judge_scores.json
     │   ├── baseline_metrics.json
     │   ├── five_agent_metrics.json
     │   ├── baseline_judge_metrics.json
@@ -33,6 +39,9 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── summary.json
     │   └── per_study_summary.csv
     ├── proposed_improvement_1/
+    │   ├── summary.json
+    │   └── per_study_summary.csv
+    ├── proposed_improvement_2/
     │   ├── summary.json
     │   └── per_study_summary.csv
     └── comparisons/
@@ -94,7 +103,7 @@ The primary submitted pipeline is:
 
 Important run settings:
 
-- Evaluation limit: `300`
+- Evaluation limit: `200`
 - Composer model: `qwen3.5:9b`
 - Judge model: `gemma3:12b`
 - Jupytext format: paired `.ipynb` and `.py`
@@ -119,6 +128,23 @@ Baseline design:
 The cleaned baseline notebook removes brittle fallback behavior where possible, keeps checkpointed generation/evaluation outputs, and writes to a dedicated artifact root in the development workspace. It is included conceptually as the literature-inspired reference pipeline, while this repository intentionally excludes its large model files, retrieval checkpoint, full caches, and raw per-stage artifacts.
 
 Baseline result files are included under `results/baseline/`. The large OpenCLIP checkpoint and IU retrieval bank are intentionally excluded.
+
+Included baseline files:
+
+- `baseline_results.json`: 200 single-agent LLaVA-Med report outputs.
+- `baseline_results590.json`: larger single-agent baseline output dump retained for auditability.
+- `five_agent_results.json`: 200 Yi-style five-agent report outputs.
+- `five_agent_judge_scores.json`: per-study Gemini judge scores for the five-agent run.
+- `baseline_metrics.json` and `five_agent_metrics.json`: compact automatic metric summaries.
+- `baseline_judge_metrics.json` and `five_agent_judge_metrics.json`: compact judge metric summaries.
+- `standard_metrics_table.csv`, `judge_metrics_table.csv`, and `paper_tables.json`: table-ready result exports.
+- `summary.json` and `per_study_summary.csv`: normalized compact files matching the repo result-folder convention.
+
+Excluded baseline files:
+
+- `retriever_openclip_mimic3000.pt`: large OpenCLIP retrieval checkpoint.
+- `iu_retrieval_bank.pt`: large serialized retrieval bank.
+- `baseline_res.zip`: redundant archive of files already represented in extracted form.
 
 Important comparability note:
 
@@ -196,64 +222,76 @@ Separate retrieval-only comparison note:
 - On the overlapping 100-study retrieval split, CLFIR improved the top-1 retrieved-report token F1 proxy by about `2.7%` and the mean top-5 token F1 proxy by about `2.5%` over plain BioViL-T. The best-of-top-5 proxy was essentially flat at about `+0.1%`.
 - This means CLFIR gave a small but measurable retrieval-quality improvement in the first retrieved candidates; the larger final-report gains come from evidence fusion and report composition, not retrieval alone.
 
+## Proposed Improvement 2 Results
+
+The `results/proposed_improvement_2/` folder contains the current CLFIR-guided pipeline run copied from `current_clfir_final`. This is the second proposed improvement and corresponds to the clean CLFIR final pipeline.
+
+Proposed Improvement 2 design:
+
+- Starting point: the structured evidence pipeline direction from Proposed Improvement 1.
+- Retrieval upgrade: BioViL-T image embeddings are projected through the fine-tuned CLFIR adapter before FAISS retrieval.
+- Direct image model: CheXOne provides the image-first draft report.
+- Label evidence: CheXbert-derived report labels and retrieval-text labels provide structured 14-label evidence states.
+- Evidence control: deterministic fusion combines direct evidence, retrieval evidence, and guardrails before report composition.
+- Composer: `qwen3.5:9b`.
+- Judge: `gemma3:12b`.
+- Output source in the development workspace: `pipeline/artifacts/iu_pipeline_bundle/current_clfir_final`.
+
+Proposed Improvement 2 files:
+
+- Notebook: `notebooks/iu_pipeline_proposed_improvement_2.ipynb`
+- Paired script: `notebooks/iu_pipeline_proposed_improvement_2.py`
+- Results: `results/proposed_improvement_2/summary.json`
+- Per-study outputs and scores: `results/proposed_improvement_2/per_study_summary.csv`
+
+Run summary from `current_clfir_final`:
+
+Pipeline:
+
+- Evaluation limit: `200`
+- Completed reports: `200/200`
+- Completed judge scores: `200/200`
+- Judge overall: `7.800`
+- BLEU: `0.118`
+- ROUGE-1: `0.414`
+- ROUGE-2: `0.171`
+- ROUGE-L: `0.306`
+- METEOR: `0.348`
+- BERTScore F1: `0.854`
+- sacreBLEU: `12.649`
+- chrF: `40.705`
+- chrF++: `37.601`
+
+CheXOne direct baseline on the same 200 studies:
+
+- Completed reports: `200/200`
+- Completed judge scores: `200/200`
+- Judge overall: `7.290`
+- BLEU: `0.094`
+- ROUGE-1: `0.394`
+- ROUGE-2: `0.152`
+- ROUGE-L: `0.276`
+- METEOR: `0.298`
+- BERTScore F1: `0.852`
+- sacreBLEU: `8.646`
+- chrF: `31.234`
+- chrF++: `29.310`
+
 ## Experimental Comparison
 
-The `results/more_imp1/` folder contains compact outputs from an experimental Adapter2 variant. That variant used a RadGraph-family evidence arbitration layer and achieved a slightly higher LLM judge score, but it is not the main clean submission pipeline.
+The main paper progression in this repository is:
 
-The comparison plots in `results/comparisons/` compare `clfir_final` and `more_imp1` over the same 300 IU samples.
+1. `baseline`: Yi-style multimodal multi-agent reproduction.
+2. `proposed_improvement_1`: non-CLFIR structured evidence pipeline.
+3. `proposed_improvement_2`: CLFIR-guided structured evidence pipeline.
 
-## 300-Sample Results
-
-### CLFIR Final
-
-Pipeline:
-
-- Completed reports: `300/300`
-- Completed judge scores: `300/300`
-- Judge overall: `7.713`
-- BLEU: `0.123`
-- ROUGE-1: `0.416`
-- ROUGE-2: `0.174`
-- ROUGE-L: `0.311`
-- METEOR: `0.353`
-- BERTScore F1: `0.857`
-- sacreBLEU: `13.145`
-- chrF: `41.809`
-- chrF++: `38.663`
-
-CheXOne direct baseline:
-
-- Judge overall: `7.327`
-
-### Adapter2 More-Improvement Experiment
-
-Pipeline:
-
-- Completed reports: `300/300`
-- Completed judge scores: `300/300`
-- Judge overall: `7.763`
-- BLEU: `0.115`
-- ROUGE-1: `0.412`
-- ROUGE-2: `0.173`
-- ROUGE-L: `0.313`
-- METEOR: `0.331`
-- BERTScore F1: `0.854`
-- sacreBLEU: `11.571`
-- chrF: `38.867`
-- chrF++: `35.862`
-
-CheXOne direct baseline:
-
-- Judge overall: `7.320`
+The `results/more_imp1/` and `results/comparisons/` folders are retained as historical exploratory material from an Adapter2 variant, but they are not the main three-system progression requested for the deliverable.
 
 ## Interpretation
 
-The two pipelines show a useful tradeoff:
+Proposed Improvement 2 is the strongest current clean pipeline in this repository. It improves over the CheXOne direct baseline on both LLM judge score and automatic metrics in the current 200-study run.
 
-- `clfir_final` is stronger on automatic text-overlap metrics such as BLEU, METEOR, BERTScore, sacreBLEU, and chrF.
-- `more_imp1` is slightly stronger on the LLM judge metrics, especially clinical accuracy and groundedness.
-
-For submission, `clfir_final` is used as the primary clean pipeline. The `more_imp1` results are included to document the experimental evidence-arbitration direction.
+Compared with the Yi-style baseline, the project moved away from repeated free-form LLM agents and toward a more inspectable structure: direct image-first drafting, retrieval, structured label evidence, deterministic fusion, and a single final composer. Proposed Improvement 1 tests that structure without CLFIR; Proposed Improvement 2 adds the CLFIR retrieval adapter.
 
 ## Notes on Reproducibility
 
