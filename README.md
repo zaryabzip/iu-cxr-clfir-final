@@ -68,7 +68,7 @@ At a high level, it uses:
 
 The submitted notebook is designed to resume from disk artifacts when run in the original local environment. External datasets, model snapshots, retrieval banks, and generated stage artifacts are excluded from this repository due to size and portability.
 
-![IU chest X-ray report generation pipeline](assets/iu_cxr_pipeline_diagram.png)
+![IU chest X-ray report generation pipeline](assets/proposed_improvement_2_pipeline_diagram.png)
 
 ## CLFIR Adapter Training and Use
 
@@ -200,20 +200,20 @@ Proposed Improvement 1 result files are included under `results/proposed_improve
 
 Run summary:
 
-- Evaluation limit: `100`
-- Completed pipeline reports: `100/100`
-- Completed pipeline judge scores: `100/100`
-- Pipeline judge overall: `7.600`
-- CheXOne direct judge overall: `7.160`
-- Pipeline BLEU: `0.104`
-- Pipeline ROUGE-1: `0.398`
+- Evaluation limit: `200`
+- Completed pipeline reports: `200/200`
+- Completed pipeline judge scores: `200/200`
+- Pipeline judge overall: `7.745`
+- CheXOne direct judge overall: `7.290`
+- Pipeline BLEU: `0.103`
+- Pipeline ROUGE-1: `0.405`
 - Pipeline ROUGE-2: `0.165`
-- Pipeline ROUGE-L: `0.291`
-- Pipeline METEOR: `0.342`
-- Pipeline BERTScore F1: `0.853`
-- Pipeline sacreBLEU: `11.099`
-- Pipeline chrF: `38.182`
-- Pipeline chrF++: `35.348`
+- Pipeline ROUGE-L: `0.298`
+- Pipeline METEOR: `0.359`
+- Pipeline BERTScore F1: `0.855`
+- Pipeline sacreBLEU: `11.462`
+- Pipeline chrF: `39.614`
+- Pipeline chrF++: `36.753`
 
 Separate retrieval-only comparison note:
 

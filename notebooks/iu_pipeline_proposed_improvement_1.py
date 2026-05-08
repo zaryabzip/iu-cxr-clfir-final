@@ -13,15 +13,15 @@
 # # IU Proposed Improvement 1 Pipeline
 #
 # This notebook preserves the original proposed-improvement stage flow while
-# requiring CheXbert label evidence and using local Ollama models for report
-# composition and judging.
+# requiring structured report-label evidence and using local Ollama models for
+# report composition and judging.
 #
-# - Stage 1: `CheXOne` image-first report plus required CheXbert label evidence
+# - Stage 1: `CheXOne` image-first report plus required CheXbert and VisualCheXbert report-label evidence
 # - Stage 2a: `BioViL-T` visual retrieval
 # - Stage 2b: `CheXbert` pathology retrieval
 # - Stage 2c: deterministic reranking
 # - Stage 3: `CheXbert` text evidence extraction
-# - Stage 4: deterministic 14-label fusion
+# - Stage 4: deterministic 14-label fusion with VisualCheXbert auxiliary support
 # - Stage 5: local Ollama report synthesis
 # - Stage 6: local Ollama judge and evaluation
 #
@@ -30,7 +30,8 @@
 # - every stage checks storage before rerunning
 # - bank construction resumes instead of restarting
 # - LLM calls retry per prompt and cache every attempt
-# - no text-derived label substitution is used
+# - no keyword-derived label substitution is used
+# - CheXbert and VisualCheXbert labels are loaded from required prediction artifacts; missing labels fail clearly
 
 # %%
 from __future__ import annotations
@@ -324,7 +325,7 @@ IU_TRAIN_BANK_TARGET = 0
 MIMIC_BANK_TARGET = 5000
 RETRIEVAL_TOP_K = 5
 
-STAGE3_MODEL_NAME = "CheXbert"
+STAGE3_MODEL_NAME = "CheXbert + VisualCheXbert"
 COMPOSER_MODEL_NAME = "qwen3.5:9b"
 JUDGE_MODEL_NAME = "gemma3:12b"
 ENABLE_LLM_JUDGE = True
@@ -351,11 +352,13 @@ CONFLICT_GAP_THRESHOLD = 0.40
 CHEXONE_MODEL_ID = "StanfordAIMI/CheXOne"
 BIOVILT_MODEL_ID = "microsoft/BiomedVLP-BioViL-T"
 CHEXBERT_MODEL_LABEL = "CheXbert"
+VISUALCHEXBERT_MODEL_LABEL = "VisualCheXbert"
 USE_EXTERNAL_VERIFIED_ARTIFACTS = True
 STOP_BEFORE_LLM_STAGES = False
 LOCAL_FILES_ONLY = False
 
 LOCAL_CHEXBERT_PREDICTIONS_PATH = None
+LOCAL_VISUALCHEXBERT_PREDICTIONS_PATH = None
 LOCAL_CHEXONE_SNAPSHOT_DIR = ""
 LOCAL_BIOVILT_WEIGHTS_PATH = ""
 AUTO_DOWNLOAD_BIOVILT_WEIGHTS = True
@@ -399,6 +402,9 @@ BUNDLE_ROOT = (WORKSPACE_ROOT / "pipeline" / "artifacts" / "iu_pipeline_bundle")
 EXTERNAL_ARTIFACTS_ROOT = BUNDLE_ROOT / "external"
 MODEL_CACHE_DIR = BUNDLE_ROOT / "models"
 MANAGED_BIOVILT_WEIGHTS_PATH = MODEL_CACHE_DIR / "biovilt" / BIOVILT_WEIGHTS_FILENAME
+VISUALCHEXBERT_RUNTIME_DIR = MODEL_CACHE_DIR / "visualchexbert_runtime"
+VISUALCHEXBERT_CHECKPOINT_DIR = VISUALCHEXBERT_RUNTIME_DIR / "checkpoint_from_download"
+DEFAULT_VISUALCHEXBERT_PREDICTIONS_PATH = VISUALCHEXBERT_RUNTIME_DIR / "chexone_report_prompt_chexbert" / "labels_by_uid.json"
 
 DEFAULT_EXTERNAL_BANK_ROOT = EXTERNAL_ARTIFACTS_ROOT / "full_retrieval_bank_kaggle_2xt4" / "edd340ce92d2"
 DEFAULT_EXTERNAL_CHEXONE_REPORT_DIR = EXTERNAL_ARTIFACTS_ROOT / "chexone_iu590_fullres_2xt4" / "2d8eaefd8923" / "report_prompt"
@@ -476,12 +482,16 @@ if USE_EXTERNAL_VERIFIED_ARTIFACTS:
 # the IU report artifacts or the retrieval banks. It loads:
 # - the verified external retrieval bank
 # - the verified external CheXbert pathology-bank artifacts
+# - the verified VisualCheXbert labels over Stage 1 CheXOne report text
 # - the verified external CheXOne report JSONs
 #
 # In that mode:
 # - Stage 1 is imported from the verified CheXOne report JSONs
-# - the label vector used by retrieval is derived deterministically from that
-#   imported report text and stored inside the same Stage 1 artifact
+# - the CheXbert label vector used by pathology retrieval is loaded from
+#   required CheXbert predictions for that imported report text
+# - the VisualCheXbert label vector is loaded from required VisualCheXbert
+#   predictions over the same Stage 1 report text and stored in the same
+#   Stage 1 artifact
 # - the only remaining required model compute before LLM is Stage 2a query
 #   image embedding for visual retrieval, and those query embeddings are cached
 #   locally under the run folder
@@ -1246,8 +1256,15 @@ print(f"First test UID: {iu_eval_manifest[0].uid if iu_eval_manifest else 'n/a'}
 CHEXONE_REPORT_CHEXPERT_LABELS_PATH = MODEL_CACHE_DIR / "chexbert_on_chexone_report_prompt" / "labels_by_uid.json"
 DEFAULT_CHEXBERT_PREDICTIONS_PATH = CHEXONE_REPORT_CHEXPERT_LABELS_PATH
 CHEXBERT_PREDICTIONS_PATH = Path(LOCAL_CHEXBERT_PREDICTIONS_PATH) if LOCAL_CHEXBERT_PREDICTIONS_PATH else DEFAULT_CHEXBERT_PREDICTIONS_PATH
+VISUALCHEXBERT_PREDICTIONS_PATH = (
+    Path(LOCAL_VISUALCHEXBERT_PREDICTIONS_PATH)
+    if LOCAL_VISUALCHEXBERT_PREDICTIONS_PATH
+    else DEFAULT_VISUALCHEXBERT_PREDICTIONS_PATH
+)
 CHEXBERT_OVERRIDES = load_prediction_overrides(CHEXBERT_PREDICTIONS_PATH)
 CHEXBERT_STATE_OVERRIDES = load_prediction_state_overrides(CHEXBERT_PREDICTIONS_PATH)
+VISUALCHEXBERT_OVERRIDES = load_prediction_overrides(VISUALCHEXBERT_PREDICTIONS_PATH)
+VISUALCHEXBERT_STATE_OVERRIDES = load_prediction_state_overrides(VISUALCHEXBERT_PREDICTIONS_PATH)
 
 
 def chexbert_vector(identifier: str, report_text: str | None = None) -> dict[str, float]:
@@ -1278,6 +1295,36 @@ def chexbert_state_vector(identifier: str, report_text: str | None = None) -> di
     )
 
 
+def visualchexbert_vector(identifier: str, report_text: str | None = None) -> dict[str, float]:
+    key = str(identifier)
+    if key in VISUALCHEXBERT_OVERRIDES:
+        return dict(VISUALCHEXBERT_OVERRIDES[key])
+    if report_text:
+        report_hash = stable_hash({"report_text": normalize_text(report_text)})
+        if report_hash in VISUALCHEXBERT_OVERRIDES:
+            return dict(VISUALCHEXBERT_OVERRIDES[report_hash])
+    raise RuntimeError(
+        "Missing required VisualCheXbert labels for "
+        f"`{key}`. Create {VISUALCHEXBERT_PREDICTIONS_PATH} from Stage 1 CheXOne report text "
+        f"using checkpoint {VISUALCHEXBERT_CHECKPOINT_DIR}."
+    )
+
+
+def visualchexbert_state_vector(identifier: str, report_text: str | None = None) -> dict[str, str]:
+    key = str(identifier)
+    if key in VISUALCHEXBERT_STATE_OVERRIDES:
+        return dict(VISUALCHEXBERT_STATE_OVERRIDES[key])
+    if report_text:
+        report_hash = stable_hash({"report_text": normalize_text(report_text)})
+        if report_hash in VISUALCHEXBERT_STATE_OVERRIDES:
+            return dict(VISUALCHEXBERT_STATE_OVERRIDES[report_hash])
+    raise RuntimeError(
+        "Missing required VisualCheXbert state labels for "
+        f"`{key}`. Create {VISUALCHEXBERT_PREDICTIONS_PATH} from Stage 1 CheXOne report text "
+        f"using checkpoint {VISUALCHEXBERT_CHECKPOINT_DIR}."
+    )
+
+
 def import_external_stage1(studies: list[IUStudy]) -> None:
     if not USE_EXTERNAL_VERIFIED_ARTIFACTS:
         return
@@ -1303,9 +1350,14 @@ def import_external_stage1(studies: list[IUStudy]) -> None:
             raise RuntimeError(f"Imported Stage 1 report text is empty for uid={study.uid}")
         stage1_payload["parsed_vector"] = chexbert_vector(study.uid, report_text)
         stage1_payload["parsed_state_vector"] = chexbert_state_vector(study.uid, report_text)
+        stage1_payload["visualchexbert_vector"] = visualchexbert_vector(study.uid, report_text)
+        stage1_payload["visualchexbert_state_vector"] = visualchexbert_state_vector(study.uid, report_text)
         stage1_payload["parse_diagnostics"] = {
             "source": "chexbert_prediction_for_external_chexone_report",
             "report_text_chars": len(report_text),
+            "chexbert_labels_path": str(CHEXBERT_PREDICTIONS_PATH),
+            "visualchexbert_labels_path": str(VISUALCHEXBERT_PREDICTIONS_PATH),
+            "visualchexbert_checkpoint_dir": str(VISUALCHEXBERT_CHECKPOINT_DIR),
         }
         stage1_payload["cache_source"] = "external_verified_chexone_reports"
 
@@ -1371,10 +1423,15 @@ if pending_stage1:
                     "impression": parsed_report["impression"],
                     "report_text": parsed_report["report_text"],
                     "parsed_vector": chexbert_vector(study.uid, report_text),
-                        "parsed_state_vector": chexbert_state_vector(study.uid, report_text),
+                    "parsed_state_vector": chexbert_state_vector(study.uid, report_text),
+                    "visualchexbert_vector": visualchexbert_vector(study.uid, report_text),
+                    "visualchexbert_state_vector": visualchexbert_state_vector(study.uid, report_text),
                     "parse_diagnostics": {
                         "source": "chexbert_prediction_for_stage1_report",
                         "report_text_chars": len(report_text),
+                        "chexbert_labels_path": str(CHEXBERT_PREDICTIONS_PATH),
+                        "visualchexbert_labels_path": str(VISUALCHEXBERT_PREDICTIONS_PATH),
+                        "visualchexbert_checkpoint_dir": str(VISUALCHEXBERT_CHECKPOINT_DIR),
                     },
                     "status": "success",
                     "updated_at": utc_now(),
@@ -1792,8 +1849,11 @@ print_stage_summary("Stage 2a", [STAGE2A_DIR / f"{study.uid}.json" for study in 
 # Output:
 # - one Stage 2b JSON with top pathology hits
 #
-# Stage 2b and Stage 3 use CheXbert labels only. If labels are missing, the
-# notebook fails clearly instead of deriving labels from report text.
+# Stage 2b and Stage 3 use CheXbert labels for pathology retrieval and
+# retrieval-text evidence. If labels are missing, the notebook fails clearly
+# instead of deriving labels with keywords. VisualCheXbert is not a replacement
+# for these retrieval-bank CheXbert labels; it is used separately as Stage 1
+# report-label support.
 
 # %%
 def build_pathology_bank_paths() -> dict[str, Path]:
@@ -2186,14 +2246,24 @@ print_stage_summary("Stage 3", [STAGE3_DIR / f"{study.uid}.json" for study in iu
 #
 # Purpose:
 # - compare image-first evidence against retrieval-text evidence
+# - use VisualCheXbert as auxiliary support over the Stage 1 CheXOne report text
 # - assign one fused state per CheXpert finding
 #
 # Input:
 # - Stage 1 `parsed_vector`
+# - Stage 1 `visualchexbert_vector`
 # - Stage 3 `text_vector`
 #
 # Output:
 # - one Stage 4 JSON with `fusion_table`
+#
+# CheXbert and VisualCheXbert roles are intentionally separate:
+# - `parsed_vector` / `parsed_state_vector`: CheXbert labels over the Stage 1 CheXOne report text
+# - `visualchexbert_vector` / `visualchexbert_state_vector`: VisualCheXbert labels over the same Stage 1 report text
+# - `text_vector` / `text_state_vector`: CheXbert aggregation over retrieved report context
+#
+# VisualCheXbert is never replaced by normal CheXbert where VisualCheXbert
+# support is expected. It is also not used as a keyword fallback.
 
 # %%
 def fuse_vectors(
@@ -2201,25 +2271,34 @@ def fuse_vectors(
     text_scores: dict[str, float],
     image_state_vector: dict[str, str] | None = None,
     text_state_vector: dict[str, str] | None = None,
+    visualchexbert_scores: dict[str, float] | None = None,
+    visualchexbert_state_vector: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
     decisions: list[dict[str, Any]] = []
     image_states = image_state_vector or {}
     text_states = text_state_vector or {}
+    visualchexbert_scores = visualchexbert_scores or {}
+    visualchexbert_states = visualchexbert_state_vector or {}
     for finding in CHEXPERT_FINDINGS:
         image_score = float(image_scores.get(finding, 0.0))
         text_score = float(text_scores.get(finding, 0.0))
+        visualchexbert_score = float(visualchexbert_scores.get(finding, 0.0))
         image_label_state = _normalize_chexbert_state(image_states.get(finding, "blank"))
         text_label_state = _normalize_chexbert_state(text_states.get(finding, "blank"))
+        visualchexbert_label_state = _normalize_chexbert_state(visualchexbert_states.get(finding, "blank"))
         image_positive = image_score >= IMAGE_POSITIVE_THRESHOLD
         text_positive = text_score >= TEXT_POSITIVE_THRESHOLD
+        visualchexbert_positive = visualchexbert_score >= IMAGE_POSITIVE_THRESHOLD
 
         if image_positive and text_positive:
             state = "CONFLICT" if abs(image_score - text_score) >= CONFLICT_GAP_THRESHOLD else "CONFIRMED"
+        elif image_positive and visualchexbert_positive:
+            state = "CONFIRMED"
         elif image_positive:
             state = "IMAGE-ONLY"
         elif text_positive:
             state = "TEXT-ONLY"
-        elif image_label_state == "negative" or text_label_state == "negative":
+        elif image_label_state == "negative" or text_label_state == "negative" or visualchexbert_label_state == "negative":
             state = "EXPLICITLY_ABSENT"
         else:
             state = "NOT_MENTIONED"
@@ -2230,8 +2309,10 @@ def fuse_vectors(
                 "state": state,
                 "image_score": image_score,
                 "text_score": text_score,
+                "visualchexbert_score": visualchexbert_score,
                 "image_label_state": image_label_state,
                 "text_label_state": text_label_state,
+                "visualchexbert_label_state": visualchexbert_label_state,
             }
         )
     return decisions
@@ -2247,7 +2328,12 @@ def stage4_has_quality_gate(path: Path) -> bool:
     payload = read_json(path)
     return (
         isinstance(payload, dict)
-        and all(isinstance(row.get("image_label_state"), str) and isinstance(row.get("text_label_state"), str) for row in payload.get("fusion_table", []))
+        and all(
+            isinstance(row.get("image_label_state"), str)
+            and isinstance(row.get("text_label_state"), str)
+            and isinstance(row.get("visualchexbert_label_state"), str)
+            for row in payload.get("fusion_table", [])
+        )
     )
 
 
@@ -2274,6 +2360,8 @@ for index, study in enumerate(
         stage3_payload["text_vector"],
         stage1_payload.get("parsed_state_vector"),
         stage3_payload.get("text_state_vector"),
+        stage1_payload.get("visualchexbert_vector") or visualchexbert_vector(study.uid, stage1_payload.get("report_text")),
+        stage1_payload.get("visualchexbert_state_vector") or visualchexbert_state_vector(study.uid, stage1_payload.get("report_text")),
     )
     write_json(output_path, {"uid": study.uid, "fusion_table": fusion_table, "status": "success", "updated_at": utc_now()})
 
