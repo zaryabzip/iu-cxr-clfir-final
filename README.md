@@ -12,7 +12,9 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 │   ├── iu_pipeline_e2e_clfir_final.ipynb
 │   ├── iu_pipeline_e2e_clfir_final.py
 │   ├── iu_pipeline_baseline_yi_5_agent.ipynb
-│   └── iu_pipeline_baseline_yi_5_agent.py
+│   ├── iu_pipeline_baseline_yi_5_agent.py
+│   ├── iu_pipeline_proposed_improvement_1.ipynb
+│   └── iu_pipeline_proposed_improvement_1.py
 └── results/
     ├── baseline/
     │   ├── summary.json
@@ -31,7 +33,8 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── summary.json
     │   └── per_study_summary.csv
     ├── proposed_improvement_1/
-    │   └── .gitkeep
+    │   ├── summary.json
+    │   └── per_study_summary.csv
     └── comparisons/
         ├── judge_criteria_comparison_dashboard.png
         ├── automatic_metrics_comparison_dashboard.png
@@ -147,31 +150,51 @@ The main failure mode was the LLaVA-Med visual agent. In the 200-study run, the 
 
 ## Proposed Improvement 1 Results
 
-The `results/proposed_improvement_1/` folder is reserved for the first proposed improvement pipeline. This is not the main submitted `clfir_final` method and it is not a CLFIR adapter pipeline.
+The `results/proposed_improvement_1/` folder contains the first proposed improvement pipeline. This is not the main submitted `clfir_final` method and it is not a CLFIR adapter pipeline.
 
 Proposed Improvement 1 design:
 
 - Starting point: an earlier IU end-to-end pipeline with image-first report generation, visual retrieval, pathology-aware retrieval, multi-stage report composition, and evaluation.
 - Direct image model: CheXOne produces the image-first draft report.
-- Retrieval: uses the original visual/pathology retrieval structure from the proposed-improvement notebook rather than adding CLFIR.
-- Label evidence: VisualCheXbert and keyword-derived label fallbacks were removed from the cleaned version.
-- CheXbert use: CheXbert labels are used for report-text evidence extraction, including positive, uncertain, negative, and blank/not-mentioned states.
-- Important label-state fix: raw CheXbert negative `0` is mapped internally to the state `negative` and score `-1.0`; blank/not-mentioned remains `0.0`.
+- Retrieval: uses the original visual/pathology retrieval structure from the proposed-improvement notebook, without CLFIR.
+- Label evidence: CheXbert labels are used for report-text evidence extraction, including positive, uncertain, negative, and blank/not-mentioned states.
+- VisualCheXbert use: VisualCheXbert is retained as an auxiliary label source over the Stage 1 CheXOne report text, not as an image model.
+- Important label-state fix: raw CheXbert/VisualCheXbert negative `0` is mapped internally to the state `negative` and score `-1.0`; blank/not-mentioned remains `0.0`.
+- Keyword-derived label fallbacks are not used.
 - CheXOne label-prompt outputs are not used as evidence.
 - Local LLM adaptation: Gemini can be used when an API key is provided, but the cleaned local path uses the same Ollama defaults as the CLFIR notebooks.
 - Local Ollama defaults: composer `qwen3.5:9b`, judge `gemma3:12b`.
 - Evaluation alignment: the final evaluation block was updated to report the same compact metrics as `clfir_final`, including BLEU, ROUGE, METEOR, BERTScore, sacreBLEU, chrF, chrF++, and LLM judge overall.
 
-The purpose of this experiment is to test whether the earlier non-CLFIR retrieval pipeline can be made cleaner and more comparable by replacing weak fallback label logic with CheXbert-derived text evidence and by standardizing the LLM/evaluation setup. It should be compared against both the Yi-style baseline and `clfir_final` only after its own independent run outputs are added.
+The purpose of this experiment is to test whether the earlier non-CLFIR retrieval pipeline can be made cleaner and more comparable by replacing weak fallback label logic with CheXbert-derived text evidence and by standardizing the LLM/evaluation setup. This experiment should be read as a separate non-CLFIR ablation, not as a CLFIR variant.
 
-When the files are added, `results/proposed_improvement_1/` should contain the same compact result schema:
+![Proposed Improvement 1 pipeline](assets/proposed_improvement_1_pipeline_diagram.png)
 
-Expected files:
+Proposed Improvement 1 result files are included under `results/proposed_improvement_1/`.
 
-- `results/proposed_improvement_1/summary.json`
-- `results/proposed_improvement_1/per_study_summary.csv`
+Run summary:
 
-This section should summarize what changed relative to `clfir_final`, then report the same evaluation categories: completed reports, completed judge scores, LLM judge overall, automatic text metrics, and clinical judge sub-scores when available.
+- Evaluation limit: `100`
+- Completed pipeline reports: `100/100`
+- Completed pipeline judge scores: `100/100`
+- Pipeline judge overall: `7.600`
+- CheXOne direct judge overall: `7.160`
+- Pipeline BLEU: `0.104`
+- Pipeline ROUGE-1: `0.398`
+- Pipeline ROUGE-2: `0.165`
+- Pipeline ROUGE-L: `0.291`
+- Pipeline METEOR: `0.342`
+- Pipeline BERTScore F1: `0.853`
+- Pipeline sacreBLEU: `11.099`
+- Pipeline chrF: `38.182`
+- Pipeline chrF++: `35.348`
+
+Separate retrieval-only comparison note:
+
+- This is not part of Proposed Improvement 1 itself.
+- It compares the plain BioViL-T visual retrieval used by Proposed Improvement 1 against the CLFIR-projected visual retrieval used by `clfir_final`.
+- On the overlapping 100-study retrieval split, CLFIR improved the top-1 retrieved-report token F1 proxy by about `2.7%` and the mean top-5 token F1 proxy by about `2.5%` over plain BioViL-T. The best-of-top-5 proxy was essentially flat at about `+0.1%`.
+- This means CLFIR gave a small but measurable retrieval-quality improvement in the first retrieved candidates; the larger final-report gains come from evidence fusion and report composition, not retrieval alone.
 
 ## Experimental Comparison
 
