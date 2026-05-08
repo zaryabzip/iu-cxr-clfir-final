@@ -1,4 +1,4 @@
-# IU CXR Report Generation with CLFIR-Guided Evidence Fusion
+# IU CXR Report Generation: Baseline, Structured Fusion, and CLFIR Retrieval
 
 This repository contains the cleaned deliverable for an IU chest X-ray report generation project. The main submitted pipeline is Proposed Improvement 2, implemented as a Jupytext-paired notebook and Python script.
 
@@ -30,9 +30,6 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── standard_metrics_table.csv
     │   ├── judge_metrics_table.csv
     │   └── paper_tables.json
-    ├── more_imp1/
-    │   ├── summary.json
-    │   └── per_study_summary.csv
     ├── proposed_improvement_1/
     │   ├── summary.json
     │   └── per_study_summary.csv
@@ -40,9 +37,11 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── summary.json
     │   └── per_study_summary.csv
     └── comparisons/
-        ├── judge_criteria_comparison_dashboard.png
-        ├── automatic_metrics_comparison_dashboard.png
-        ├── corpus_automatic_metrics.png
+        ├── three_pipeline_automatic_metrics_table.csv
+        ├── three_pipeline_automatic_metrics_table.json
+        ├── three_pipeline_llm_judge_metrics.json
+        ├── gemma_judge_metrics_improvements_only.csv
+        ├── baseline_legacy_judge_metrics.csv
         ├── judge_criteria_paired_scores.csv
         ├── automatic_metrics_paired_scores.csv
         └── comparison_summary.json
@@ -104,6 +103,10 @@ Important run settings:
 - Jupytext format: paired `.ipynb` and `.py`
 
 The paired Python file is included so the notebook can be reviewed as executable source without relying only on notebook JSON.
+
+## External Dependencies
+
+This repository intentionally excludes large datasets, model weights, retrieval banks, and caches. Reproducing the full runs requires the original IU-Xray data, the external retrieval bank, BioViL-T/CLFIR retrieval artifacts, CheXOne resources, CheXbert/VisualCheXbert resources for label evidence, Jupytext, Ollama, and the local Ollama models `qwen3.5:9b` and `gemma3:12b`. The included `results/` files provide compact outputs and metrics so the reported comparisons can be inspected without the full local artifact bundle.
 
 ## Baseline Results
 
@@ -280,7 +283,7 @@ The main paper progression in this repository is:
 2. `proposed_improvement_1`: non-CLFIR structured evidence pipeline.
 3. `proposed_improvement_2`: CLFIR-guided structured evidence pipeline.
 
-The `results/more_imp1/` and `results/comparisons/` folders are retained as historical exploratory material from an Adapter2 variant, but they are not the main three-system progression requested for the deliverable.
+The `results/comparisons/` folder contains compact table-ready CSV/JSON comparisons for the three reported systems. Exploratory Adapter2 outputs and dashboard plots are excluded from the final deliverable structure.
 
 ## Interpretation
 
@@ -298,4 +301,4 @@ This repository does not include:
 - Full per-stage pipeline artifacts.
 - LLM prompt caches.
 
-The compact result files under `results/` are included so the reported metrics and comparison plots can be inspected without requiring the original full artifact bundle.
+The compact result files under `results/` are included so the reported metrics and table-ready comparisons can be inspected without requiring the original full artifact bundle.
