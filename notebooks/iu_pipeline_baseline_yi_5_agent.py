@@ -1,0 +1,2239 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.19.1
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
+# %% [markdown] id="8dTUuGWPF1xL"
+# ## Project Overview 
+#
+# This project builds upon the paper:
+#
+# **"Self-adaptive Global-Local Feature Enhancement for Radiology Report Generation"**
+# https://www.researchgate.net/publication/365633972_Self_adaptive_global-local_feature_enhancement_for_radiology_report_generation
+#
+#
+# The paper proposes a framework that improves radiology report generation by:
+# - Combining **global visual features** (overall image context)
+# - Enhancing **local features** (region-specific abnormalities)
+# - Using a **self-adaptive mechanism** to balance these representations
+#
+# The model is evaluated on standard datasets (e.g., IU X-Ray, MIMIC-CXR) and demonstrates strong performance across:
+# - BLEU (1–4)
+# - METEOR
+# - ROUGE-L
+#
+# ## Baseline We Aim to Beat
+#
+# The results reported in this paper serve as our **primary benchmark**.
+#
+# Our goal:
+# > To achieve **comparable or improved performance** using a framework with:
+# - Minimal reliance on Large Language Models (LLMs)
+# - Greater dependence on **specialized deep learning architectures**
+# - Improved efficiency and deployability in constrained environments
+#
+# ## Our Approach 
+#
+# Instead of heavy LLM-based decoding, we:
+# - Use **task-specific DL models**
+# - Focus on **structured feature extraction**
+# - Optimize for **low-resource and edge-compatible deployment**
+#
+# This makes the approach more suitable for:
+# - Clinical settings with limited compute
+# - Privacy-sensitive environments
+
+# %% [markdown]
+# # 📊 Reference Performance from Prior Work
+#
+# The following results are reported in the original paper and serve as a **reference point** for model behavior.
+#
+#
+# ### Metrics Reported:
+# - BLEU-1 to BLEU-4  
+# - METEOR  
+# - ROUGE-L  
+# ---
+#
+# ## How We Use These Results
+#
+# These results are **not treated as a strict leaderboard target**, but as:
+#
+# - A **sanity check** for replication correctness  
+# - A **behavioral reference** for report quality  
+# - A way to understand:
+#   - What strong performance looks like  
+#   - Which components contribute most  
+#
+# ---
+#
+
+# %%
+
+from pathlib import Path
+
+metrics_image_path = Path("metrics_baseline_full.png")
+if metrics_image_path.exists():
+    import cv2
+    import matplotlib.pyplot as plt
+
+    image_bgr = cv2.imread(str(metrics_image_path))
+    image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    plt.imshow(image_rgb)
+    plt.title("METRIC BASELINES")
+    plt.axis("off")
+else:
+    print(f"Reference metrics image not found: {metrics_image_path}")
+
+# %% [markdown]
+# ## 📊 Understanding the Baseline Models
+#
+# This table presents results from prior work on radiology report generation across **IU X-Ray** and **MIMIC-CXR** datasets. Each row corresponds to a different model architecture.
+#
+# ### 🔹 Model Descriptions
+#
+# - **R2Gen**  
+#   A recurrent-based encoder-decoder model that generates reports using visual features and attention mechanisms.
+#
+# - **KERP**  
+#   Incorporates **knowledge graphs** to guide report generation, improving clinical consistency and structured reasoning.
+#
+# - **CMN (Clinical Memory Network)**  
+#   Uses a **memory module** to store and retrieve clinically relevant patterns during generation.
+#
+# - **AlignTransformer**  
+#   A transformer-based model that explicitly aligns **image regions with textual tokens** for better grounding.
+#
+# - **M2TR (Multi-modal Memory Transformer)**  
+#   Combines transformer architecture with **multi-modal memory** to enhance long-range dependencies and context retention.
+#
+# - **AGFNet**  
+#   The proposed **global-local feature enhancement model**, which adaptively balances:
+#   - Global image understanding  
+#   - Local abnormality-focused features  
+#
+# ---
+#
+# ### 🔹 Metrics Overview
+#
+# - **BLEU (BL-1 to BL-4)** → N-gram overlap with ground truth  
+# - **RG-L (ROUGE-L)** → Longest sequence matching (structure)  
+# - **MTOR (METEOR)** → Semantic and linguistic alignment  
+#
+# ---
+#
+# ### 🔹 Key Insight
+#
+# Performance improvements across models largely stem from:
+# - Better **visual-text alignment**
+# - Incorporation of **clinical structure or memory**
+# - Enhanced **feature representations (global + local)**
+#
+# This progression motivates our approach toward **structured, low-LLM frameworks**.
+#
+# # IMPORTANT NOTE:
+# These metrics are complementary baselines and not the main baseline that is reproduced in the following cells. They are cited to mention other non agentic models for report generation.
+
+# %% [markdown]
+#
+# # ACTUAL BASELINE REPRODUCTION STARTS HERE
+# yi_et_al_5_agent_reproduction_colab_drive.ipynb
+#
+# Automatically generated by Colab.
+#
+# Original file is located at
+#     https://colab.research.google.com/drive/1ljOO7_UU3vxQCjWnXWHtg2WFCJTnZOQU
+#
+# # Yi et al. 2025 Five-Agent Baseline Reproduction
+#
+# This notebook is a single-file reproduction scaffold for the paper **"A Multimodal Multi-Agent Framework for Radiology Report Generation"** (Yi et al., 2025).
+#
+# It implements only the components stated in the paper:
+#
+# - retrieval agent: CLIP retriever fine-tuned on **3,000 MIMIC-CXR image-report pairs**
+# - draft agent: **GPT-4o**
+# - refiner agent: **GPT-4o**
+# - vision agent: **LLaVA-Med 1.5 (7B)**
+# - synthesis agent: **GPT-4o**
+# - retrieval depth: **top-k = 5**
+# - IU X-Ray evaluation: **2,069 train pairs** for the retrieval database and **590 test pairs** for evaluation
+# - metrics in this cleaned version: **BLEU, ROUGE-1, ROUGE-2, ROUGE-L, METEOR, BERTScore**, plus the same reference-vs-candidate LLM judge rubric used by the CLFIR pipelines
+#
+# The paper does not release code, prompts, exact IU split IDs, or exact MIMIC subset IDs. This notebook stays paper-faithful by using the paper-stated models and counts, and by using the public RULE retriever defaults where Yi et al. say they follow RULE.
+#
+# # IMPORTANT NOTE:
+# the replication was only done on 200 samples intsead of the original 590 done in the paper.
+#
+# **"Baseline in this paper is just the single LLAVA model wich has a seperate section below as well, on top of which they built their 5 agent pipeline"**
+#
+# ## 1. Install Dependencies
+#
+# This cell installs everything needed inside the notebook itself so the notebook does not depend on any local `.py` file in this repo.
+#
+
+# %% [markdown]
+# # 📊 Results & Artifacts
+#
+# ## Overview
+#
+# All results, artifacts, and evaluation outputs for this project are available via the following Google Drive link:
+#
+# 🔗 **https://drive.google.com/drive/folders/1R-ssH_gVXN7sLTxt2FoxTYND-uAkVw8x?usp=sharing**
+#
+# These files include:
+# - Automatic evaluation metrics  
+# - LLM-judge based evaluations  
+# - Per-sample generated reports  
+# - Retrieval artifacts and embeddings  
+#
+# ---
+#
+# ## 📁 File Structure & Descriptions
+#
+# ### 🔹 Summary Tables
+# - **`standard_metrics_table.csv`**  
+#   → Summary of automatic metrics (BLEU, METEOR, ROUGE) comparing **baseline vs five-agent framework**
+#
+# - **`judge_metrics_table.csv`**  
+#   → Summary of **LLM-judge scores** comparing baseline vs five-agent outputs
+#
+# - **`paper_tables.json`**  
+#   → Combined summary tables formatted for reporting and analysis
+#
+# ---
+#
+# ### 🔹 Five-Agent Framework Outputs
+# - **`five_agent_results.json`**  
+#   → Per-sample generated radiology reports
+#
+# - **`five_agent_metrics.json`**  
+#   → Aggregate automatic metric scores
+#
+# - **`five_agent_judge_scores.json`**  
+#   → Per-sample evaluation scores from LLM-judge
+#
+# - **`five_agent_judge_metrics.json`**  
+#   → Averaged LLM-judge evaluation metrics
+#
+# ---
+#
+# ### 🔹 Baseline Outputs
+# - **`baseline_results590.json`**  
+#   → Per-sample results for **590-case evaluation run**
+#
+# - **`baseline_results.json`**  
+#   → Per-sample results for **smaller (≈200-case) run**
+#
+# - **`baseline_metrics.json`**  
+#   → Aggregate automatic metrics for baseline
+#
+# - **`baseline_judge_metrics.json`**  
+#   → Averaged LLM-judge scores for baseline
+#
+# ---
+#
+# ### 🔹 Retrieval & Embedding Artifacts
+# - **`retriever_openclip_mimic3000.pt`**  
+#   → Trained OpenCLIP-based retrieval model (MIMIC subset)
+#
+# - **`iu_retrieval_bank.pt`**  
+#   → Precomputed embedding bank / index for IU X-Ray dataset
+#
+# ---
+#
+# ## 🧠 Interpretation Notes
+#
+# - Automatic metrics (BLEU, etc.) capture **linguistic similarity**
+# - LLM-judge metrics aim to capture:
+#   - Clinical correctness  
+#   - Coherence  
+#   - Relevance  
+#
+# - The combination allows for a more **holistic evaluation** of:
+#   - Structured DL-based generation  
+#   - Reduced-LLM frameworks  
+#
+# ---
+
+# %% colab={"base_uri": "https://localhost:8080/"} id="DdAKAfeMF1xR" outputId="e628930b-06b4-455a-e3e0-ce2ecb58b82b"
+import os
+import subprocess
+import sys
+import tarfile
+
+PACKAGES = [
+    "numpy==1.26.4",
+    "pandas==2.1.4",
+    "scipy==1.11.4",
+    "scikit-learn==1.2.2",
+    "pillow==9.4.0",
+    "tqdm==4.67.1",
+    "datasets==2.16.1",
+    "nltk==3.9.1",
+    "rouge-score==0.1.2",
+    "bert-score==0.3.13",
+    "open-clip-torch==2.24.0",
+    "transformers==4.36.2",
+    "tokenizers==0.15.2",
+    "accelerate==0.21.0",
+    "sentencepiece==0.1.99",
+    "peft==0.4.0",
+    "einops==0.6.1",
+    "einops-exts==0.0.4",
+    "timm==0.9.12",
+    "shortuuid==1.0.13",
+    "protobuf==4.25.3",
+    "requests==2.31.0",
+    "ftfy==6.1.3",
+    "httpx==0.28.1",
+    "pydantic==2.10.6",
+    "safetensors==0.4.2",
+    "huggingface-hub==0.20.3",
+    "ipykernel",
+]
+
+INSTALL_BASELINE_DEPENDENCIES = os.getenv("YI_BASELINE_INSTALL_DEPENDENCIES", "0").strip().lower() in {"1", "true", "yes"}
+DOWNLOAD_BASELINE_DATASETS = os.getenv("YI_BASELINE_DOWNLOAD_DATASETS", "0").strip().lower() in {"1", "true", "yes"}
+
+if INSTALL_BASELINE_DEPENDENCIES:
+    subprocess.run([sys.executable, "-m", "pip", "install", "--no-cache-dir", *PACKAGES], check=True)
+    subprocess.run([sys.executable, "-m", "pip", "install", "--no-cache-dir", "google-genai==1.12.1"], check=True)
+    print("Notebook dependencies installed.")
+else:
+    print("Dependency install skipped. Set YI_BASELINE_INSTALL_DEPENDENCIES=1 to install pinned dependencies.")
+
+if DOWNLOAD_BASELINE_DATASETS:
+    from pathlib import Path
+    import kagglehub
+
+    dataset_root = Path(os.getenv("YI_BASELINE_DATASET_DOWNLOAD_ROOT", "/Users/zippy/Desktop/DL_proj/datasets"))
+    dataset_root.mkdir(parents=True, exist_ok=True)
+
+    mimic_path = Path(kagglehub.dataset_download("simhadrisadaram/mimic-cxr-dataset"))
+    iu_path = Path(kagglehub.dataset_download("raddar/chest-xrays-indiana-university"))
+    os.environ["YI_BASELINE_MIMIC_ROOT"] = str(mimic_path)
+    os.environ["YI_BASELINE_IU_ROOT"] = str(iu_path)
+    print("Using MIMIC root:", os.environ["YI_BASELINE_MIMIC_ROOT"])
+    print("Using IU root:", os.environ["YI_BASELINE_IU_ROOT"])
+else:
+    print("Dataset download skipped. Existing local DL_proj dataset paths are used by default.")
+
+
+
+# %% [markdown] id="sXOFLR0wF1xS"
+# ## 2. Paper Configuration
+#
+# This Colab variant defaults to Google Drive paths so downloaded models, cloned repos,
+# checkpoints, caches, and outputs persist under Drive between sessions.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/"} id="cDM6261RF1xS" outputId="24d01ea1-5c48-42b7-b9cc-2c66ece9cc6e"
+
+from pathlib import Path
+import os
+
+def ask_yes_no_env(env_name: str, prompt: str, default: bool = False) -> bool:
+    value = os.getenv(env_name, "").strip().lower()
+    if value in {"1", "true", "yes", "y"}:
+        return True
+    if value in {"0", "false", "no", "n"}:
+        return False
+    try:
+        answer = input(prompt).strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        return default
+    if not answer:
+        return default
+    return answer in {"1", "true", "yes", "y"}
+
+
+IN_COLAB = Path("/content").exists()
+USE_GOOGLE_DRIVE = False
+DRIVE_ROOT: Path | None = None
+
+if IN_COLAB:
+    USE_GOOGLE_DRIVE = ask_yes_no_env(
+        "YI_BASELINE_USE_GOOGLE_DRIVE",
+        "Use Google Drive for datasets, caches, and outputs? [y/N]: ",
+        default=False,
+    )
+    if USE_GOOGLE_DRIVE:
+        try:
+            from google.colab import drive as google_drive  # type: ignore
+
+            google_drive.mount("/content/drive")
+            DRIVE_ROOT = Path(os.getenv("YI_BASELINE_DRIVE_ROOT", "/content/drive/MyDrive")).expanduser().resolve()
+        except Exception as exc:
+            print(f"Google Drive mount failed; falling back to local Colab storage: {exc}")
+            USE_GOOGLE_DRIVE = False
+            DRIVE_ROOT = None
+
+if USE_GOOGLE_DRIVE and DRIVE_ROOT is not None:
+    WORKSPACE_ROOT = Path(os.getenv("DL_PROJ_ROOT", str(DRIVE_ROOT / "DL_proj"))).expanduser().resolve()
+    DEFAULT_ARTIFACT_ROOT = DRIVE_ROOT / "yi_et_al_5_agent_colab" / "yi_et_al_5_agent_runtime"
+    DEFAULT_MIMIC_ROOT = DRIVE_ROOT / "datasets" / "mimic-cxr-dataset"
+    DEFAULT_IU_ROOT = DRIVE_ROOT / "datasets" / "chest-xrays-indiana-university"
+else:
+    default_workspace = "/content/DL_proj" if IN_COLAB else "/Users/zippy/Desktop/DL_proj"
+    WORKSPACE_ROOT = Path(os.getenv("DL_PROJ_ROOT", default_workspace)).expanduser().resolve()
+    DEFAULT_ARTIFACT_ROOT = WORKSPACE_ROOT / "pipeline" / "artifacts" / "iu_pipeline_bundle" / "current_yi_5_agent_baseline"
+    DEFAULT_MIMIC_ROOT = WORKSPACE_ROOT / "MIMIC"
+    DEFAULT_IU_ROOT = WORKSPACE_ROOT / "IU-Xray"
+
+BUNDLE_ROOT = WORKSPACE_ROOT / "pipeline" / "artifacts" / "iu_pipeline_bundle"
+ARTIFACT_ROOT = Path(os.getenv("YI_BASELINE_ARTIFACT_ROOT", str(DEFAULT_ARTIFACT_ROOT))).expanduser().resolve()
+MIMIC_ROOT = Path(os.getenv("YI_BASELINE_MIMIC_ROOT", str(DEFAULT_MIMIC_ROOT))).expanduser().resolve()
+IU_ROOT = Path(os.getenv("YI_BASELINE_IU_ROOT", str(DEFAULT_IU_ROOT))).expanduser().resolve()
+
+MIMIC_TRAIN_CSV = Path(os.getenv("YI_BASELINE_MIMIC_TRAIN_CSV", str(MIMIC_ROOT / "mimic_cxr_aug_train.csv")))
+MIMIC_IMAGE_ROOT = Path(os.getenv("YI_BASELINE_MIMIC_IMAGE_ROOT", str(MIMIC_ROOT / "official_data_iccv_final")))
+IU_REPORTS_CSV = Path(os.getenv("YI_BASELINE_IU_REPORTS_CSV", str(IU_ROOT / "indiana_reports.csv")))
+IU_PROJECTIONS_CSV = Path(os.getenv("YI_BASELINE_IU_PROJECTIONS_CSV", str(IU_ROOT / "indiana_projections.csv")))
+IU_IMAGES_DIR = Path(os.getenv("YI_BASELINE_IU_IMAGES_DIR", str(IU_ROOT / "images" / "images_normalized")))
+IU_TRAIN_SPLIT_FILE = os.getenv("YI_BASELINE_IU_TRAIN_SPLIT_FILE", "")
+IU_TEST_SPLIT_FILE = os.getenv("YI_BASELINE_IU_TEST_SPLIT_FILE", "")
+
+RUNTIME_ROOT = ARTIFACT_ROOT
+HF_HOME = RUNTIME_ROOT / "hf_cache"
+LLAVA_MED_REPO_DIR = RUNTIME_ROOT / "LLaVA-Med"
+OUTPUT_DIR = RUNTIME_ROOT / "outputs"
+MPLCONFIGDIR = RUNTIME_ROOT / "mpl_cache"
+XDG_CACHE_HOME = RUNTIME_ROOT / "xdg_cache"
+IU_RETRIEVAL_BANK_PATH = OUTPUT_DIR / "iu_retrieval_bank.pt"
+
+RUNTIME_ROOT.mkdir(parents=True, exist_ok=True)
+HF_HOME.mkdir(parents=True, exist_ok=True)
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+MPLCONFIGDIR.mkdir(parents=True, exist_ok=True)
+XDG_CACHE_HOME.mkdir(parents=True, exist_ok=True)
+
+os.environ.setdefault("HF_HOME", str(HF_HOME))
+os.environ.setdefault("HUGGINGFACE_HUB_CACHE", str(HF_HOME / "hub"))
+os.environ.setdefault("TRANSFORMERS_CACHE", str(HF_HOME / "transformers"))
+os.environ.setdefault("MPLCONFIGDIR", str(MPLCONFIGDIR))
+os.environ.setdefault("XDG_CACHE_HOME", str(XDG_CACHE_HOME))
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
+# Paper-stated model choices.
+RETRIEVER_MODEL_ID = "hf-hub:thaottn/OpenCLIP-resnet50-CC12M"
+VISION_MODEL_ID = "microsoft/llava-med-v1.5-mistral-7b"
+GPT_MODEL_ID = "gemini-2.5-flash"
+JUDGE_MODEL_ID = "gemini-2.5-pro"
+LOCAL_OLLAMA_COMPOSER_MODEL_NAME = os.getenv("LOCAL_OLLAMA_COMPOSER_MODEL_NAME", "qwen3.5:9b").strip()
+LOCAL_OLLAMA_JUDGE_MODEL_NAME = os.getenv("LOCAL_OLLAMA_JUDGE_MODEL_NAME", "gemma3:12b").strip()
+LOCAL_OLLAMA_CHAT_URL = os.getenv("LOCAL_OLLAMA_CHAT_URL", "http://localhost:11434/api/chat").strip()
+LOCAL_OLLAMA_TIMEOUT_SECONDS = int(os.getenv("LOCAL_OLLAMA_TIMEOUT_SECONDS", "1000"))
+LOCAL_OLLAMA_COMPOSER_NUM_CTX = int(os.getenv("LOCAL_OLLAMA_COMPOSER_NUM_CTX", "32768"))
+LOCAL_OLLAMA_COMPOSER_NUM_PREDICT = int(os.getenv("LOCAL_OLLAMA_COMPOSER_NUM_PREDICT", "16384"))
+LOCAL_OLLAMA_COMPOSER_TEMPERATURE = float(os.getenv("LOCAL_OLLAMA_COMPOSER_TEMPERATURE", "0.7"))
+LOCAL_OLLAMA_COMPOSER_TOP_P = float(os.getenv("LOCAL_OLLAMA_COMPOSER_TOP_P", "0.9"))
+LOCAL_OLLAMA_JUDGE_NUM_CTX = int(os.getenv("LOCAL_OLLAMA_JUDGE_NUM_CTX", "8192"))
+LOCAL_OLLAMA_JUDGE_NUM_PREDICT = int(os.getenv("LOCAL_OLLAMA_JUDGE_NUM_PREDICT", "1024"))
+LOCAL_OLLAMA_JUDGE_TEMPERATURE = float(os.getenv("LOCAL_OLLAMA_JUDGE_TEMPERATURE", "0.1"))
+LOCAL_OLLAMA_JUDGE_TOP_P = float(os.getenv("LOCAL_OLLAMA_JUDGE_TOP_P", "0.8"))
+USE_LOCAL_OLLAMA_LLM = False
+
+# Yi et al. paper settings.
+MIMIC_FINE_TUNE_PAIRS = 3000
+IU_TRAIN_SIZE = 2069
+IU_TEST_SIZE = 200
+TOP_K = 5
+
+# RULE retriever defaults from `finetune_clip.sh`.
+# The paper does not discuss hardware setup, so this reproduction uses gradient accumulation
+RETRIEVER_BATCH_SIZE = int(os.getenv("YI_BASELINE_RETRIEVER_BATCH_SIZE", "512"))
+RETRIEVER_EFFECTIVE_BATCH_SIZE = int(os.getenv("YI_BASELINE_RETRIEVER_EFFECTIVE_BATCH_SIZE", "512"))
+RETRIEVER_GRAD_ACCUM_STEPS = max(1, (RETRIEVER_EFFECTIVE_BATCH_SIZE + RETRIEVER_BATCH_SIZE - 1) // RETRIEVER_BATCH_SIZE)
+RETRIEVER_LR = 1e-4
+RETRIEVER_EPOCHS = 360
+RETRIEVER_WORKERS = int(os.getenv("YI_BASELINE_RETRIEVER_WORKERS", "4"))
+RETRIEVER_USE_DATA_PARALLEL = os.getenv("YI_BASELINE_RETRIEVER_USE_DATA_PARALLEL", "1") == "1"
+RETRIEVER_CHECKPOINT_PATH = OUTPUT_DIR / "retriever_openclip_mimic3000.pt"
+RETRIEVER_CHECKPOINT_TAR_PATH = Path(
+    os.getenv(
+        "YI_BASELINE_RETRIEVER_CHECKPOINT_TAR",
+        str(ARTIFACT_ROOT / "models" / "retriever_openclip_mimic3000.tar"),
+    )
+).expanduser()
+
+# Generation settings kept deterministic.
+GPT_TEMPERATURE = 0.0
+CLAUDE_TEMPERATURE = 0.0
+LLAVA_MAX_NEW_TOKENS = 256
+LLAVA_NUM_BEAMS = 1
+LLAVA_CONV_MODE = "mistral_instruct"
+LLAVA_USE_DEVICE_MAP_AUTO = os.getenv("YI_BASELINE_LLAVA_USE_DEVICE_MAP_AUTO", "0") == "1"
+LLAVA_LOAD_IN_8BIT = os.getenv("YI_BASELINE_LLAVA_LOAD_IN_8BIT", "0") == "1"
+
+# Set GEMINI_API_KEY in the environment before running Gemini-backed generation
+# or judge cells. This cleaned local version does not write a placeholder key.
+
+print("MIMIC:", MIMIC_TRAIN_CSV)
+print("IU reports:", IU_REPORTS_CSV)
+print("IU projections:", IU_PROJECTIONS_CSV)
+print("IU images:", IU_IMAGES_DIR)
+print("Runtime root:", RUNTIME_ROOT)
+
+
+
+# %% [markdown] id="mX3V6gDrF1xT"
+# ## 3. Imports And Shared Helpers
+#
+# These helpers keep the notebook readable and keep all logic in this file.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/"} id="-ZR6v1kqF1xT" outputId="86fd1be9-a19b-4465-eaa7-4bd9b08d3580"
+from dataclasses import dataclass
+import ast
+import csv
+import getpass
+import json
+import math
+import re
+import subprocess
+import sys
+import tarfile
+from typing import Any
+from urllib import request
+from collections import defaultdict
+from contextlib import nullcontext
+
+import numpy as np
+import pandas as pd
+from PIL import Image
+from tqdm.auto import tqdm
+
+import torch
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+
+import open_clip
+from datasets import load_dataset
+try:
+    from google import genai  # type: ignore
+except Exception:
+    genai = None
+
+from rouge_score import rouge_scorer
+from bert_score import score as bert_score
+import nltk
+from nltk.translate.bleu_score import corpus_bleu
+from nltk.translate.meteor_score import meteor_score
+
+
+def choose_device() -> str:
+    if torch.cuda.is_available():
+        return "cuda"
+    mps_backend = getattr(torch.backends, "mps", None)
+    if mps_backend is not None and mps_backend.is_available():
+        return "mps"
+    return "cpu"
+
+
+DEVICE = choose_device()
+print("device:", DEVICE)
+if DEVICE == "cuda":
+    print("cuda devices visible:", torch.cuda.device_count())
+
+
+@dataclass
+class MimicPair:
+    subject_id: str
+    study_id: str
+    image_path: str
+    report_text: str
+
+
+@dataclass
+class IUStudy:
+    uid: str
+    study_key: str
+    image_path: str
+    report_text: str
+    findings: str
+    impression: str
+    split: str
+
+
+def parse_list_cell(value):
+    if pd.isna(value):
+        return []
+    text = str(value).strip()
+    if not text or text == "[]":
+        return []
+    parsed = ast.literal_eval(text)
+    if isinstance(parsed, list):
+        return [str(item) for item in parsed]
+    return [str(parsed)]
+
+
+def normalize_text(text: str) -> str:
+    text = str(text or "").lower().strip()
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
+def build_report_text(findings: str, impression: str) -> str:
+    parts = []
+    findings = str(findings or "").strip()
+    impression = str(impression or "").strip()
+    if findings:
+        parts.append(f"Findings: {findings}")
+    if impression:
+        parts.append(f"Impression: {impression}")
+    return "\n".join(parts).strip()
+
+
+def extract_impression_only(report_text: str) -> str:
+    report_text = str(report_text or "").strip()
+    match = re.search(r"impression\s*:\s*(.*)", report_text, flags=re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return report_text
+
+
+def extract_mimic_study_id(image_rel_path: str) -> str:
+    match = re.search(r"/(s\d+)/", image_rel_path)
+    if match is None:
+        raise ValueError(f"Could not parse study id from path: {image_rel_path}")
+    return match.group(1)
+
+
+def choose_mimic_frontal_image(study_paths, ap_paths, pa_paths, lateral_paths):
+    pa_candidates = sorted([p for p in study_paths if p in pa_paths])
+    if pa_candidates:
+        return pa_candidates[0]
+    ap_candidates = sorted([p for p in study_paths if p in ap_paths])
+    if ap_candidates:
+        return ap_candidates[0]
+    return None
+
+
+def choose_iu_frontal_row(projection_rows: pd.DataFrame) -> pd.Series:
+    projection_text = projection_rows["projection"].astype(str).str.lower()
+    frontal_rows = projection_rows[projection_text.str.contains("frontal|pa|ap", regex=True, na=False)]
+    if not frontal_rows.empty:
+        return frontal_rows.iloc[0]
+    return projection_rows.iloc[0]
+
+
+def local_iu_study_key(filename: str) -> str:
+    match = re.match(r"^(\d+_IM-\d+)", Path(filename).name)
+    if match is None:
+        raise ValueError(f"Could not parse IU study key from filename: {filename}")
+    return match.group(1)
+
+
+def hf_iu_study_key(image_path: str) -> str:
+    image_path = str(image_path)
+    patterns = [
+        r"CXR\d+_(\d+_IM-\d+)",
+        r"CXR(\d+_IM-\d+)",
+        r"/(\d+_IM-\d+)(?:/|$)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, image_path)
+        if match is not None:
+            return match.group(1)
+    raise ValueError(f"Could not parse HF IU study key from path: {image_path}")
+
+
+def save_json(path: Path, payload) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+
+
+def load_json_if_exists(path: Path) -> Any | None:
+    path = Path(path)
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def save_json_atomic(path: Path, payload) -> None:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with tmp_path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+    tmp_path.replace(path)
+
+
+def offload_model_from_gpu(model) -> None:
+    if model is None:
+        return
+    if hasattr(model, "to"):
+        model.to("cpu")
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+
+def place_model_on_primary_device(model):
+    if DEVICE == "cuda" and torch.cuda.is_available():
+        model = model.to("cuda:0")
+    elif DEVICE == "mps":
+        model = model.to("mps")
+    else:
+        model = model.to("cpu")
+    return model
+
+
+def get_mimic_image_root_candidates() -> list[Path]:
+    candidates = [
+        MIMIC_IMAGE_ROOT,
+        MIMIC_ROOT,
+        MIMIC_ROOT / "official_data_iccv_final",
+        MIMIC_ROOT / "mimic_cxr",
+        MIMIC_ROOT / "images",
+    ]
+    ordered = []
+    seen = set()
+    for path in candidates:
+        key = str(path)
+        if key not in seen:
+            seen.add(key)
+            ordered.append(path)
+    return ordered
+
+
+def resolve_mimic_image_path(image_rel_path: str, candidate_roots: list[Path]) -> tuple[Path | None, str | None]:
+    rel_path = Path(image_rel_path)
+    for root in candidate_roots:
+        candidate = root / rel_path
+        if candidate.exists():
+            return candidate, str(root)
+    return None, None
+
+
+
+# %% [markdown] id="7xyQ9dkmF1xT"
+# ## 4. Load The 3,000 MIMIC-CXR Fine-Tuning Pairs
+#
+# Yi et al. state that the retrieval agent is fine-tuned on **3,000 MIMIC-CXR image-report pairs**.
+# This cell reconstructs study-level image-report pairs from the local MIMIC manifest and keeps the first **3,000** valid frontal-preferred pairs in deterministic order.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 1000, "referenced_widgets": ["c24601a15dc1452696ee89ce7482c0c1", "cb3235141bb3471bab001aabb2a9fdcd", "a425790c4ea74fc281bb9db4caf8b6ed", "6e581f623001467882ea01b84f405a1a", "6231707fbf1046dd85a8ee61ddf30542", "57bddfff8f89487cb20dcec247fc1278", "f2d8b49a8ac94d73be9f779efa96e06a", "49e688b39f1b4952b28522ea19168d1a", "cab89aa8291a4b868d8a56371a09e583", "40d6de8dae684686a195b838795ea8d9", "ebde8ce704154fe49bf43b4fcd48e7ba"]} id="Ux5YGDJ0F1xU" outputId="bbfbeaa4-bb23-4ba2-e997-4892d2f3e437"
+
+def load_mimic_pairs(train_csv: Path, image_root: Path, limit: int):
+    df = pd.read_csv(train_csv)
+    pairs: list[MimicPair] = []
+    stats = defaultdict(int)
+    error_examples = []
+    candidate_roots = get_mimic_image_root_candidates()
+    stats["candidate_image_roots"] = [str(path) for path in candidate_roots]
+
+    for row_idx, row in tqdm(df.iterrows(), total=len(df), desc="Loading MIMIC pairs"):
+        try:
+            reports = parse_list_cell(row["text"])
+            all_images = parse_list_cell(row["image"])
+            ap_images = set(parse_list_cell(row["AP"]))
+            pa_images = set(parse_list_cell(row["PA"]))
+            lateral_images = set(parse_list_cell(row["Lateral"]))
+        except Exception as exc:
+            stats["row_parse_error"] += 1
+            if len(error_examples) < 10:
+                error_examples.append({
+                    "row_idx": int(row_idx),
+                    "subject_id": str(row.get("subject_id", "")),
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                    "stage": "parse_list_cell",
+                })
+            continue
+
+        study_to_paths: dict[str, list[str]] = defaultdict(list)
+        try:
+            for rel_path in all_images:
+                study_id = extract_mimic_study_id(rel_path)
+                study_to_paths[study_id].append(rel_path)
+        except Exception as exc:
+            stats["study_id_parse_error"] += 1
+            if len(error_examples) < 10:
+                error_examples.append({
+                    "row_idx": int(row_idx),
+                    "subject_id": str(row.get("subject_id", "")),
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                    "stage": "extract_study_id",
+                })
+            continue
+
+        study_ids = sorted(study_to_paths)
+        if not study_ids:
+            stats["no_studies_after_parse"] += 1
+            continue
+        if len(study_ids) != len(reports):
+            stats["study_report_mismatch"] += 1
+            if len(error_examples) < 10:
+                error_examples.append({
+                    "row_idx": int(row_idx),
+                    "subject_id": str(row.get("subject_id", "")),
+                    "study_count": len(study_ids),
+                    "report_count": len(reports),
+                    "stage": "study_report_alignment",
+                })
+            continue
+
+        for study_id, report_text in zip(study_ids, reports):
+            report_text = str(report_text or "").strip()
+            if not report_text:
+                stats["empty_report"] += 1
+                continue
+
+            try:
+                selected_rel_path = choose_mimic_frontal_image(
+                    study_paths=study_to_paths[study_id],
+                    ap_paths=ap_images,
+                    pa_paths=pa_images,
+                    lateral_paths=lateral_images,
+                )
+            except Exception as exc:
+                stats["frontal_selection_error"] += 1
+                if len(error_examples) < 10:
+                    error_examples.append({
+                        "row_idx": int(row_idx),
+                        "subject_id": str(row.get("subject_id", "")),
+                        "study_id": study_id,
+                        "error_type": type(exc).__name__,
+                        "error": str(exc),
+                        "stage": "choose_mimic_frontal_image",
+                    })
+                continue
+
+            if selected_rel_path is None:
+                stats["no_frontal_image"] += 1
+                if len(error_examples) < 10:
+                    error_examples.append({
+                        "row_idx": int(row_idx),
+                        "subject_id": str(row.get("subject_id", "")),
+                        "study_id": study_id,
+                        "available_paths": [str(path) for path in study_to_paths[study_id][:5]],
+                        "stage": "frontal_only_filter",
+                    })
+                continue
+
+            selected_abs_path, resolved_root = resolve_mimic_image_path(selected_rel_path, candidate_roots)
+            if selected_abs_path is None:
+                stats["missing_image"] += 1
+                if len(error_examples) < 10:
+                    error_examples.append({
+                        "row_idx": int(row_idx),
+                        "subject_id": str(row.get("subject_id", "")),
+                        "study_id": study_id,
+                        "missing_image": str(image_root / selected_rel_path),
+                        "tried_roots": [str(path) for path in candidate_roots],
+                        "stage": "image_exists_check",
+                    })
+                continue
+
+            stats[f"resolved_root::{resolved_root}"] += 1
+
+            pairs.append(
+                MimicPair(
+                    subject_id=str(row["subject_id"]),
+                    study_id=study_id,
+                    image_path=str(selected_abs_path),
+                    report_text=report_text,
+                )
+            )
+            stats["accepted_pairs"] += 1
+            if len(pairs) >= limit:
+                return pairs, dict(stats), error_examples
+
+    return pairs, dict(stats), error_examples
+
+
+mimic_pairs, mimic_pair_stats, mimic_pair_error_examples = load_mimic_pairs(
+    train_csv=MIMIC_TRAIN_CSV,
+    image_root=MIMIC_IMAGE_ROOT,
+    limit=MIMIC_FINE_TUNE_PAIRS,
+)
+
+assert len(mimic_pairs) == MIMIC_FINE_TUNE_PAIRS, f"Expected {MIMIC_FINE_TUNE_PAIRS}, found {len(mimic_pairs)}"
+print("MIMIC loader stats:")
+print(json.dumps(mimic_pair_stats, indent=2))
+if mimic_pair_error_examples:
+    print("Example skipped rows:")
+    print(json.dumps(mimic_pair_error_examples[:5], indent=2))
+pd.DataFrame([pair.__dict__ for pair in mimic_pairs[:5]])
+
+
+
+# %% [markdown] id="tJf685qeF1xU"
+# ## 5. Recover The IU X-Ray Train/Test Split Used By The Paper
+#
+# This reproduction uses **2,069 train pairs** and **590 test pairs** for IU X-Ray.
+# If public split IDs are available, it uses them. Otherwise it falls back to a deterministic
+# local split so the Kaggle notebook can run without external split files.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 578} id="LuYav19qF1xU" outputId="085df768-3f76-4a30-8975-e7abb27c36d9"
+
+def load_local_iu_records() -> dict[str, IUStudy]:
+    reports_df = pd.read_csv(IU_REPORTS_CSV)
+    projections_df = pd.read_csv(IU_PROJECTIONS_CSV)
+
+    records: dict[str, IUStudy] = {}
+    duplicate_keys = defaultdict(list)
+    for _, report_row in reports_df.iterrows():
+        uid = str(report_row["uid"])
+        projection_rows = projections_df[projections_df["uid"].astype(str) == uid]
+        if projection_rows.empty:
+            continue
+
+        projection_row = choose_iu_frontal_row(projection_rows)
+        filename = str(projection_row["filename"])
+        image_path = IU_IMAGES_DIR / filename
+        if not image_path.exists():
+            continue
+
+        findings = str(report_row.get("findings", "") or "").strip()
+        impression = str(report_row.get("impression", "") or "").strip()
+        report_text = build_report_text(findings=findings, impression=impression)
+        if not report_text:
+            continue
+
+        study_key = local_iu_study_key(filename)
+        if study_key in records:
+            duplicate_keys[study_key].append(uid)
+        records[study_key] = IUStudy(
+            uid=uid,
+            study_key=study_key,
+            image_path=str(image_path),
+            report_text=report_text,
+            findings=findings,
+            impression=impression,
+            split="",
+        )
+
+    return records, dict(duplicate_keys)
+
+
+def load_split_keys_from_file(path_text: str) -> set[str]:
+    path = Path(path_text)
+    if not path.exists():
+        raise FileNotFoundError(f"Split file not found: {path}")
+    if path.suffix.lower() == ".json":
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            values = payload.get("study_keys") or payload.get("ids") or payload.get("uids") or []
+        else:
+            values = payload
+        return {str(item) for item in values}
+    keys = set()
+    with path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames:
+            preferred = None
+            for name in ("study_key", "id", "uid"):
+                if name in reader.fieldnames:
+                    preferred = name
+                    break
+            if preferred is not None:
+                for row in reader:
+                    keys.add(str(row[preferred]))
+                return keys
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            value = line.strip()
+            if value:
+                keys.add(value)
+    return keys
+
+
+def build_local_iu_fallback_split(local_iu_records: dict[str, IUStudy]) -> tuple[set[str], set[str]]:
+    local_keys = sorted(local_iu_records)
+    required = IU_TRAIN_SIZE + IU_TEST_SIZE
+    if len(local_keys) < required:
+        raise ValueError(f"Not enough IU studies for fallback split: need {required}, found {len(local_keys)}")
+    train_keys = set(local_keys[:IU_TRAIN_SIZE])
+    test_keys = set(local_keys[IU_TRAIN_SIZE:IU_TRAIN_SIZE + IU_TEST_SIZE])
+    return train_keys, test_keys
+
+
+def load_iu_split_keys(local_iu_records: dict[str, IUStudy]) -> tuple[set[str], set[str], str]:
+    if IU_TRAIN_SPLIT_FILE and IU_TEST_SPLIT_FILE:
+        train_keys = load_split_keys_from_file(IU_TRAIN_SPLIT_FILE)
+        test_keys = load_split_keys_from_file(IU_TEST_SPLIT_FILE)
+        return train_keys, test_keys, "local_split_files"
+
+    try:
+        dataset = load_dataset("dz-osamu/IU-Xray")
+        train_keys = set()
+        for row in dataset["train"]:
+            if not row["images"]:
+                continue
+            train_keys.add(hf_iu_study_key(row["images"][0]))
+
+        test_keys = set()
+        for row in dataset["test"]:
+            if not row["images"]:
+                continue
+            test_keys.add(hf_iu_study_key(row["images"][0]))
+
+        if len(train_keys & set(local_iu_records)) == IU_TRAIN_SIZE and len(test_keys & set(local_iu_records)) == IU_TEST_SIZE:
+            return train_keys, test_keys, "hf_public_split"
+        print("HF IU split did not match the configured train/test counts. Falling back to deterministic local split.")
+    except Exception as exc:
+        print(f"Could not load public IU split ({type(exc).__name__}: {exc}). Falling back to deterministic local split.")
+
+    train_keys, test_keys = build_local_iu_fallback_split(local_iu_records)
+    return train_keys, test_keys, "deterministic_local_split"
+
+
+def build_iu_split_diagnostic(local_iu_records, train_keys, test_keys, duplicate_keys):
+    local_keys = set(local_iu_records)
+    train_overlap = sorted(train_keys & local_keys)
+    test_overlap = sorted(test_keys & local_keys)
+    train_missing = sorted(train_keys - local_keys)
+    test_missing = sorted(test_keys - local_keys)
+    train_test_overlap = sorted(train_keys & test_keys)
+    diagnostic = {
+        "expected_train": IU_TRAIN_SIZE,
+        "expected_test": IU_TEST_SIZE,
+        "actual_train": len(train_overlap),
+        "actual_test": len(test_overlap),
+        "local_record_count": len(local_iu_records),
+        "duplicate_local_keys": {key: value for key, value in list(duplicate_keys.items())[:10]},
+        "train_missing_from_local_count": len(train_missing),
+        "test_missing_from_local_count": len(test_missing),
+        "train_test_overlap_count": len(train_test_overlap),
+        "train_missing_from_local_examples": train_missing[:10],
+        "test_missing_from_local_examples": test_missing[:10],
+        "train_test_overlap_examples": train_test_overlap[:10],
+        "train_examples": train_overlap[:10],
+        "test_examples": test_overlap[:10],
+    }
+    return train_overlap, test_overlap, diagnostic
+
+
+local_iu_records, iu_duplicate_keys = load_local_iu_records()
+hf_train_keys, hf_test_keys, iu_split_source = load_iu_split_keys(local_iu_records)
+train_overlap, test_overlap, iu_split_diagnostic = build_iu_split_diagnostic(
+    local_iu_records=local_iu_records,
+    train_keys=hf_train_keys,
+    test_keys=hf_test_keys,
+    duplicate_keys=iu_duplicate_keys,
+)
+
+iu_train = []
+iu_test = []
+
+for study_key in train_overlap:
+    if study_key in local_iu_records:
+        study = local_iu_records[study_key]
+        study.split = "train"
+        iu_train.append(study)
+
+for study_key in test_overlap:
+    if study_key in local_iu_records:
+        study = local_iu_records[study_key]
+        study.split = "test"
+        iu_test.append(study)
+
+if len(iu_train) != IU_TRAIN_SIZE or len(iu_test) != IU_TEST_SIZE:
+    print("IU split diagnostic:")
+    print(json.dumps(iu_split_diagnostic, indent=2))
+    raise ValueError(
+        f"IU split construction failed for source {iu_split_source!r}. "
+        f"Expected {IU_TRAIN_SIZE}/{IU_TEST_SIZE}, found {len(iu_train)}/{len(iu_test)}."
+    )
+
+print("IU split source:", iu_split_source)
+print("IU train:", len(iu_train))
+print("IU test:", len(iu_test))
+pd.DataFrame([study.__dict__ for study in iu_test[:5]])
+
+
+
+# %% [markdown] id="Pdd7ZrrdF1xV"
+# ## 6. Fine-Tune The Retrieval Agent
+#
+# Yi et al. say the retrieval agent follows the **RULE** retrieval setup.
+# This cell fine-tunes the retriever on the **3,000** MIMIC-CXR pairs using contrastive learning.
+# The optimizer settings are taken from the public RULE `finetune_clip.sh` script.
+#
+#
+#
+
+# %% id="q4A2oVyIF1xV"
+
+class MimicClipDataset(Dataset):
+    def __init__(self, pairs: list[MimicPair], preprocess):
+        self.pairs = pairs
+        self.preprocess = preprocess
+
+    def __len__(self):
+        return len(self.pairs)
+
+    def __getitem__(self, index):
+        pair = self.pairs[index]
+        image = Image.open(pair.image_path).convert("RGB")
+        return self.preprocess(image), pair.report_text
+
+
+def collate_clip_batch(batch):
+    images = torch.stack([item[0] for item in batch], dim=0)
+    texts = [item[1] for item in batch]
+    return images, texts
+
+
+def create_retriever_components():
+    model, _, preprocess = open_clip.create_model_and_transforms(RETRIEVER_MODEL_ID)
+    tokenizer = open_clip.get_tokenizer(RETRIEVER_MODEL_ID)
+    return model, preprocess, tokenizer
+
+
+class RetrieverTrainWrapper(torch.nn.Module):
+    def __init__(self, base_model):
+        super().__init__()
+        self.base_model = base_model
+
+    def forward(self, images, tokenized_text):
+        image_features = self.base_model.encode_image(images)
+        text_features = self.base_model.encode_text(tokenized_text)
+        # Unsqueeze avoids DataParallel scalar gather warnings across GPUs.
+        logit_scale = self.base_model.logit_scale.exp().unsqueeze(0)
+        return image_features, text_features, logit_scale
+
+
+def run_retriever_forward(model, images, tokenized_text):
+    image_features, text_features, logit_scale = model(images, tokenized_text)
+    if isinstance(logit_scale, torch.Tensor):
+        logit_scale = logit_scale.reshape(-1)[0]
+    return image_features, text_features, logit_scale
+
+
+def create_retriever_dataloader(dataset):
+    loader_kwargs = {
+        "dataset": dataset,
+        "batch_size": RETRIEVER_BATCH_SIZE,
+        "shuffle": True,
+        "num_workers": RETRIEVER_WORKERS,
+        "collate_fn": collate_clip_batch,
+        "pin_memory": (DEVICE == "cuda"),
+    }
+    if RETRIEVER_WORKERS > 0:
+        loader_kwargs["multiprocessing_context"] = "spawn"
+        loader_kwargs["persistent_workers"] = True
+        loader_kwargs["prefetch_factor"] = 2
+    return DataLoader(**loader_kwargs)
+
+
+def ensure_retriever_checkpoint_from_tar() -> None:
+    if RETRIEVER_CHECKPOINT_PATH.exists():
+        return
+    if not RETRIEVER_CHECKPOINT_TAR_PATH.exists():
+        return
+    print("Extracting retriever checkpoint from", RETRIEVER_CHECKPOINT_TAR_PATH)
+    with tarfile.open(RETRIEVER_CHECKPOINT_TAR_PATH) as archive:
+        member = next(
+            (
+                item
+                for item in archive.getmembers()
+                if Path(item.name).name == RETRIEVER_CHECKPOINT_PATH.name
+            ),
+            None,
+        )
+        if member is None:
+            raise FileNotFoundError(
+                f"{RETRIEVER_CHECKPOINT_TAR_PATH} does not contain {RETRIEVER_CHECKPOINT_PATH.name}"
+            )
+        extracted = archive.extractfile(member)
+        if extracted is None:
+            raise RuntimeError(f"Could not read {member.name} from {RETRIEVER_CHECKPOINT_TAR_PATH}")
+        RETRIEVER_CHECKPOINT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with RETRIEVER_CHECKPOINT_PATH.open("wb") as handle:
+            handle.write(extracted.read())
+    print("Retriever checkpoint ready:", RETRIEVER_CHECKPOINT_PATH)
+
+
+def fine_tune_retriever(mimic_pairs: list[MimicPair], force_retrain: bool = False):
+    ensure_retriever_checkpoint_from_tar()
+    if RETRIEVER_CHECKPOINT_PATH.exists() and not force_retrain:
+        print("Retriever checkpoint already exists:", RETRIEVER_CHECKPOINT_PATH)
+        return load_retriever_checkpoint()
+
+    base_model, preprocess, tokenizer = create_retriever_components()
+    base_model = base_model.to(DEVICE)
+    use_data_parallel = DEVICE == "cuda" and torch.cuda.device_count() > 1 and RETRIEVER_USE_DATA_PARALLEL
+    train_model = RetrieverTrainWrapper(base_model).to(DEVICE)
+    if use_data_parallel:
+        train_model = torch.nn.DataParallel(train_model)
+    train_model.train()
+
+    dataset = MimicClipDataset(mimic_pairs, preprocess=preprocess)
+    loader = create_retriever_dataloader(dataset)
+
+    optimizer = torch.optim.AdamW(base_model.parameters(), lr=RETRIEVER_LR)
+    scaler = torch.amp.GradScaler("cuda", enabled=(DEVICE == "cuda"))
+
+    print("retriever batch size:", RETRIEVER_BATCH_SIZE)
+    print("retriever grad accumulation steps:", RETRIEVER_GRAD_ACCUM_STEPS)
+    print("retriever effective batch size:", RETRIEVER_BATCH_SIZE * RETRIEVER_GRAD_ACCUM_STEPS)
+    print("retriever uses data parallel:", use_data_parallel)
+
+    for epoch in range(RETRIEVER_EPOCHS):
+        epoch_loss = 0.0
+        optimizer.zero_grad(set_to_none=True)
+        for step, (images, report_texts) in enumerate(
+            tqdm(loader, desc=f"Retriever epoch {epoch + 1}/{RETRIEVER_EPOCHS}"),
+            start=1,
+        ):
+            images = images.to(DEVICE)
+            tokenized_text = tokenizer(report_texts)
+            tokenized_text = tokenized_text.to(DEVICE)
+
+            autocast_context = torch.autocast(device_type="cuda", dtype=torch.float16) if DEVICE == "cuda" else nullcontext()
+            with autocast_context:
+                image_features, text_features, logit_scale = run_retriever_forward(
+                    model=train_model,
+                    images=images,
+                    tokenized_text=tokenized_text,
+                )
+
+                image_features = image_features / image_features.norm(dim=-1, keepdim=True)
+                text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+
+                logits = logit_scale * image_features @ text_features.T
+                labels = torch.arange(images.size(0), device=DEVICE)
+                raw_loss = (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels)) / 2.0
+                loss = raw_loss / RETRIEVER_GRAD_ACCUM_STEPS
+
+            scaler.scale(loss).backward()
+
+            if step % RETRIEVER_GRAD_ACCUM_STEPS == 0 or step == len(loader):
+                scaler.step(optimizer)
+                scaler.update()
+                optimizer.zero_grad(set_to_none=True)
+
+            epoch_loss += raw_loss.item()
+
+        avg_loss = epoch_loss / max(len(loader), 1)
+        print(f"epoch={epoch + 1} loss={avg_loss:.6f}")
+        if DEVICE == "cuda":
+            torch.cuda.empty_cache()
+
+    model_to_save = base_model
+    torch.save(model_to_save.state_dict(), RETRIEVER_CHECKPOINT_PATH)
+    print("Saved retriever to", RETRIEVER_CHECKPOINT_PATH)
+    model = model_to_save.to("cpu").eval()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    return model, preprocess, tokenizer
+
+
+def load_retriever_checkpoint():
+    ensure_retriever_checkpoint_from_tar()
+    if not RETRIEVER_CHECKPOINT_PATH.exists():
+        raise FileNotFoundError(f"Retriever checkpoint not found: {RETRIEVER_CHECKPOINT_PATH}")
+    model, preprocess, tokenizer = create_retriever_components()
+    state_dict = torch.load(RETRIEVER_CHECKPOINT_PATH, map_location="cpu")
+    model.load_state_dict(state_dict)
+    model = model.to("cpu").eval()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    print("Loaded retriever checkpoint from", RETRIEVER_CHECKPOINT_PATH)
+    return model, preprocess, tokenizer
+
+
+
+# %% [markdown] id="CC7Mjt20F1xV"
+# ## 7. Build The IU Retrieval Database And Retrieval Function
+#
+# Yi et al. use the **IU train split** to build the retrieval database and retrieve the top-`k=5` similar reports for each IU test image.
+#
+#
+#
+
+# %% id="FXnqd3RzF1xV"
+
+@torch.inference_mode()
+def encode_image(model, preprocess, image_path: str) -> torch.Tensor:
+    model = place_model_on_primary_device(model)
+    image = Image.open(image_path).convert("RGB")
+    image_tensor = preprocess(image).unsqueeze(0).to(DEVICE)
+    image_features = model.encode_image(image_tensor)
+    image_features = image_features / image_features.norm(dim=-1, keepdim=True)
+    return image_features.squeeze(0).detach().cpu()
+
+
+def build_iu_retrieval_bank(model, preprocess, iu_train: list[IUStudy]):
+    embeddings = []
+    reports = []
+    metadata = []
+
+    for study in tqdm(iu_train, desc="Encoding IU train retrieval bank"):
+        embeddings.append(encode_image(model, preprocess, study.image_path))
+        reports.append(study.report_text)
+        metadata.append(study)
+
+    bank = torch.stack(embeddings, dim=0)
+    return bank, reports, metadata
+
+def load_or_build_iu_retrieval_bank(model, preprocess, iu_train: list[IUStudy]):
+    if IU_RETRIEVAL_BANK_PATH.exists():
+        payload = torch.load(IU_RETRIEVAL_BANK_PATH, map_location="cpu")
+        bank_embeddings = payload["embeddings"]
+        bank_reports = payload["reports"]
+        bank_metadata = [IUStudy(**item) for item in payload["metadata"]]
+        print("Loaded IU retrieval bank from", IU_RETRIEVAL_BANK_PATH)
+        return bank_embeddings, bank_reports, bank_metadata
+
+    bank_embeddings, bank_reports, bank_metadata = build_iu_retrieval_bank(model, preprocess, iu_train)
+    torch.save(
+        {
+            "embeddings": bank_embeddings.cpu(),
+            "reports": bank_reports,
+            "metadata": [study.__dict__ for study in bank_metadata],
+        },
+        IU_RETRIEVAL_BANK_PATH,
+    )
+    print("Saved IU retrieval bank to", IU_RETRIEVAL_BANK_PATH)
+    return bank_embeddings, bank_reports, bank_metadata
+
+@torch.inference_mode()
+def retrieve_top_k_reports(model, preprocess, bank_embeddings, bank_reports, bank_metadata, query_image_path: str, top_k: int = 5):
+    query_embedding = encode_image(model, preprocess, query_image_path)
+    scores = torch.matmul(bank_embeddings, query_embedding)
+    values, indices = torch.topk(scores, k=top_k)
+
+    retrieved = []
+    for score, index in zip(values.tolist(), indices.tolist()):
+        study = bank_metadata[index]
+        retrieved.append(
+            {
+                "uid": study.uid,
+                "study_key": study.study_key,
+                "score": float(score),
+                "report_text": bank_reports[index],
+                "image_path": study.image_path,
+            }
+        )
+    return retrieved
+
+
+
+# %% [markdown] id="c2TYWhQ3F1xV"
+# ## 8. Load Or Fine-Tune The Retriever
+#
+# Loads the saved retriever checkpoint if it already exists.
+# If not, it fine-tunes the retriever and saves the checkpoint.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/"} id="PAai04ZQF1xV" outputId="c819b037-aeee-4a17-a1e3-ab0def42ebb3"
+retriever_model, retriever_preprocess, retriever_tokenizer = fine_tune_retriever(mimic_pairs)
+offload_model_from_gpu(retriever_model)
+
+# %% [markdown] id="8h_ARlEQF1xW"
+# ## 9. Load LLaVA-Med 1.5 (7B)
+#
+# Yi et al. use **LLaVA-Med 1.5 (7B)** as the vision agent backbone.
+# This cell downloads the official Microsoft LLaVA-Med repository if needed and loads the Hugging Face checkpoint.
+#
+#
+#
+
+# %% id="yYNkMECyF1xW"
+
+import re
+
+
+def ensure_llava_med_repo() -> Path:
+    required_files = [
+        LLAVA_MED_REPO_DIR / "llava" / "model" / "builder.py",
+        LLAVA_MED_REPO_DIR / "llava" / "mm_utils.py",
+        LLAVA_MED_REPO_DIR / "llava" / "conversation.py",
+        LLAVA_MED_REPO_DIR / "llava" / "constants.py",
+    ]
+
+    if LLAVA_MED_REPO_DIR.exists() and all(path.exists() for path in required_files):
+        return LLAVA_MED_REPO_DIR
+
+    LLAVA_MED_REPO_DIR.parent.mkdir(parents=True, exist_ok=True)
+    subprocess.run(
+        [
+            "git",
+            "-c",
+            "filter.lfs.smudge=",
+            "-c",
+            "filter.lfs.process=",
+            "-c",
+            "filter.lfs.required=false",
+            "clone",
+            "--depth",
+            "1",
+            "https://github.com/microsoft/LLaVA-Med.git",
+            str(LLAVA_MED_REPO_DIR),
+        ],
+        check=True,
+    )
+    return LLAVA_MED_REPO_DIR
+
+
+def patch_llava_builder(repo_dir: Path) -> None:
+    builder_path = repo_dir / "llava" / "model" / "builder.py"
+    original_text = builder_path.read_text(encoding="utf-8")
+    patched_text = original_text.replace("low_cpu_mem_usage=False", "low_cpu_mem_usage=True")
+    if patched_text != original_text:
+        builder_path.write_text(patched_text, encoding="utf-8")
+
+
+def load_llava_runtime() -> dict:
+    repo_dir = ensure_llava_med_repo()
+    patch_llava_builder(repo_dir)
+
+    if str(repo_dir) not in sys.path:
+        sys.path.insert(0, str(repo_dir))
+
+    from llava.constants import DEFAULT_IMAGE_TOKEN, DEFAULT_IM_END_TOKEN, DEFAULT_IM_START_TOKEN, IMAGE_TOKEN_INDEX
+    from llava.conversation import conv_templates
+    from llava.mm_utils import get_model_name_from_path, process_images, tokenizer_image_token
+    from llava.model.builder import load_pretrained_model
+    from llava.utils import disable_torch_init
+
+    return {
+        "DEFAULT_IMAGE_TOKEN": DEFAULT_IMAGE_TOKEN,
+        "DEFAULT_IM_START_TOKEN": DEFAULT_IM_START_TOKEN,
+        "DEFAULT_IM_END_TOKEN": DEFAULT_IM_END_TOKEN,
+        "IMAGE_TOKEN_INDEX": IMAGE_TOKEN_INDEX,
+        "conv_templates": conv_templates,
+        "get_model_name_from_path": get_model_name_from_path,
+        "process_images": process_images,
+        "tokenizer_image_token": tokenizer_image_token,
+        "load_pretrained_model": load_pretrained_model,
+        "disable_torch_init": disable_torch_init,
+    }
+
+
+def clean_llava_output(text: str) -> str:
+    cleaned = str(text or "").strip()
+    for marker in ("[/INST]", "ASSISTANT:", "Assistant:"):
+        if marker in cleaned:
+            cleaned = cleaned.split(marker)[-1].strip()
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    return cleaned
+
+
+class LlavaMedGenerator:
+    def __init__(self):
+        runtime = load_llava_runtime()
+        runtime["disable_torch_init"]()
+
+        self.default_image_token = runtime["DEFAULT_IMAGE_TOKEN"]
+        self.default_im_start_token = runtime["DEFAULT_IM_START_TOKEN"]
+        self.default_im_end_token = runtime["DEFAULT_IM_END_TOKEN"]
+        self.image_token_index = runtime["IMAGE_TOKEN_INDEX"]
+        self.conv_templates = runtime["conv_templates"]
+        self.get_model_name_from_path = runtime["get_model_name_from_path"]
+        self.process_images = runtime["process_images"]
+        self.tokenizer_image_token = runtime["tokenizer_image_token"]
+        self.load_pretrained_model = runtime["load_pretrained_model"]
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        model_name = self.get_model_name_from_path(VISION_MODEL_ID)
+        load_kwargs = {
+            "model_path": VISION_MODEL_ID,
+            "model_base": None,
+            "model_name": model_name,
+        }
+        if DEVICE == "cuda":
+            load_kwargs["device"] = "cuda"
+            if LLAVA_USE_DEVICE_MAP_AUTO:
+                load_kwargs["device_map"] = "auto"
+            if LLAVA_LOAD_IN_8BIT:
+                load_kwargs["load_8bit"] = True
+        else:
+            load_kwargs["device"] = DEVICE
+
+        try:
+            tokenizer, model, image_processor, context_len = self.load_pretrained_model(**load_kwargs)
+        except TypeError:
+            reduced_kwargs = dict(load_kwargs)
+            reduced_kwargs.pop("device_map", None)
+            try:
+                tokenizer, model, image_processor, context_len = self.load_pretrained_model(**reduced_kwargs)
+            except TypeError:
+                reduced_kwargs.pop("load_8bit", None)
+                tokenizer, model, image_processor, context_len = self.load_pretrained_model(**reduced_kwargs)
+        self.tokenizer = tokenizer
+        self.model = model
+        self.image_processor = image_processor
+        self.context_len = context_len
+        self.input_device = torch.device("cuda:0" if DEVICE == "cuda" and torch.cuda.is_available() else DEVICE)
+
+    def build_prompt(self, user_prompt: str) -> str:
+        if getattr(self.model.config, "mm_use_im_start_end", False):
+            prompt = self.default_im_start_token + self.default_image_token + self.default_im_end_token + "\n" + user_prompt
+        else:
+            prompt = self.default_image_token + "\n" + user_prompt
+
+        conversation = self.conv_templates[LLAVA_CONV_MODE].copy()
+        conversation.append_message(conversation.roles[0], prompt)
+        conversation.append_message(conversation.roles[1], None)
+        return conversation.get_prompt()
+
+    @torch.inference_mode()
+    def generate(self, image_path: str, prompt: str) -> str:
+        image = Image.open(image_path).convert("RGB")
+        llava_prompt = self.build_prompt(prompt)
+
+        pad_token_id = self.tokenizer.pad_token_id or self.tokenizer.eos_token_id
+        input_ids = self.tokenizer_image_token(
+            llava_prompt,
+            self.tokenizer,
+            self.image_token_index,
+            return_tensors="pt",
+        ).unsqueeze(0).to(self.input_device)
+        attention_mask = input_ids.ne(pad_token_id).long()
+
+        image_tensor = self.process_images([image], self.image_processor, self.model.config)
+        if isinstance(image_tensor, list):
+            image_tensor = torch.stack(image_tensor, dim=0)
+        if image_tensor.ndim == 3:
+            image_tensor = image_tensor.unsqueeze(0)
+        image_dtype = torch.float16 if DEVICE == "cuda" else torch.float32
+        image_tensor = image_tensor.to(device=self.input_device, dtype=image_dtype)
+
+        output_ids = self.model.generate(
+            input_ids,
+            attention_mask=attention_mask,
+            images=image_tensor,
+            image_sizes=[image.size],
+            do_sample=False,
+            temperature=1.0,
+            num_beams=LLAVA_NUM_BEAMS,
+            max_new_tokens=LLAVA_MAX_NEW_TOKENS,
+            use_cache=True,
+            pad_token_id=pad_token_id,
+        )
+        decoded = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0]
+        return clean_llava_output(decoded)
+
+
+
+# %% [markdown] id="5qzBjD4aF1xW"
+# ## 10. Gemini Text Agents And Gemini Judge
+#
+# This Colab variant uses **Gemini 2.5 Flash** for the draft, refiner, and synthesis agents, and **Gemini 2.5 Pro** for LLM-as-a-judge evaluation.
+# The prompt text below stays close to the paper's agent descriptions.
+#
+#
+#
+
+# %% id="TQa_u8RnF1xW"
+
+def configure_text_backend() -> None:
+    global USE_LOCAL_OLLAMA_LLM, GPT_MODEL_ID, JUDGE_MODEL_ID, gemini_client
+
+    configured = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not configured:
+        try:
+            configured = getpass.getpass("Enter GEMINI_API_KEY, or type 'none' to use local Ollama: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            configured = "none"
+
+    if configured.lower() == "none":
+        os.environ["GEMINI_API_KEY"] = "none"
+        USE_LOCAL_OLLAMA_LLM = True
+        GPT_MODEL_ID = LOCAL_OLLAMA_COMPOSER_MODEL_NAME
+        JUDGE_MODEL_ID = LOCAL_OLLAMA_JUDGE_MODEL_NAME
+        gemini_client = None
+        print(f"Using local Ollama: composer={GPT_MODEL_ID}, judge={JUDGE_MODEL_ID}")
+        return
+
+    os.environ["GEMINI_API_KEY"] = configured
+    USE_LOCAL_OLLAMA_LLM = False
+    if genai is None:
+        raise RuntimeError("google-genai is required for Gemini mode. Install it or enter 'none' for local Ollama.")
+    gemini_client = genai.Client(api_key=configured)
+    print(f"Using Gemini: composer={GPT_MODEL_ID}, judge={JUDGE_MODEL_ID}")
+
+
+gemini_client = None
+configure_text_backend()
+
+VISION_AGENT_PROMPT = (
+    "You are the vision agent in a chest X-ray report generation pipeline. "
+    "Describe the visible observations in radiology report style. "
+    "Focus on visible findings in the lungs, pleura, heart, and mediastinum. "
+    "Avoid unclear statements and irrelevant content. "
+    "Return Findings and Impression sections."
+)
+
+BASELINE_PROMPT = (
+    "You are given only a chest X-ray image. "
+    "Generate a radiology report without using prior reports or clinical cues. "
+    "Return Findings and Impression sections."
+)
+
+DRAFT_SYSTEM_PROMPT = (
+    "You are the draft agent in a radiology report generation pipeline. "
+    "You receive only retrieved prior chest X-ray reports. "
+    "Write a preliminary radiology report that synthesizes the shared and medically salient content. "
+    "Return Findings and Impression sections."
+)
+
+REFINER_SYSTEM_PROMPT = (
+    "You are the refiner agent in a radiology report generation pipeline. "
+    "You receive a preliminary report and the retrieved reports used to write it. "
+    "Write one concise paragraph containing only the most essential findings. "
+    "Every sentence must be clearly supported by the input. "
+    "Do not speculate. Do not add unsupported details."
+)
+
+SYNTHESIS_SYSTEM_PROMPT = (
+    "You are the synthesis agent in a radiology report generation pipeline. "
+    "You receive a preliminary report, a refined findings paragraph, and a visual caption. "
+    "Write the final radiology report using only observations explicitly supported by those inputs. "
+    "Do not add unsupported findings. Do not rewrite unnecessarily. "
+    "Return Findings and Impression sections."
+)
+
+JUDGE_PROMPT_TEMPLATE = """You are evaluating a generated chest x-ray radiology report.
+
+Compare the generated report against the IU reference report only.
+
+Score the generated report on:
+- clinical_accuracy_score
+- groundedness_score
+- completeness_score
+- style_score
+- overall_score
+
+Each score must be between 0 and 10.
+For groundedness_score, judge whether the generated report is supported by and consistent with the reference report. Do not use pipeline evidence, retrieved reports, labels, or drafts.
+
+Also return:
+- hallucination_flags: a list of short strings
+- brief_rationale: short paragraph
+
+Output valid JSON only using this exact schema:
+
+{{
+  "clinical_accuracy_score": 0,
+  "groundedness_score": 0,
+  "completeness_score": 0,
+  "style_score": 0,
+  "overall_score": 0,
+  "hallucination_flags": [],
+  "brief_rationale": ""
+}}
+
+Reference report:
+{reference_report}
+
+Generated report:
+{generated_report}
+"""
+
+
+def require_api_key(name: str) -> None:
+    value = os.environ.get(name, "")
+    if USE_LOCAL_OLLAMA_LLM:
+        return
+    if not value or value.startswith("YOUR_") or value.lower() == "none":
+        raise ValueError(f"Set {name} before running this cell.")
+
+
+def ollama_options_for_model(model_name: str) -> dict[str, Any]:
+    if model_name == GPT_MODEL_ID:
+        return {
+            "temperature": LOCAL_OLLAMA_COMPOSER_TEMPERATURE,
+            "top_p": LOCAL_OLLAMA_COMPOSER_TOP_P,
+            "num_ctx": LOCAL_OLLAMA_COMPOSER_NUM_CTX,
+            "num_predict": LOCAL_OLLAMA_COMPOSER_NUM_PREDICT,
+        }
+    return {
+        "temperature": LOCAL_OLLAMA_JUDGE_TEMPERATURE,
+        "top_p": LOCAL_OLLAMA_JUDGE_TOP_P,
+        "num_ctx": LOCAL_OLLAMA_JUDGE_NUM_CTX,
+        "num_predict": LOCAL_OLLAMA_JUDGE_NUM_PREDICT,
+    }
+
+
+def ollama_think_for_model(model_name: str) -> bool:
+    return False
+
+
+def ollama_generate(model_name: str, prompt_text: str) -> str:
+    payload = {
+        "model": model_name,
+        "messages": [{"role": "user", "content": prompt_text}],
+        "stream": False,
+        "think": ollama_think_for_model(model_name),
+        "options": ollama_options_for_model(model_name),
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = request.Request(LOCAL_OLLAMA_CHAT_URL, data=data, headers={"Content-Type": "application/json"}, method="POST")
+    with request.urlopen(req, timeout=LOCAL_OLLAMA_TIMEOUT_SECONDS) as response:
+        parsed = json.loads(response.read().decode("utf-8"))
+    message = parsed.get("message", {}) if isinstance(parsed, dict) else {}
+    text = re.sub(r"<think>.*?</think>", "", str(message.get("content", "")), flags=re.DOTALL).strip()
+    if not text:
+        raise ValueError("Ollama returned an empty text response.")
+    return text
+
+
+def call_gemini_text_model(system_prompt: str, user_prompt: str) -> str:
+    prompt = f"System instruction:\n{system_prompt}\n\nUser request:\n{user_prompt}"
+    if USE_LOCAL_OLLAMA_LLM:
+        return ollama_generate(GPT_MODEL_ID, prompt)
+    require_api_key("GEMINI_API_KEY")
+    if gemini_client is None:
+        raise RuntimeError("Gemini client is not initialized. Set GEMINI_API_KEY and rerun this cell.")
+    response = gemini_client.models.generate_content(
+        model=GPT_MODEL_ID,
+        contents=prompt,
+    )
+    return (response.text or "").strip()
+
+
+
+import json
+import re
+
+def extract_json_object(text: str) -> dict:
+    text = (text or "").strip()
+
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?\s*", "", text)
+        text = re.sub(r"\s*```$", "", text)
+
+    return json.loads(text)
+
+
+def parse_judge_output(text: str) -> dict[str, Any]:
+    parsed = extract_json_object(text)
+    required_scores = [
+        "clinical_accuracy_score",
+        "groundedness_score",
+        "completeness_score",
+        "style_score",
+        "overall_score",
+    ]
+    for key in required_scores:
+        if key not in parsed:
+            raise ValueError(f"Missing judge score: {key}")
+        parsed[key] = float(parsed[key])
+    flags = parsed.get("hallucination_flags", [])
+    if not isinstance(flags, list):
+        raise ValueError("hallucination_flags must be a list.")
+    parsed["hallucination_flags"] = [str(item) for item in flags]
+    parsed["brief_rationale"] = str(parsed.get("brief_rationale", "")).strip()
+    return parsed
+
+
+def call_judge_model(reference_report: str, candidate_report: str) -> dict:
+    prompt = JUDGE_PROMPT_TEMPLATE.format(
+        reference_report=reference_report,
+        generated_report=candidate_report,
+    )
+
+    if USE_LOCAL_OLLAMA_LLM:
+        response_text = ollama_generate(JUDGE_MODEL_ID, prompt)
+    else:
+        require_api_key("GEMINI_API_KEY")
+        if gemini_client is None:
+            raise RuntimeError("Gemini client is not initialized. Set GEMINI_API_KEY and rerun this cell.")
+        response = gemini_client.models.generate_content(
+            model=JUDGE_MODEL_ID,
+            contents=prompt,
+        )
+        response_text = response.text
+
+    return parse_judge_output(response_text)
+
+
+def build_draft_input(retrieved_reports: list[dict]) -> str:
+    body = []
+    for idx, item in enumerate(retrieved_reports, start=1):
+        body.append(f"Retrieved report {idx}:\n{item['report_text']}")
+    return "\n\n".join(body)
+
+
+def build_refiner_input(draft_report: str, retrieved_reports: list[dict]) -> str:
+    retrieved_text = build_draft_input(retrieved_reports)
+    return f"Preliminary report:\n{draft_report}\n\nRetrieved reports:\n{retrieved_text}"
+
+
+def build_synthesis_input(draft_report: str, refined_findings: str, visual_caption: str) -> str:
+    return (
+        f"Preliminary report:\n{draft_report}\n\n"
+        f"Refined findings:\n{refined_findings}\n\n"
+        f"Visual caption:\n{visual_caption}"
+    )
+
+
+
+# %% [markdown] id="VHKuEsQYF1xW"
+# ## 11. Run The Single-Agent LLaVA-Med Baseline
+#
+# Yi et al. compare the five-agent pipeline against a **single-agent LLaVA-Med** baseline that works without prior reports or clinical cues.
+#
+#
+#
+
+# %% id="ylrZX-EFF1xX"
+
+def run_single_agent_baseline(
+    llava_generator: LlavaMedGenerator,
+    iu_test: list[IUStudy],
+    cache_path: Path = OUTPUT_DIR / "baseline_results.json",
+):
+    cached = load_json_if_exists(cache_path)
+    results_by_uid = {
+        str(item["uid"]): item
+        for item in cached
+        if isinstance(item, dict) and item.get("uid")
+    } if isinstance(cached, list) else {}
+
+    for study in tqdm(iu_test, desc="Running LLaVA-Med baseline"):
+        if study.uid in results_by_uid:
+            continue
+        generated_report = llava_generator.generate(study.image_path, BASELINE_PROMPT)
+        results_by_uid[study.uid] = {
+            "uid": study.uid,
+            "study_key": study.study_key,
+            "image_path": study.image_path,
+            "reference_report": study.report_text,
+            "reference_impression": study.impression,
+            "generated_report": generated_report,
+            "generated_impression": extract_impression_only(generated_report),
+        }
+        save_json_atomic(cache_path, [results_by_uid[study.uid] for study in iu_test if study.uid in results_by_uid])
+    return [results_by_uid[study.uid] for study in iu_test if study.uid in results_by_uid]
+
+
+
+# %% [markdown] id="WKBnfjbHF1xX"
+# ## 12. Run The Five-Agent Pipeline
+#
+# The paper's pipeline is:
+#
+# 1. retrieve top-5 similar reports
+# 2. generate a preliminary draft from the retrieved reports
+# 3. refine the draft into one findings-focused paragraph
+# 4. generate a visual description from the image with LLaVA-Med
+# 5. synthesize the final report from the draft, refined findings, and visual caption
+#
+#
+#
+
+# %% id="ykGMfs3rF1xX"
+
+def run_five_agent_pipeline(
+    retriever_model,
+    retriever_preprocess,
+    iu_train: list[IUStudy],
+    iu_test: list[IUStudy],
+    llava_generator: LlavaMedGenerator,
+    cache_path: Path = OUTPUT_DIR / "five_agent_results.json",
+):
+    cached = load_json_if_exists(cache_path)
+    results_by_uid = {
+        str(item["uid"]): item
+        for item in cached
+        if isinstance(item, dict) and item.get("uid")
+    } if isinstance(cached, list) else {}
+
+    bank_embeddings, bank_reports, bank_metadata = load_or_build_iu_retrieval_bank(
+        retriever_model,
+        retriever_preprocess,
+        iu_train,
+    )
+
+    precomputed_retrievals = []
+    for study in tqdm(iu_test, desc="Retrieving top-k reports"):
+        retrieved_reports = retrieve_top_k_reports(
+            model=retriever_model,
+            preprocess=retriever_preprocess,
+            bank_embeddings=bank_embeddings,
+            bank_reports=bank_reports,
+            bank_metadata=bank_metadata,
+            query_image_path=study.image_path,
+            top_k=TOP_K,
+        )
+        precomputed_retrievals.append((study, retrieved_reports))
+
+    offload_model_from_gpu(retriever_model)
+
+    for study, retrieved_reports in tqdm(precomputed_retrievals, desc="Running five-agent pipeline"):
+        if study.uid in results_by_uid:
+            continue
+        draft_report = call_gemini_text_model(DRAFT_SYSTEM_PROMPT, build_draft_input(retrieved_reports))
+        refined_findings = call_gemini_text_model(REFINER_SYSTEM_PROMPT, build_refiner_input(draft_report, retrieved_reports))
+        visual_caption = llava_generator.generate(study.image_path, VISION_AGENT_PROMPT)
+        final_report = call_gemini_text_model(
+            SYNTHESIS_SYSTEM_PROMPT,
+            build_synthesis_input(draft_report, refined_findings, visual_caption),
+        )
+
+        results_by_uid[study.uid] = {
+            "uid": study.uid,
+            "study_key": study.study_key,
+            "image_path": study.image_path,
+            "reference_report": study.report_text,
+            "reference_impression": study.impression,
+            "retrieved_reports": retrieved_reports,
+            "draft_report": draft_report,
+            "refined_findings": refined_findings,
+            "visual_caption": visual_caption,
+            "generated_report": final_report,
+            "generated_impression": extract_impression_only(final_report),
+        }
+        save_json_atomic(cache_path, [results_by_uid[study.uid] for study in iu_test if study.uid in results_by_uid])
+    return [results_by_uid[study.uid] for study in iu_test if study.uid in results_by_uid]
+
+
+
+# %% [markdown] id="Pr9kNC_DF1xX"
+# ## 13. Load LLaVA-Med
+#
+# Keep the vision model in its own cell so it is only loaded when needed.
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 204} id="cYncNNkHF1xX" outputId="2fffb8e0-54d0-499f-d83a-f4b092802450"
+llava_generator = LlavaMedGenerator()
+
+
+# %% [markdown] id="aGPOttBRF1xX"
+# ## 14. Run The Single-Agent Baseline
+#
+# This runs the paper's LLaVA-Med baseline and saves the outputs immediately.
+#
+#
+#
+
+# %% id="AZpK6Ux2F1xX"
+baseline_results = run_single_agent_baseline(llava_generator, iu_test)
+print("Saved baseline outputs.")
+
+
+# %% [markdown] id="FrG3yR3OF1xX"
+# ## 15. Run The Five-Agent Pipeline
+#
+# This runs retrieval, GPT-4o drafting/refinement/synthesis, and the LLaVA-Med vision agent.
+#
+#
+#
+
+# %% id="9L2h6RSbF1xX"
+
+five_agent_results = run_five_agent_pipeline(
+    retriever_model=retriever_model,
+    retriever_preprocess=retriever_preprocess,
+    iu_train=iu_train,
+    iu_test=iu_test,
+    llava_generator=llava_generator,
+)
+print("Saved five-agent outputs.")
+
+
+
+# %% [markdown] id="h4cPLgUqF1xY"
+# ## 16. Automatic Metrics From The Paper
+#
+# This cleaned baseline computes automatic metrics on the full report text, using
+# the same metric names as the CLFIR pipelines:
+#
+# - BLEU
+# - ROUGE-1
+# - ROUGE-2
+# - ROUGE-L
+# - METEOR
+# - BERTScore
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 1000, "referenced_widgets": ["3a6a4e9654e34347ad59a542aebbf28a", "b9a4b88d6eec48c095be95a3240f24c1", "8c8b82bace3542fa80c480bc260b42d8", "1cc0e736bfe44a07a61cede2aaa75dee", "7f75a0c9b5134736b462953b4dbf60e3", "5e962a65701743838a0636e72cd3c580", "532ebe3015694722bccbec4cac0c6292", "a081d6ed069343c78e8e2f9c43ca849d", "a1565ce4a2544980b130faaf8726c41e", "18d1408889e64459963fe3ef7f2bc7c3", "33c87e2b413943d8ad56410d3e919361", "0437cc52d7ba4b579efb8d8c8bd5d48a", "9331a114aa214f05a969085095de7388", "35331464f6214c0aabd16bd768008b44", "a7b6c531653b4215a61048e447c2a825", "ecd2717fd91c4c1989360f9dafad8355", "6b864e694a6b4ff19d7cb62f942aa469", "6eb2c6064b624cdeab2aa61205874423", "e020c180cee0419c9d0f14dba6182b25", "7210a749f6204129a5dd8372265ce675", "6899936b47f349c9b166648220409549", "8314afdb683f42799541a5f522e0b1eb", "c0f2bb7de7344c70b1f9fcaa02ed427a", "f147d11b9d84415c942cc292598553a8", "385bdb329f174f6985b586795d365b85", "d06dd3694c9a49f2982e624c19611190", "865b50d9ab14449a9896028dd58d36e8", "0c6fa43c31a04af7ab3d8a4fca2057b4", "5e1ea2ecca154cebb9946d00eec8516b", "bdcebfa251d24d26a1b49499e4d1f000", "007b831b77c8455aba67939f35c729e8", "1215f05287f9462997215d5b6dce2695", "e9aaa1da68884417b6cb94a3050ccc5e", "3065393c4cbc42d0974f830f89dbdeae", "c0e53aef18d94cd49fe11a7cb45cdaab", "3d942304d54847338e66aeb9c76493f1", "3fe7af8e60a64fd0868ebd9fe148dbbc", "3e988a6177d940e9957a393f75fe43ce", "90bd78a7b658490b93365bf8360e518d", "ac6ee2cf71714a63b1357d1c98698916", "8befc9f8f9974c1f8267f1cc220a77a4", "6e957dcf990348fca8f43140337f66e0", "66b050dc248e422d95ab6a780c12673e", "5470065cafc4476b97d3f09afdfc5aec", "8dfc9f5daa3d4d17b371eb3338490001", "59243fd7bdc1400cbfd959a9dc453226", "5f693dd8a19d49ba99232095bd502f36", "3eeb2209c5b64998b4f40060b5b9e4ab", "6a0de43d7e424b9d95401c4f6ee39aeb", "2803651365b44bc3bff2ccc142877d02", "77c277ea88c94bbe8d620ebf6eafec00", "a95e8a8d1ee946578d3db0490d78cb8a", "e477ddcd2a554dffb6c1bca25d08e983", "4cee91e5f15b47dd8894b101fb15baaa", "3f55e83d1e4549169988a5be572117a7", "df0a26a7a697445d87e9a2c1978fad8f", "929e5a5537f24140a369d96d0fbf893e", "f8c0826897d948a1bfbd834429ed2d52", "a2de2b7cb8a14aeab0ffc13efac990db", "5690b5ea610c47eeac996d8b4cd29f5d", "d63f1c5cb68b4aa6a27ba69ea565fefc", "7d634b6ece314ca086d62c4403b65472", "6277f26b0e76433e9fdb6ac286bf2b89", "5e34eeb7ac0f47e6ad5405a46ac5a28b", "278c2e4edcb448f4958632b98ce5c935", "9e35b256884c4373bc0a68498b769434", "34e86d8f47f445488dd7882deca1461c", "92816ad84c334bc3ab8df8bdd81964b2", "d490f02f06b344e2b8a823fc88793f8a", "90c9347f256f410d94e268077bddd95d", "375c3f3c3ab34f33a5d16a04ee8c5ce1", "6f04679e7203433eafa90ada12add0a6", "0ca45c7dd48648bead669a29443f2448", "0bd896caef7141018a1bf1ce24e0e58e", "20f0cc26c60545ffb245b25ea7c2bbc6", "e71447a257804191961b18c2dfbe3e7a", "0a8681d3abea44f3afdf145658337be4", "46228000a98345b198edf733bf8ac3ad", "71a303fa144c4859af1b54e8cb667ff8", "bccf2389ca614ed5bb36ad2402c9b39f", "acb50572bf584e948d8c2f34ba94d9eb", "55673932ffaf47f8bffd623b2fde6f8a", "8979b9f34976491a8bef24743ebc3bde", "169468caf5f747c9bd17064a88f04322", "6a0d9245469c47819670c5ca1dd83c2c", "0121210783d8425d9ecd7a2d6e1de1c9", "6fc873b7424a46b1825c5b53e156df1f", "e8dde7ce6b9340039c960700340e28f5", "2953b86ea5dd4347b5a4af604773b5b6", "968f5776ecc545729503331aec00ed6c", "1b2c324a7afe4548bdd69e9f4c0f36f6", "b223b21128c2417eae89e623afcbd8c1", "474cdf589670448d925b33f87cc846a5", "779ee21014b340c680000fe98917b77d", "bef3642801014450abfe71f57aded79b", "1c7117d40f544706b9b6e14992a117f7", "b89991a5158f4d818d28699413554118", "cfbaead495834a1fab7e5ead35fd8a81", "5d16c59febaf4295bfed6dba30a9171a", "00607a1ffc35499da60462a08c12e17e", "e9ca6a730fa44db9a9b5455595d07f13", "6454efd0249d43fdb4c8460308d946cd", "039583fd52e4416481929a9bd87b85be", "bbbb1d049d9043ada5b895fd1ea091d2", "7874f6b7f481424db0d61f028fe17d4b", "a24977ab0aee408b89b1aa0c92de278e", "612fc27f8a8b4e94be09179d4e363e27", "303c382147aa49da97770f9792ba448e", "30603c4b1ece43e5b38e443853ba8527", "36b5ca0963d94b258a1dbfd1ceaa07e3", "5929a12b28294b239ab360d0f2cbefad", "a2c4c644a81a446b9f7c865ed74ca7d0", "8bcebeab3c5c4782b29ae804089a243a", "562cfe63bfed44a19a9de64cd68a1f34", "869ae7f9239344fb95e81c4673c91a35", "10d18ed707654996b697a7912e5f816b", "292366add69c48bc8675bbfc11b49f3e", "7c517c517ae343ad934821f1470cfb54", "5978d71407c14b7d9a8e35be0df42124", "28e5f39e382f43fb961077fb42f8ffa5", "4f00ab1c1f86413ca026480b76a6d6b0", "4f77a60763184a16a7785da8ac3a9e57", "ddade9e001554a17a1591d20bbc92a90", "a0f2909fab114dd9b54f673de54c1894", "6826ade4417a4c37ad466bb2b9c83c03", "6bbe40a469504c22b0bc9edf04c70ca1", "6d17c39420c74aef928dde38eaa5eb77", "bc90558f29604a4e989897f56883b2aa", "e4810a42638341c2a81a63eecd4e3def", "073b29f07c194ad2b1a1189e234cdc08", "ced90e0a1c2543bfbb2a3aba45cc8766", "be3b222ee6894673b6dca4a885dc203c"]} id="fbp_BX6fF1xY" outputId="0afa5cf0-3fbf-4415-9399-4c2b9de35a50"
+from rouge_score import rouge_scorer
+from bert_score import score as bert_score
+import nltk
+from nltk.translate.bleu_score import corpus_bleu
+from nltk.translate.meteor_score import meteor_score
+
+
+def load_json(path):
+    with Path(path).open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+baseline_results = load_json(OUTPUT_DIR / "baseline_results.json")
+five_agent_results = load_json(OUTPUT_DIR / "five_agent_results.json")
+
+print(len(baseline_results), len(five_agent_results))
+print(baseline_results[0].keys())
+
+nltk.download("punkt")
+nltk.download("wordnet")
+nltk.download("omw-1.4")
+nltk.download("punkt_tab")
+
+
+def tokenize_for_metrics(text: str) -> list[str]:
+    return nltk.word_tokenize(str(text or "").strip().lower())
+
+
+def compute_standard_metrics(results: list[dict]) -> dict:
+    references = [str(item["reference_report"] or "") for item in results]
+    candidates = [str(item["generated_report"] or "") for item in results]
+
+    bleu_references = [[tokenize_for_metrics(text)] for text in references]
+    bleu_candidates = [tokenize_for_metrics(text) for text in candidates]
+    bleu = corpus_bleu(bleu_references, bleu_candidates, weights=(0.25, 0.25, 0.25, 0.25))
+
+    rouge = rouge_scorer.RougeScorer(["rouge1", "rouge2", "rougeL"], use_stemmer=True)
+    rouge1_scores = []
+    rouge2_scores = []
+    rougeL_scores = []
+    meteor_scores = []
+
+    for reference, candidate in zip(references, candidates):
+        rouge_scores = rouge.score(reference, candidate)
+        rouge1_scores.append(rouge_scores["rouge1"].fmeasure)
+        rouge2_scores.append(rouge_scores["rouge2"].fmeasure)
+        rougeL_scores.append(rouge_scores["rougeL"].fmeasure)
+        meteor_scores.append(meteor_score([tokenize_for_metrics(reference)], tokenize_for_metrics(candidate)))
+
+    _, _, bert_f1 = bert_score(candidates, references, lang="en", verbose=True)
+
+    return {
+        "bleu": float(bleu),
+        "rouge1": float(np.mean(rouge1_scores)),
+        "rouge2": float(np.mean(rouge2_scores)),
+        "rougeL": float(np.mean(rougeL_scores)),
+        "meteor": float(np.mean(meteor_scores)),
+        "bertscore_f1": float(bert_f1.mean().item()),
+    }
+
+
+baseline_metrics = compute_standard_metrics(baseline_results)
+five_agent_metrics = compute_standard_metrics(five_agent_results)
+
+standard_metrics_table = pd.DataFrame(
+    [
+        {"Model": "LLaVA-Med", **baseline_metrics},
+        {"Model": "Ours", **five_agent_metrics},
+    ]
+)
+standard_metrics_table
+
+import json
+
+with open(OUTPUT_DIR / "baseline_metrics.json", "w", encoding="utf-8") as f:
+    json.dump(baseline_metrics, f, indent=2, ensure_ascii=False)
+
+with open(OUTPUT_DIR / "five_agent_metrics.json", "w", encoding="utf-8") as f:
+    json.dump(five_agent_metrics, f, indent=2, ensure_ascii=False)
+
+standard_metrics_table.to_csv(OUTPUT_DIR / "standard_metrics_table.csv", index=False)
+
+print("Saved:")
+print(OUTPUT_DIR / "baseline_metrics.json")
+print(OUTPUT_DIR / "five_agent_metrics.json")
+print(OUTPUT_DIR / "standard_metrics_table.csv")
+
+
+
+# %% [markdown] id="yYDrncUcF1xY"
+# ## 17. LLM Judge Scores
+#
+# This cleaned baseline uses the same reference-vs-candidate judge rubric as the
+# CLFIR pipelines:
+# - clinical_accuracy_score
+# - groundedness_score
+# - completeness_score
+# - style_score
+# - overall_score
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 446, "referenced_widgets": ["774c0c6199914f44b4f2dcaa65f80b63", "2b62d4ebad7b4871a390d01e92779244", "5c4a1b781e4e4d039160e0c6ce436230", "bc9b3c8e160b4ec182aaa0a0314a6780", "4f541d8d312d4113a56dfa3734690d3c", "c5f081f2870d4c8e80e4889f08d08f5b", "68c0df55d7794ea193af9effe9e8ad56", "b85b425d704144458dea186988282959", "25a00fa47f964c8195e35bd11e00b2e1", "46cba189ea25498b9a6c74d0b989b66c", "2b850e1262ca4b7cb610f20cd517200f", "be7b81fbd95e49a3a943a7a89c1d57f5", "e6d714945ce8408aba183eb1a8735bcf", "0cd7fd754b0b4701840170556e448a55", "4859f83335dc4b41bf6e0819aafc5ed9", "2e24ac49fda0464f926ad4277a096355", "9832c82cd7bd4af39e213142b47f378a", "005884a646574ee1998253799eb8c173", "e10cba6ef40943288faf0baca7b4a3eb", "e086221ae19f455ebbad43fc9c54efe9", "9fe89efb963148d2be9fe26ac1454e64", "06b06bdf1f8a4e54af60552530b7b327"]} id="6MNOAn7oF1xY" outputId="f02fbb7c-87f5-43de-9d7c-ca5d689d8eb0"
+def compute_judge_metrics(results: list[dict]) -> dict:
+    scores = []
+    for item in tqdm(results, desc="Gemini judging"):
+        score = call_judge_model(
+            reference_report=item["reference_report"],
+            candidate_report=item["generated_report"],
+        )
+        scores.append(score)
+
+    return aggregate_judge_scores(scores)
+
+
+baseline_judge_metrics = load_json_if_exists(OUTPUT_DIR / "baseline_judge_metrics.json")
+if baseline_judge_metrics is None:
+    print("Baseline judge metrics not computed yet. Run the checkpointed judge cell below.")
+
+
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 200, "referenced_widgets": ["f44bd9e7258c4335b1a2b405863fb063", "d52d55873e0d4d47b9d74cc4ca0f905d", "37d67e685d074f388044bc129d87f7cb", "d146047af3af4c8cb8d77fdb2eedf355", "5916c71351f743769d2c15ee1afcf051", "f690bb3a5556428ca1f1952d2d0aef33", "b93673fbba2d49d2a6525ad2732bd223", "0a2f9500b8ff4ac78c4bdefc2e16c3e1", "4ee5a91f0c26408bb109b0a2d34a2079", "98a27decb9f9446f82c034ed270206e6", "0f90a77083b0418aac72105ea0b81601"]} id="DL9xrtxUpZ4_" outputId="b6a09b93-654d-4472-a2bb-049877e15231"
+import time
+import random
+
+
+def call_judge_model_with_retry(reference_report: str, candidate_report: str, max_retries: int = 8) -> dict:
+    last_error = None
+
+    for attempt in range(max_retries):
+        try:
+            return call_judge_model(reference_report, candidate_report)
+        except Exception as e:
+            last_error = e
+            wait_s = min(60, (2 ** attempt) + random.uniform(0, 1.5))
+            print(f"Judge retry {attempt + 1}/{max_retries} after error: {e}. Sleeping {wait_s:.1f}s")
+            time.sleep(wait_s)
+
+    raise last_error
+
+
+def aggregate_judge_scores(scores: list[dict[str, Any]]) -> dict[str, float]:
+    score_keys = [
+        "clinical_accuracy_score",
+        "groundedness_score",
+        "completeness_score",
+        "style_score",
+        "overall_score",
+    ]
+    return {
+        key: float(np.mean([float(item[key]) for item in scores])) if scores else 0.0
+        for key in score_keys
+    }
+
+
+def compute_judge_metrics_checkpointed(results, cache_path=JUDGE_CACHE_PATH):
+    cached = load_json_if_exists(cache_path)
+    if cached is None:
+        cached = {}
+
+    scores_by_uid = dict(cached)
+
+    for item in tqdm(results, desc="Gemini judging"):
+        uid = str(item["uid"])
+        if uid in scores_by_uid:
+            continue
+
+        score = call_judge_model_with_retry(
+            reference_report=item["reference_report"],
+            candidate_report=item["generated_report"],
+        )
+        scores_by_uid[uid] = score
+
+        save_json_atomic(cache_path, scores_by_uid)
+
+    scores = [scores_by_uid[str(item["uid"])] for item in results]
+
+    metrics = aggregate_judge_scores(scores)
+
+    return metrics, scores_by_uid
+
+
+baseline_judge_metrics, baseline_judge_scores = compute_judge_metrics_checkpointed(
+    baseline_results,
+    cache_path=OUTPUT_DIR / "baseline_judge_scores.json",
+)
+five_agent_judge_metrics, five_agent_judge_scores = compute_judge_metrics_checkpointed(
+    five_agent_results,
+    cache_path=OUTPUT_DIR / "five_agent_judge_scores.json",
+)
+
+with open(OUTPUT_DIR / "baseline_judge_metrics.json", "w", encoding="utf-8") as f:
+    json.dump(baseline_judge_metrics, f, indent=2, ensure_ascii=False)
+with open(OUTPUT_DIR / "five_agent_judge_metrics.json", "w", encoding="utf-8") as f:
+    json.dump(five_agent_judge_metrics, f, indent=2, ensure_ascii=False)
+
+print("Saved judge metrics and per-sample scores.")
+
+judge_metrics_table = pd.DataFrame(
+    [
+        {"Model": "LLaVA-Med", **baseline_judge_metrics},
+        {"Model": "Ours", **five_agent_judge_metrics},
+    ]
+)
+judge_metrics_table
+
+
+# %% [markdown] id="EdL-oBjLF1xa"
+# ## 19. Save The Metric Tables
+#
+# This cell saves the generated reports and all evaluation tables
+#
+#
+#
+
+# %% colab={"base_uri": "https://localhost:8080/"} id="ZGCnm_Q1F1xa" outputId="a60311e9-3712-4610-f76a-bdaa6676fba4"
+import json
+from pathlib import Path
+import pandas as pd
+def load_json(path):
+    with Path(path).open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+baseline_judge_metrics = load_json(OUTPUT_DIR / "baseline_judge_metrics.json")
+five_agent_judge_metrics = load_json(OUTPUT_DIR / "five_agent_judge_metrics.json")
+
+judge_metrics_table = pd.DataFrame(
+    [
+        {"Model": "LLaVA-Med", **baseline_judge_metrics},
+        {"Model": "Ours", **five_agent_judge_metrics},
+    ]
+)
+
+judge_metrics_table = pd.DataFrame(
+    [
+        {"Model": "LLaVA-Med", **baseline_judge_metrics},
+        {"Model": "Ours", **five_agent_judge_metrics},
+    ]
+)
+judge_metrics_table.to_csv(OUTPUT_DIR / "judge_metrics_table.csv", index=False)
+
+
+comparison_summary = {
+    "standard_metrics": standard_metrics_table.to_dict(orient="records"),
+    "judge_metrics": judge_metrics_table.to_dict(orient="records"),
+}
+with open(OUTPUT_DIR / "paper_tables.json", "w", encoding="utf-8") as f:
+    json.dump(comparison_summary, f, indent=2, ensure_ascii=False)
+
+print("Saved:")
+print(OUTPUT_DIR / "paper_tables.json")
+
+
+# %% id="zSziNXrZe7qq"
+import pandas as pd
+from IPython.display import display
+
+standard_df = pd.read_csv(OUTPUT_DIR / "standard_metrics_table.csv")
+judge_df = pd.read_csv(OUTPUT_DIR / "judge_metrics_table.csv")
+
+display(standard_df.set_index(standard_df.columns[0]).T)
+display(judge_df.set_index(judge_df.columns[0]).T)

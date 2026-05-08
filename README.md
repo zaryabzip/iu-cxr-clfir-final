@@ -10,10 +10,20 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 .
 ├── notebooks/
 │   ├── iu_pipeline_e2e_clfir_final.ipynb
-│   └── iu_pipeline_e2e_clfir_final.py
+│   ├── iu_pipeline_e2e_clfir_final.py
+│   ├── iu_pipeline_baseline_yi_5_agent.ipynb
+│   └── iu_pipeline_baseline_yi_5_agent.py
 └── results/
     ├── baseline/
-    │   └── .gitkeep
+    │   ├── summary.json
+    │   ├── per_study_summary.csv
+    │   ├── baseline_metrics.json
+    │   ├── five_agent_metrics.json
+    │   ├── baseline_judge_metrics.json
+    │   ├── five_agent_judge_metrics.json
+    │   ├── standard_metrics_table.csv
+    │   ├── judge_metrics_table.csv
+    │   └── paper_tables.json
     ├── clfir_final/
     │   ├── summary.json
     │   └── per_study_summary.csv
@@ -105,14 +115,35 @@ Baseline design:
 
 The cleaned baseline notebook removes brittle fallback behavior where possible, keeps checkpointed generation/evaluation outputs, and writes to a dedicated artifact root in the development workspace. It is included conceptually as the literature-inspired reference pipeline, while this repository intentionally excludes its large model files, retrieval checkpoint, full caches, and raw per-stage artifacts.
 
-When the files are added, `results/baseline/` should contain the same compact result schema used by the other runs:
+Baseline result files are included under `results/baseline/`. The large OpenCLIP checkpoint and IU retrieval bank are intentionally excluded.
 
-Expected files:
+Important comparability note:
 
-- `results/baseline/summary.json`
-- `results/baseline/per_study_summary.csv`
+- The Yi-style baseline output contains 200 IU studies.
+- These 200 studies are not the same sample set as the current CLFIR final first-200 split.
+- The baseline should therefore be read as a local reproduction attempt and failure analysis, not as a perfectly paired score comparison.
 
-The baseline section should report the same categories as the submitted pipeline: completed reports, completed judge scores, LLM judge overall, automatic text metrics, and any clinical judge sub-scores included in the provided result files.
+Observed baseline metrics:
+
+- Single-agent LLaVA-Med BLEU: `0.0065`
+- Single-agent LLaVA-Med ROUGE-1: `0.0937`
+- Single-agent LLaVA-Med METEOR: `0.1471`
+- Single-agent LLaVA-Med BERTScore: `0.8625`
+- Five-agent BLEU: `0.0116`
+- Five-agent ROUGE-1: `0.1100`
+- Five-agent METEOR: `0.1902`
+- Five-agent BERTScore: `0.8502`
+
+Gemini judge metrics from the baseline run:
+
+- Single-agent LLaVA-Med findings: `1.375`
+- Single-agent LLaVA-Med consistency: `2.120`
+- Single-agent LLaVA-Med diagnosis: `1.930`
+- Five-agent findings: `1.325`
+- Five-agent consistency: `6.990`
+- Five-agent diagnosis: `1.205`
+
+The main failure mode was the LLaVA-Med visual agent. In the 200-study run, the visual caption mentioned pleural effusion in `200/200` cases, the final five-agent report mentioned pleural effusion in `200/200` cases, and the final report mentioned pneumothorax in `185/200` cases. This contaminated the Gemini synthesis stage even when retrieved reports were often normal or clinically reasonable.
 
 ## Proposed Improvement 1 Results
 

@@ -1,0 +1,40 @@
+{
+  "standard_metrics": [
+    {
+      "Model": "LLaVA-Med",
+      "BLEU": 0.006509335594417441,
+      "ROUGE-1": 0.09366343501771393,
+      "ROUGE-2": 0.03365179852444007,
+      "ROUGE-L": 0.08200630515341853,
+      "METEOR": 0.14710233582852936,
+      "BERTScore": 0.8625403046607971
+    },
+    {
+      "Model": "Ours",
+      "BLEU": 0.011628759588628888,
+      "ROUGE-1": 0.10996727110264322,
+      "ROUGE-2": 0.04209999479153945,
+      "ROUGE-L": 0.09650540438122618,
+      "METEOR": 0.1902133221541654,
+      "BERTScore": 0.8502256870269775
+    }
+  ],
+  "judge_metrics": [
+    {
+      "Model": "LLaVA-Med",
+      "Findings": 1.375,
+      "Consistency": 2.12,
+      "Diagnosis": 1.93,
+      "Style": 3.785,
+      "Conciseness": 4.14
+    },
+    {
+      "Model": "Ours",
+      "Findings": 1.325,
+      "Consistency": 6.99,
+      "Diagnosis": 1.205,
+      "Style": 7.91,
+      "Conciseness": 4.015
+    }
+  ]
+}
