@@ -1,0 +1,70 @@
+{
+  "baseline_note": "BLEU, ROUGE, METEOR, sacreBLEU, chrF, and chrF++ were recomputed with the same normalization/tokenization/corpus metric functions used by the CLFIR notebooks. BERTScore is taken from the existing baseline five_agent_metrics.json because it was already computed over the same 200 saved reports.",
+  "description": "Automatic metric comparison for baseline, proposed improvement 1, and proposed improvement 2.",
+  "metric_scale_note": "BLEU, ROUGE, METEOR, and BERTScore are fractions. sacreBLEU, chrF, and chrF++ use the standard sacrebleu 0-100 scale.",
+  "rows": [
+    {
+      "metrics": {
+        "bertscore_f1": 0.8502256870269775,
+        "bleu": 0.05210120246230173,
+        "chrf": 36.97538307464004,
+        "chrf_pp": 34.231384583454926,
+        "meteor": 0.335176914753994,
+        "rouge1": 0.2865360759959218,
+        "rouge2": 0.09490968602833273,
+        "rougeL": 0.19067641016205988,
+        "sacrebleu": 4.179564242698972
+      },
+      "num_studies": 200,
+      "old_metric_comparison": {
+        "old_bleu": 0.011628759588628888,
+        "old_meteor": 0.1902133221541654,
+        "old_rouge1": 0.10996727110264322,
+        "old_rouge2": 0.04209999479153945,
+        "old_rougeL": 0.09650540438122618
+      },
+      "pipeline": "Baseline (Yi-style five-agent)",
+      "recompute_note": "BLEU, ROUGE, METEOR, sacreBLEU, chrF, and chrF++ were recomputed with the same normalization/tokenization/corpus metric functions used by the CLFIR notebooks. BERTScore is taken from the existing baseline five_agent_metrics.json because it was already computed over the same 200 saved reports.",
+      "source_files": {
+        "metric_inputs": "results/baseline/five_agent_results.json",
+        "standard_metrics_original": "results/baseline/five_agent_metrics.json"
+      }
+    },
+    {
+      "metrics": {
+        "bertscore_f1": 0.8551648584008217,
+        "bleu": 0.10299250095842599,
+        "chrf": 39.614238258432906,
+        "chrf_pp": 36.75315182902072,
+        "meteor": 0.3586666208631684,
+        "rouge1": 0.40489633434369793,
+        "rouge2": 0.16526118426040262,
+        "rougeL": 0.29790772278662453,
+        "sacrebleu": 11.461571368351184
+      },
+      "num_studies": 200,
+      "pipeline": "Proposed Improvement 1",
+      "source_files": {
+        "summary": "results/proposed_improvement_1/summary.json"
+      }
+    },
+    {
+      "metrics": {
+        "bertscore_f1": 0.8543981620669365,
+        "bleu": 0.11783448242411483,
+        "chrf": 40.70468763198506,
+        "chrf_pp": 37.60147835314213,
+        "meteor": 0.34761084015902277,
+        "rouge1": 0.4136492408572554,
+        "rouge2": 0.17116262080406316,
+        "rougeL": 0.3057759712262271,
+        "sacrebleu": 12.648690437466362
+      },
+      "num_studies": 200,
+      "pipeline": "Proposed Improvement 2",
+      "source_files": {
+        "summary": "results/proposed_improvement_2/summary.json"
+      }
+    }
+  ]
+}

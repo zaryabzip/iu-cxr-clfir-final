@@ -19,7 +19,7 @@
 # per-study artifact, checks whether matching artifacts already exist, and
 # resumes from disk instead of restarting completed work.
 #
-# The active configuration writes to `current_clfir_final`. In the default local
+# The active configuration writes to `current_proposed_improvement_2`. In the default local
 # setup, Stage 5 and Stage 6 use Ollama-backed LLM calls (`qwen3.5:9b` composer
 # and `gemma3:12b` judge unless overridden by environment variables). If local
 # Ollama is disabled, the same stage wrappers can use Gemini models when a
@@ -340,7 +340,7 @@ def ensure_gemini_api_key_interactive() -> str | None:
 # - `WORKSPACE_ROOT/pipeline/artifacts/iu_pipeline_bundle/...` for external
 #   verified artifacts, model cache files, and this run's output directory.
 #
-# The current run writes under `current_clfir_final`. `IU_EVAL_LIMIT` controls
+# The current run writes under `current_proposed_improvement_2`. `IU_EVAL_LIMIT` controls
 # how many IU test studies are processed. The default is 200, with external
 # CheXOne reports and retrieval-bank artifacts loaded from the shared bundle.
 #
@@ -501,7 +501,7 @@ EXTERNAL_CHEXBERT_METADATA_PATH = EXTERNAL_PATHOLOGY_BANK_DIR / "mimic_pathology
 EXTERNAL_CLFIR_ADAPTER2_ROOT = EXTERNAL_ARTIFACTS_ROOT / "clfir_retrieval_adapter_2"
 EXTERNAL_CLFIR_ADAPTER2_VISUAL_BANK_DIR = EXTERNAL_CLFIR_ADAPTER2_ROOT / "banks" / "visual_clfir"
 
-ARTIFACT_ROOT = BUNDLE_ROOT / "current_clfir_final"
+ARTIFACT_ROOT = BUNDLE_ROOT / "current_proposed_improvement_2"
 SPLITS_DIR = ARTIFACT_ROOT / "splits"
 BANKS_DIR = ARTIFACT_ROOT / "banks"
 STAGE1_DIR = ARTIFACT_ROOT / "stage1"

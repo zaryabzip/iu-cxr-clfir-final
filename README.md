@@ -1,6 +1,6 @@
 # IU CXR Report Generation with CLFIR-Guided Evidence Fusion
 
-This repository contains the cleaned deliverable for an IU chest X-ray report generation project. The main submitted pipeline is `clfir_final`, implemented as a Jupytext-paired notebook and Python script.
+This repository contains the cleaned deliverable for an IU chest X-ray report generation project. The main submitted pipeline is Proposed Improvement 2, implemented as a Jupytext-paired notebook and Python script.
 
 The full local development workspace, datasets, model weights, retrieval banks, LLM caches, and per-stage artifact folders are intentionally not included. Only the submission notebook/code and compact evaluation outputs are provided.
 
@@ -9,8 +9,6 @@ The full local development workspace, datasets, model weights, retrieval banks, 
 ```text
 .
 ├── notebooks/
-│   ├── iu_pipeline_e2e_clfir_final.ipynb
-│   ├── iu_pipeline_e2e_clfir_final.py
 │   ├── iu_pipeline_baseline_yi_5_agent.ipynb
 │   ├── iu_pipeline_baseline_yi_5_agent.py
 │   ├── iu_pipeline_proposed_improvement_1.ipynb
@@ -32,9 +30,6 @@ The full local development workspace, datasets, model weights, retrieval banks, 
     │   ├── standard_metrics_table.csv
     │   ├── judge_metrics_table.csv
     │   └── paper_tables.json
-    ├── clfir_final/
-    │   ├── summary.json
-    │   └── per_study_summary.csv
     ├── more_imp1/
     │   ├── summary.json
     │   └── per_study_summary.csv
@@ -70,7 +65,7 @@ The submitted notebook is designed to resume from disk artifacts when run in the
 
 ![IU chest X-ray report generation pipeline](assets/proposed_improvement_2_pipeline_diagram.png)
 
-## CLFIR Adapter Training and Use
+## Proposed Improvement 2 CLFIR Adapter Training and Use
 
 The CLFIR adapter used by the retrieval stage is a fine-tuned image-text retrieval projection module. It is not a report generator by itself. Its role is to map BioViL-T image embeddings into a retrieval space that is better aligned with radiology report text.
 
@@ -93,13 +88,13 @@ Training setup:
 
 At inference time, the query IU chest X-ray is embedded with BioViL-T, projected through the trained CLFIR image projection layer, L2-normalized, and searched against the CLFIR FAISS visual bank. The retrieved studies provide soft evidence for later fusion; they are not copied directly into the final report.
 
-## Submitted Pipeline
+## Submitted Pipeline: Proposed Improvement 2
 
-The primary submitted pipeline is:
+The primary submitted pipeline is Proposed Improvement 2:
 
-- Notebook: `notebooks/iu_pipeline_e2e_clfir_final.ipynb`
-- Paired script: `notebooks/iu_pipeline_e2e_clfir_final.py`
-- Output directory in the original run: `current_clfir_final`
+- Notebook: `notebooks/iu_pipeline_proposed_improvement_2.ipynb`
+- Paired script: `notebooks/iu_pipeline_proposed_improvement_2.py`
+- Output directory in the repo notebook: `current_proposed_improvement_2`
 
 Important run settings:
 
@@ -149,7 +144,7 @@ Excluded baseline files:
 Important comparability note:
 
 - The Yi-style baseline output contains 200 IU studies.
-- These 200 studies are not the same sample set as the current CLFIR final first-200 split.
+- These 200 studies are not the same sample set as the current Proposed Improvement 2 first-200 split.
 - The baseline should therefore be read as a local reproduction attempt and failure analysis, not as a perfectly paired score comparison.
 
 Observed baseline metrics:
@@ -176,7 +171,7 @@ The main failure mode was the LLaVA-Med visual agent. In the 200-study run, the 
 
 ## Proposed Improvement 1 Results
 
-The `results/proposed_improvement_1/` folder contains the first proposed improvement pipeline. This is not the main submitted `clfir_final` method and it is not a CLFIR adapter pipeline.
+The `results/proposed_improvement_1/` folder contains the first proposed improvement pipeline. This is not the main submitted Proposed Improvement 2 method and it is not a CLFIR adapter pipeline.
 
 Proposed Improvement 1 design:
 
@@ -190,7 +185,7 @@ Proposed Improvement 1 design:
 - CheXOne label-prompt outputs are not used as evidence.
 - Local LLM adaptation: Gemini can be used when an API key is provided, but the cleaned local path uses the same Ollama defaults as the CLFIR notebooks.
 - Local Ollama defaults: composer `qwen3.5:9b`, judge `gemma3:12b`.
-- Evaluation alignment: the final evaluation block was updated to report the same compact metrics as `clfir_final`, including BLEU, ROUGE, METEOR, BERTScore, sacreBLEU, chrF, chrF++, and LLM judge overall.
+- Evaluation alignment: the final evaluation block was updated to report the same compact metrics as Proposed Improvement 2, including BLEU, ROUGE, METEOR, BERTScore, sacreBLEU, chrF, chrF++, and LLM judge overall.
 
 The purpose of this experiment is to test whether the earlier non-CLFIR retrieval pipeline can be made cleaner and more comparable by replacing weak fallback label logic with CheXbert-derived text evidence and by standardizing the LLM/evaluation setup. This experiment should be read as a separate non-CLFIR ablation, not as a CLFIR variant.
 
@@ -218,13 +213,13 @@ Run summary:
 Separate retrieval-only comparison note:
 
 - This is not part of Proposed Improvement 1 itself.
-- It compares the plain BioViL-T visual retrieval used by Proposed Improvement 1 against the CLFIR-projected visual retrieval used by `clfir_final`.
+- It compares the plain BioViL-T visual retrieval used by Proposed Improvement 1 against the CLFIR-projected visual retrieval used by Proposed Improvement 2.
 - On the overlapping 100-study retrieval split, CLFIR improved the top-1 retrieved-report token F1 proxy by about `2.7%` and the mean top-5 token F1 proxy by about `2.5%` over plain BioViL-T. The best-of-top-5 proxy was essentially flat at about `+0.1%`.
 - This means CLFIR gave a small but measurable retrieval-quality improvement in the first retrieved candidates; the larger final-report gains come from evidence fusion and report composition, not retrieval alone.
 
 ## Proposed Improvement 2 Results
 
-The `results/proposed_improvement_2/` folder contains the current CLFIR-guided pipeline run copied from `current_clfir_final`. This is the second proposed improvement and corresponds to the clean CLFIR final pipeline.
+The `results/proposed_improvement_2/` folder contains the current CLFIR-guided pipeline run. This is the second proposed improvement and is the main submitted pipeline.
 
 Proposed Improvement 2 design:
 
@@ -235,7 +230,7 @@ Proposed Improvement 2 design:
 - Evidence control: deterministic fusion combines direct evidence, retrieval evidence, and guardrails before report composition.
 - Composer: `qwen3.5:9b`.
 - Judge: `gemma3:12b`.
-- Output source in the development workspace: `pipeline/artifacts/iu_pipeline_bundle/current_clfir_final`.
+- Output source in the repo notebook/artifact naming convention: `pipeline/artifacts/iu_pipeline_bundle/current_proposed_improvement_2`.
 
 Proposed Improvement 2 files:
 
@@ -244,7 +239,7 @@ Proposed Improvement 2 files:
 - Results: `results/proposed_improvement_2/summary.json`
 - Per-study outputs and scores: `results/proposed_improvement_2/per_study_summary.csv`
 
-Run summary from `current_clfir_final`:
+Run summary for Proposed Improvement 2:
 
 Pipeline:
 

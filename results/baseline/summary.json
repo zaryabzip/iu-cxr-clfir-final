@@ -1,8 +1,8 @@
 {
   "baseline_name": "yi_et_al_style_5_agent_reproduction",
   "num_studies": 200,
-  "same_sample_set_as_clfir_final": false,
-  "sample_set_note": "These 200 IU studies are from the Yi-style baseline run and do not overlap the current CLFIR final first-200 split.",
+  "same_sample_set_as_proposed_improvement_2": false,
+  "sample_set_note": "These 200 IU studies are from the Yi-style baseline run and do not overlap the current Proposed Improvement 2 first-200 split.",
   "text_agent_backend": "Gemini",
   "text_agent_model": "gemini-2.5-flash",
   "judge_model": "gemini-2.5-pro",

@@ -1,0 +1,42 @@
+{
+  "baseline": {
+    "count": 200,
+    "judge_model": "Gemini (from stored Yi-style baseline outputs)",
+    "prompt_version": "legacy baseline rubric; not reference_candidate_only_v1",
+    "scores": {
+      "Conciseness": 4.015,
+      "Consistency": 6.99,
+      "Diagnosis": 1.205,
+      "Findings": 1.325,
+      "Style": 7.91
+    }
+  },
+  "improvement_prompt_note": "Improvement 1 artifacts are missing the prompt_version metadata field, but their cached prompt template text matches the same reference-vs-candidate schema used by Improvement 2. Improvement 2 records prompt_version reference_candidate_only_v1.",
+  "mismatch_note": "Baseline judge results use a different Gemini-era rubric: Findings, Consistency, Diagnosis, Style, Conciseness. Proposed Improvements 1 and 2 use gemma3:12b with clinical_accuracy_score, groundedness_score, completeness_score, style_score, overall_score. Baseline values should not be directly compared criterion-by-criterion with the Gemma judge values.",
+  "proposed_improvement_1": {
+    "count": 200,
+    "judge_model": "gemma3:12b",
+    "prompt_template_count": 1,
+    "prompt_version": "missing_in_artifacts",
+    "scores": {
+      "clinical_accuracy_score": 7.675,
+      "completeness_score": 6.905,
+      "groundedness_score": 8.195,
+      "overall_score": 7.745,
+      "style_score": 8.66
+    }
+  },
+  "proposed_improvement_2": {
+    "count": 200,
+    "judge_model": "gemma3:12b",
+    "prompt_template_count": 1,
+    "prompt_version": "reference_candidate_only_v1",
+    "scores": {
+      "clinical_accuracy_score": 7.76,
+      "completeness_score": 6.955,
+      "groundedness_score": 8.295,
+      "overall_score": 7.8,
+      "style_score": 8.7
+    }
+  }
+}

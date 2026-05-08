@@ -1,0 +1,2 @@
+pipeline,judge_model,prompt_version,n,findings,consistency,diagnosis,style,conciseness
+Baseline (Yi-style five-agent),Gemini (from stored Yi-style baseline outputs),legacy baseline rubric; not reference_candidate_only_v1,200,1.325,6.99,1.205,7.91,4.015

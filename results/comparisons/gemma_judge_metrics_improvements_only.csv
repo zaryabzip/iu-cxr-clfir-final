@@ -1,0 +1,3 @@
+pipeline,judge_model,prompt_version,n,clinical_accuracy,groundedness,completeness,style,overall
+Proposed Improvement 1,gemma3:12b,missing_in_artifacts,200,7.675,8.195,6.905,8.66,7.745
+Proposed Improvement 2,gemma3:12b,reference_candidate_only_v1,200,7.76,8.295,6.955,8.7,7.8
