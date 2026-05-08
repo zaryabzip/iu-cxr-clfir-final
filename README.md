@@ -90,7 +90,20 @@ The paired Python file is included so the notebook can be reviewed as executable
 
 ## Baseline Results
 
-The baseline result folder is reserved for the original reference system used to judge whether the CLFIR pipeline improves report generation. This should contain the baseline model's independent evaluation results, not copied CLFIR outputs.
+The `results/baseline/` folder is reserved for the cleaned Yi et al.-style five-agent baseline reproduction. It is kept separate from the CheXOne direct baseline reported inside the CLFIR result summaries.
+
+Baseline design:
+
+- Reproduction target: the multimodal multi-agent radiology report generation framework described by Yi et al.
+- Single-agent baseline: LLaVA-Med 1.5 7B generates an IU chest X-ray report directly from the image.
+- Retrieval agent: OpenCLIP ResNet-50 retriever fine-tuned on 3,000 MIMIC-CXR image-report pairs.
+- Retrieval checkpoint: `retriever_openclip_mimic3000.pt`, supplied locally as `retriever_openclip_mimic3000.tar` in the development workspace. Model weights are not committed to this repository.
+- Five-agent flow: retrieve related reports, draft from retrieved context, generate a visual description with LLaVA-Med, refine the draft, then synthesize the final report.
+- Local LLM adaptation: Gemini can be used when an API key is provided; otherwise the cleaned notebook uses local Ollama models for consistency with the CLFIR runs.
+- Local Ollama defaults: composer `qwen3.5:9b`, judge `gemma3:12b`.
+- Evaluation alignment: the judge prompt and automatic metric output schema were cleaned to match the CLFIR notebooks.
+
+The cleaned baseline notebook removes brittle fallback behavior where possible, keeps checkpointed generation/evaluation outputs, and writes to a dedicated artifact root in the development workspace. It is included conceptually as the literature-inspired reference pipeline, while this repository intentionally excludes its large model files, retrieval checkpoint, full caches, and raw per-stage artifacts.
 
 When the files are added, `results/baseline/` should contain the same compact result schema used by the other runs:
 
@@ -103,7 +116,22 @@ The baseline section should report the same categories as the submitted pipeline
 
 ## Proposed Improvement 1 Results
 
-The Proposed Improvement 1 folder is reserved for the first proposed extension beyond the submitted `clfir_final` pipeline. This should contain its own independent run outputs so it can be compared against both the baseline and the submitted CLFIR final pipeline.
+The `results/proposed_improvement_1/` folder is reserved for the first proposed improvement pipeline. This is not the main submitted `clfir_final` method and it is not a CLFIR adapter pipeline.
+
+Proposed Improvement 1 design:
+
+- Starting point: an earlier IU end-to-end pipeline with image-first report generation, visual retrieval, pathology-aware retrieval, multi-stage report composition, and evaluation.
+- Direct image model: CheXOne produces the image-first draft report.
+- Retrieval: uses the original visual/pathology retrieval structure from the proposed-improvement notebook rather than adding CLFIR.
+- Label evidence: VisualCheXbert and keyword-derived label fallbacks were removed from the cleaned version.
+- CheXbert use: CheXbert labels are used for report-text evidence extraction, including positive, uncertain, negative, and blank/not-mentioned states.
+- Important label-state fix: raw CheXbert negative `0` is mapped internally to the state `negative` and score `-1.0`; blank/not-mentioned remains `0.0`.
+- CheXOne label-prompt outputs are not used as evidence.
+- Local LLM adaptation: Gemini can be used when an API key is provided, but the cleaned local path uses the same Ollama defaults as the CLFIR notebooks.
+- Local Ollama defaults: composer `qwen3.5:9b`, judge `gemma3:12b`.
+- Evaluation alignment: the final evaluation block was updated to report the same compact metrics as `clfir_final`, including BLEU, ROUGE, METEOR, BERTScore, sacreBLEU, chrF, chrF++, and LLM judge overall.
+
+The purpose of this experiment is to test whether the earlier non-CLFIR retrieval pipeline can be made cleaner and more comparable by replacing weak fallback label logic with CheXbert-derived text evidence and by standardizing the LLM/evaluation setup. It should be compared against both the Yi-style baseline and `clfir_final` only after its own independent run outputs are added.
 
 When the files are added, `results/proposed_improvement_1/` should contain the same compact result schema:
 
